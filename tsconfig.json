@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "types": ["node"],
+    "paths": {
+      "@cac/shared/*": ["./packages/shared/src/*"]
+    }
+  },
+  "include": ["packages/shared/**/*.ts", "packages/server/**/*.ts", "scripts/**/*.ts"]
+}

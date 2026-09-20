@@ -1,0 +1,1296 @@
+{
+  "id": "reliability",
+  "name": "Cards Against Reliability",
+  "description": "For engineers who carry a pager. SRE and incident humour.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/dastergon/CardsAgainstReliability",
+    "license": "CC BY-NC-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
+    "upstreamCommit": "2fad66712a2d4e30f67d4b62027157c4b43ac577"
+  },
+  "prompts": [
+    {
+      "id": "r-p-001",
+      "text": "______ kept me up all night.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-002",
+      "text": "______ kept me busy all day.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-003",
+      "text": "______ was the last thing I expected to find inside the VM.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-004",
+      "text": "An SRE conference is never complete without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-005",
+      "text": "A romantic, candlelit dinner would be incomplete without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-006",
+      "text": "I can't believe I got away with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-007",
+      "text": "I always include ______ in my reviewer feedback.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-008",
+      "text": "I can't concentrate without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-009",
+      "text": "During an incident I always ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-010",
+      "text": "I don't encrypt my files, I keep them hidden in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-011",
+      "text": "I drink to forget ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-012",
+      "text": "I get by with a little help from ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-013",
+      "text": "I got 99 problems but ______ ain't one.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-014",
+      "text": "I just hope the reviewers don't notice ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-015",
+      "text": "I just got out of an incomprehensible talk on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-016",
+      "text": "I hope no one finds out about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-017",
+      "text": "I woke up filled with shame about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-018",
+      "text": "Did you hear that ______ is the new hot topic?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-019",
+      "text": "I can't believe my grant application for ______ was denied!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-020",
+      "text": "I swear I didn't go to SRECon because of the location, I went for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-021",
+      "text": "An SRE talk titled ______ turned out to just be about ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "r-p-022",
+      "text": "I think I will skip the session on ______ this year.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-023",
+      "text": "During an incident, I like to think about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-024",
+      "text": "I woke up drenched in sweat from a nightmare about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-025",
+      "text": "I'm sorry, Professor, but I couldn't complete my homework because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-026",
+      "text": "It took 72,000 instances, but I finally cracked ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-027",
+      "text": "My academic CV says I'm an expert on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-028",
+      "text": "My career started with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-029",
+      "text": "I'm hoping to avoid 2/3 of the program committee, because my paper is on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-030",
+      "text": "It turns out that my company's password policy requires ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-031",
+      "text": "My student couldn't complete their homework due to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-032",
+      "text": "One regret I have from my PhD is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-033",
+      "text": "The next big thing will almost certainly be ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-034",
+      "text": "I'll eat my hat if anyone ever breaks ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-035",
+      "text": "I was surprised to see anyone awake at the end of my presentation on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-036",
+      "text": "I find that ______ relieves oncall stress.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-037",
+      "text": "Remembering ______, then immediately vomiting.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-038",
+      "text": "The way things are going, the best talk at SRECon 2049 will probably be about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-039",
+      "text": "There is nothing quite like ______, alone in the office at night.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-040",
+      "text": "What gets better with age?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-041",
+      "text": "What's an SRE's best friend?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-042",
+      "text": "Why can't I sleep at night?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-043",
+      "text": "What's my secret power?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-044",
+      "text": "What is the best way to wind down at the end of a hard day?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-045",
+      "text": "What is the best way to wind down at the end of a big incident?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-046",
+      "text": "When my USENIX papers turn me into a billionaire, I will erect a 50-foot statue to commemorate ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-047",
+      "text": "When I am President of the United States, I will create the Department of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-048",
+      "text": "The talk that had the most influence on my personal life was ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-049",
+      "text": "I deserve to get an ACM award for my groundbreaking contributions to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-050",
+      "text": "Putting ______ in my application helped me immensely.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-051",
+      "text": "My encryption scheme is extra secure because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-052",
+      "text": "Talk dirty to me. Tell me about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-053",
+      "text": "What an SRE will find disturbing, yet oddly satisfying?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-054",
+      "text": "What don't you want to find during an incident?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-055",
+      "text": "What makes things awkward in an incident?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-056",
+      "text": "Here is the pager, here is the incident, open your laptop and you will find ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-057",
+      "text": "I don't mean to brag, but they call the Chuck Norris of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-058",
+      "text": "Do you lack sleep? Does it feel sometimes that the world is ______ ? Xanax.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-059",
+      "text": "Hi, this is Maria from accounting. We noticed a 10.000 charge labeled as ______. Can you explain?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-060",
+      "text": "Get ready for the deployment freeze for Black Friday",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-061",
+      "text": "______, that's when I want to die.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-062",
+      "text": "What never fails to liven up the party?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-063",
+      "text": "A romantic dinner would be incomplete without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-064",
+      "text": "What's the next SRE buzzword?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-065",
+      "text": "In 100 years, SREs will ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-066",
+      "text": "What I will bring back in time to convince people that I am a good engineer?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-067",
+      "text": "What's an engineer's besti weapon?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-068",
+      "text": "What is the Public Relations are thinking about right now?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-069",
+      "text": "______. High five team!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-070",
+      "text": "Alternative medicine is now embracing the curative powers of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-071",
+      "text": "What gives me unctrollable stress?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-072",
+      "text": "SLO burns. What is it good for?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-073",
+      "text": "Next on DevOps, is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-074",
+      "text": "Which is the one that matters?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "r-p-075",
+      "text": "Blameless posmortems bring a light to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-076",
+      "text": "An SRE interview is never complete without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-077",
+      "text": "A Disaster Recovery plan is never complete without ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "r-p-078",
+      "text": "A Chaos Engineering plan is never complete without ______.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "r-r-001",
+      "text": "My side job as an incompetent sysadmin."
+    },
+    {
+      "id": "r-r-002",
+      "text": "Puberty."
+    },
+    {
+      "id": "r-r-003",
+      "text": "God."
+    },
+    {
+      "id": "r-r-004",
+      "text": "A mime having a stroke."
+    },
+    {
+      "id": "r-r-005",
+      "text": "Shit."
+    },
+    {
+      "id": "r-r-006",
+      "text": "Tearing apart."
+    },
+    {
+      "id": "r-r-007",
+      "text": "Oil."
+    },
+    {
+      "id": "r-r-008",
+      "text": "Michael Jackson."
+    },
+    {
+      "id": "r-r-009",
+      "text": "Wearing glasses and sounding smart."
+    },
+    {
+      "id": "r-r-010",
+      "text": "Linus Torvalds."
+    },
+    {
+      "id": "r-r-011",
+      "text": "A saxophone solo."
+    },
+    {
+      "id": "r-r-012",
+      "text": "Ebola."
+    },
+    {
+      "id": "r-r-013",
+      "text": "A disappointing salad."
+    },
+    {
+      "id": "r-r-014",
+      "text": "Network partitions."
+    },
+    {
+      "id": "r-r-015",
+      "text": "The miracle of autoscaling."
+    },
+    {
+      "id": "r-r-016",
+      "text": "Five nines fantasies."
+    },
+    {
+      "id": "r-r-017",
+      "text": "A can of Red Bull."
+    },
+    {
+      "id": "r-r-018",
+      "text": "A lifetime of sadness."
+    },
+    {
+      "id": "r-r-019",
+      "text": "Bill Nye the Science Guy."
+    },
+    {
+      "id": "r-r-020",
+      "text": "Neil DeGrasse Tyson."
+    },
+    {
+      "id": "r-r-021",
+      "text": "A tribe of warrior SREs."
+    },
+    {
+      "id": "r-r-022",
+      "text": "BATMAN."
+    },
+    {
+      "id": "r-r-023",
+      "text": "Peeing a little bit."
+    },
+    {
+      "id": "r-r-024",
+      "text": "Being on fire."
+    },
+    {
+      "id": "r-r-025",
+      "text": "Never achieving my OKR."
+    },
+    {
+      "id": "r-r-026",
+      "text": "Handicapped."
+    },
+    {
+      "id": "r-r-027",
+      "text": "Sea of troubles."
+    },
+    {
+      "id": "r-r-028",
+      "text": "Being fabulous."
+    },
+    {
+      "id": "r-r-029",
+      "text": "Genetically engineered super-SREs."
+    },
+    {
+      "id": "r-r-030",
+      "text": "One trillion dollars."
+    },
+    {
+      "id": "r-r-031",
+      "text": "Shiny objects."
+    },
+    {
+      "id": "r-r-032",
+      "text": "The rhythms of Africa."
+    },
+    {
+      "id": "r-r-033",
+      "text": "Drinking alone."
+    },
+    {
+      "id": "r-r-034",
+      "text": "My collection of postmortems."
+    },
+    {
+      "id": "r-r-035",
+      "text": "Kubernetes."
+    },
+    {
+      "id": "r-r-036",
+      "text": "The taste of Cola."
+    },
+    {
+      "id": "r-r-037",
+      "text": "Barack Obama."
+    },
+    {
+      "id": "r-r-038",
+      "text": "A big incident."
+    },
+    {
+      "id": "r-r-039",
+      "text": "Prometheus."
+    },
+    {
+      "id": "r-r-040",
+      "text": "Tea party."
+    },
+    {
+      "id": "r-r-041",
+      "text": "Poor life choices."
+    },
+    {
+      "id": "r-r-042",
+      "text": "Tracing."
+    },
+    {
+      "id": "r-r-043",
+      "text": "The big bang."
+    },
+    {
+      "id": "r-r-044",
+      "text": "Farting and walking away."
+    },
+    {
+      "id": "r-r-045",
+      "text": "Drinking out of the toilet."
+    },
+    {
+      "id": "r-r-046",
+      "text": "Friction."
+    },
+    {
+      "id": "r-r-047",
+      "text": "Dying."
+    },
+    {
+      "id": "r-r-048",
+      "text": "Deploying before a company meeting."
+    },
+    {
+      "id": "r-r-049",
+      "text": "Yogurt."
+    },
+    {
+      "id": "r-r-050",
+      "text": "Fear itself."
+    },
+    {
+      "id": "r-r-051",
+      "text": "Arnold Schwarzenegger."
+    },
+    {
+      "id": "r-r-052",
+      "text": "A thermonuclear detonation."
+    },
+    {
+      "id": "r-r-053",
+      "text": "Goose."
+    },
+    {
+      "id": "r-r-054",
+      "text": "The underground railroad."
+    },
+    {
+      "id": "r-r-055",
+      "text": "\"Working\" remotely."
+    },
+    {
+      "id": "r-r-056",
+      "text": "31 slides for a 4-minute rump session talk."
+    },
+    {
+      "id": "r-r-057",
+      "text": "Wheel of Misfortune."
+    },
+    {
+      "id": "r-r-058",
+      "text": "Chaos Engineering."
+    },
+    {
+      "id": "r-r-059",
+      "text": "A 10-year old policy on backups."
+    },
+    {
+      "id": "r-r-060",
+      "text": "A 25-year old policy on deployments."
+    },
+    {
+      "id": "r-r-061",
+      "text": "A career-limiting card game."
+    },
+    {
+      "id": "r-r-062",
+      "text": "A dancing SRE."
+    },
+    {
+      "id": "r-r-063",
+      "text": "A genuine attempt to burn SLO."
+    },
+    {
+      "id": "r-r-064",
+      "text": "A violated SLA."
+    },
+    {
+      "id": "r-r-065",
+      "text": "Speaking to an angry customer about the violated SLA."
+    },
+    {
+      "id": "r-r-066",
+      "text": "A TLA+ proof."
+    },
+    {
+      "id": "r-r-067",
+      "text": "2 to 4 kilograms of top quality amphetamines."
+    },
+    {
+      "id": "r-r-068",
+      "text": "Ctrl+F'ing to see how many times I'm cited in a postmortem and finding \"10 results\"."
+    },
+    {
+      "id": "r-r-069",
+      "text": "A painfully slow VPN connection."
+    },
+    {
+      "id": "r-r-070",
+      "text": "Pretending that I know the Paxos protocol."
+    },
+    {
+      "id": "r-r-071",
+      "text": "Accidentally triggering an emergency alert."
+    },
+    {
+      "id": "r-r-072",
+      "text": "Accidentally calling my VP."
+    },
+    {
+      "id": "r-r-073",
+      "text": "A hand wavy argument."
+    },
+    {
+      "id": "r-r-074",
+      "text": "An insecure VPN straight to the Kremlin."
+    },
+    {
+      "id": "r-r-075",
+      "text": "An SSL vulnerability with a silly name."
+    },
+    {
+      "id": "r-r-076",
+      "text": "Arriving 13 minutes late to a 15 minute talk and having the gall to ask a question."
+    },
+    {
+      "id": "r-r-077",
+      "text": "Brexit."
+    },
+    {
+      "id": "r-r-078",
+      "text": "Trying to explain what DevOps means."
+    },
+    {
+      "id": "r-r-079",
+      "text": "Chocolate-covered shrimp."
+    },
+    {
+      "id": "r-r-080",
+      "text": "Crippling error budget."
+    },
+    {
+      "id": "r-r-081",
+      "text": "Using Protocol Buffers without reason."
+    },
+    {
+      "id": "r-r-082",
+      "text": "Deliberately hiding inefficiencies inside the big O."
+    },
+    {
+      "id": "r-r-083",
+      "text": "Deliberately not referencing a superior paper."
+    },
+    {
+      "id": "r-r-084",
+      "text": "Dropping the word Blockchain into my incident report's action items."
+    },
+    {
+      "id": "r-r-085",
+      "text": "Encrypted database security definitions."
+    },
+    {
+      "id": "r-r-086",
+      "text": "Explaining what my job is at a family reunion."
+    },
+    {
+      "id": "r-r-087",
+      "text": "Fighting over LaTeX syntax."
+    },
+    {
+      "id": "r-r-088",
+      "text": "Forgetting my USB Type-C adapter."
+    },
+    {
+      "id": "r-r-089",
+      "text": "Going straight to journal."
+    },
+    {
+      "id": "r-r-090",
+      "text": "Bloom but not Filters."
+    },
+    {
+      "id": "r-r-091",
+      "text": "A Slack notification from my supervisor during my keynote talk."
+    },
+    {
+      "id": "r-r-092",
+      "text": "Humiliation on a historic scale."
+    },
+    {
+      "id": "r-r-093",
+      "text": "Home-baked, snake oil crypto."
+    },
+    {
+      "id": "r-r-094",
+      "text": "HTTPS everywhere!"
+    },
+    {
+      "id": "r-r-095",
+      "text": "Having to write a polite rebuttal in the postmortem."
+    },
+    {
+      "id": "r-r-096",
+      "text": "Actually being \"sorry for deleting the production database\"."
+    },
+    {
+      "id": "r-r-097",
+      "text": "A board meeting."
+    },
+    {
+      "id": "r-r-098",
+      "text": "Like a cult."
+    },
+    {
+      "id": "r-r-099",
+      "text": "A Post-Agile world."
+    },
+    {
+      "id": "r-r-100",
+      "text": "Test Driven Development."
+    },
+    {
+      "id": "r-r-101",
+      "text": "Best outage award."
+    },
+    {
+      "id": "r-r-102",
+      "text": "Checking Hacker News daily."
+    },
+    {
+      "id": "r-r-103",
+      "text": "Cloud Native."
+    },
+    {
+      "id": "r-r-104",
+      "text": "DevSecOps."
+    },
+    {
+      "id": "r-r-105",
+      "text": "Hiring SREs to do sysadmin jobs."
+    },
+    {
+      "id": "r-r-106",
+      "text": "Frantically taking notes during every talk."
+    },
+    {
+      "id": "r-r-107",
+      "text": "Getting a fourth cookie during a coffee break because I have no one to talk to."
+    },
+    {
+      "id": "r-r-108",
+      "text": "My grumpy supervisor."
+    },
+    {
+      "id": "r-r-109",
+      "text": "A microservice in Haskell."
+    },
+    {
+      "id": "r-r-110",
+      "text": "My Silk Road purchase history."
+    },
+    {
+      "id": "r-r-111",
+      "text": "My side job as an incompetent security consultant."
+    },
+    {
+      "id": "r-r-112",
+      "text": "Including an XKCD comic in my slides because I'm so original."
+    },
+    {
+      "id": "r-r-113",
+      "text": "Ignoring the session chair flashing 5 minutes left because I've got 23 slides to go."
+    },
+    {
+      "id": "r-r-114",
+      "text": "Ignoring reviewer comments and resubmitting immediately."
+    },
+    {
+      "id": "r-r-115",
+      "text": "Overselling it hard in the introduction."
+    },
+    {
+      "id": "r-r-116",
+      "text": "Password1."
+    },
+    {
+      "id": "r-r-117",
+      "text": "Live for outages."
+    },
+    {
+      "id": "r-r-118",
+      "text": "Adrenaline Junkie."
+    },
+    {
+      "id": "r-r-119",
+      "text": "My relationship status."
+    },
+    {
+      "id": "r-r-120",
+      "text": "Not SREs fault."
+    },
+    {
+      "id": "r-r-121",
+      "text": "Putting an outdoors-y photo on my company's webpage to look well-rounded."
+    },
+    {
+      "id": "r-r-122",
+      "text": "Satoshi Nakamoto."
+    },
+    {
+      "id": "r-r-123",
+      "text": "Sending an email at 11pm so people think I work hard."
+    },
+    {
+      "id": "r-r-124",
+      "text": "Relatives who ask me to help them install their printer on Windows."
+    },
+    {
+      "id": "r-r-125",
+      "text": "Slack dropping out every 10 to 15 seconds."
+    },
+    {
+      "id": "r-r-126",
+      "text": "Spending 3 Bitcoin on pizza in 2012."
+    },
+    {
+      "id": "r-r-127",
+      "text": "Hooli."
+    },
+    {
+      "id": "r-r-128",
+      "text": "Developers pretending to be SREs."
+    },
+    {
+      "id": "r-r-129",
+      "text": "Imposter Syndrome."
+    },
+    {
+      "id": "r-r-130",
+      "text": "AIOps."
+    },
+    {
+      "id": "r-r-131",
+      "text": "Pushing Kubernetes to developers."
+    },
+    {
+      "id": "r-r-132",
+      "text": "Waiting for indexing."
+    },
+    {
+      "id": "r-r-133",
+      "text": "Breaking production."
+    },
+    {
+      "id": "r-r-134",
+      "text": "Pretending to understand what DevOps means."
+    },
+    {
+      "id": "r-r-135",
+      "text": "Publishing anyway."
+    },
+    {
+      "id": "r-r-136",
+      "text": "RestartOps."
+    },
+    {
+      "id": "r-r-137",
+      "text": "Spending all of my ACM award prize money on cocaine."
+    },
+    {
+      "id": "r-r-138",
+      "text": "Starting a conversation with \"When did you fly in?\", because I have nothing interesting to say."
+    },
+    {
+      "id": "r-r-139",
+      "text": "Telling anyone who'll listen quite how busy I am."
+    },
+    {
+      "id": "r-r-140",
+      "text": "Preparing for two weeks to give a 15-minute presentation to a room of 5 people all on their laptops."
+    },
+    {
+      "id": "r-r-141",
+      "text": "Quickly trying to peek at someone's badge as I shake their hand, but it's flipped backwards."
+    },
+    {
+      "id": "r-r-142",
+      "text": "The great firewall of China."
+    },
+    {
+      "id": "r-r-143",
+      "text": "Taking oncall selfies."
+    },
+    {
+      "id": "r-r-144",
+      "text": "Committing to the wrong branch."
+    },
+    {
+      "id": "r-r-145",
+      "text": "The North Korean Cryptographic Standard."
+    },
+    {
+      "id": "r-r-146",
+      "text": "The awkward question the chair asks when nobody understood the talk."
+    },
+    {
+      "id": "r-r-147",
+      "text": "The awkward silence of 8 people standing in a circle during the afternoon coffee break."
+    },
+    {
+      "id": "r-r-148",
+      "text": "Thanking the anonymous reviewers for their \"useful\" comments."
+    },
+    {
+      "id": "r-r-149",
+      "text": "Move Fast and Break Things."
+    },
+    {
+      "id": "r-r-150",
+      "text": "The person in the front row taking photos of every slide."
+    },
+    {
+      "id": "r-r-151",
+      "text": "The secret Yubikey hidden in my underwear."
+    },
+    {
+      "id": "r-r-152",
+      "text": "Thinking I'm so clever for using cat pictures."
+    },
+    {
+      "id": "r-r-153",
+      "text": "Unbreakable military-grade encryption."
+    },
+    {
+      "id": "r-r-154",
+      "text": "Undergrads."
+    },
+    {
+      "id": "r-r-155",
+      "text": "Interns."
+    },
+    {
+      "id": "r-r-156",
+      "text": "Secondary Oncall."
+    },
+    {
+      "id": "r-r-157",
+      "text": "Passive Aggressive."
+    },
+    {
+      "id": "r-r-158",
+      "text": "Using Beamer because it's social suicide to use PowerPoint."
+    },
+    {
+      "id": "r-r-159",
+      "text": "Wearing a conference t-shirt in public."
+    },
+    {
+      "id": "r-r-160",
+      "text": "Writing a reference for someone I can't remember meeting."
+    },
+    {
+      "id": "r-r-161",
+      "text": "Turning up to one meeting and becoming a product owner."
+    },
+    {
+      "id": "r-r-162",
+      "text": "Negotiating SLOs with Product Owners."
+    },
+    {
+      "id": "r-r-163",
+      "text": "Persuading my manager about SLO value."
+    },
+    {
+      "id": "r-r-164",
+      "text": "Burnt all the Error Budget."
+    },
+    {
+      "id": "r-r-165",
+      "text": "Hoping it will work in production."
+    },
+    {
+      "id": "r-r-166",
+      "text": "Assuming there are backups."
+    },
+    {
+      "id": "r-r-167",
+      "text": "Averaging percentiles."
+    },
+    {
+      "id": "r-r-168",
+      "text": "Nonexistent Disaster Recovery policies."
+    },
+    {
+      "id": "r-r-169",
+      "text": "Hiring Physicists as Chaos Engineers."
+    },
+    {
+      "id": "r-r-170",
+      "text": "Creating a DevOps and SRE team."
+    },
+    {
+      "id": "r-r-171",
+      "text": "Throw it under the bus."
+    },
+    {
+      "id": "r-r-172",
+      "text": "Building beautiful dashboards."
+    },
+    {
+      "id": "r-r-173",
+      "text": "Intuition Engineering."
+    },
+    {
+      "id": "r-r-174",
+      "text": "Generate lots of money."
+    },
+    {
+      "id": "r-r-175",
+      "text": "Spending months negotiating SLOs."
+    },
+    {
+      "id": "r-r-176",
+      "text": "Pretending to be doing Chaos Engineering."
+    },
+    {
+      "id": "r-r-177",
+      "text": "A Marketing Story"
+    },
+    {
+      "id": "r-r-178",
+      "text": "Violating SLAs."
+    },
+    {
+      "id": "r-r-179",
+      "text": "Doing Rocket Science."
+    },
+    {
+      "id": "r-r-180",
+      "text": "Software Engineer's Fault."
+    },
+    {
+      "id": "r-r-181",
+      "text": "Mercenaries."
+    },
+    {
+      "id": "r-r-182",
+      "text": "Migrating to a cluster orchestrator because it's the new hype."
+    },
+    {
+      "id": "r-r-183",
+      "text": "Doing containers from scratch because Docker is too mainstream."
+    },
+    {
+      "id": "r-r-184",
+      "text": "Aiming for 100% availability."
+    },
+    {
+      "id": "r-r-185",
+      "text": "A keynote speaker."
+    },
+    {
+      "id": "r-r-186",
+      "text": "Being an SRE for legacy systems."
+    },
+    {
+      "id": "r-r-187",
+      "text": "Industry Zeitgeist."
+    },
+    {
+      "id": "r-r-188",
+      "text": "A Thought Leader."
+    },
+    {
+      "id": "r-r-189",
+      "text": "Automating office's coffee machine."
+    },
+    {
+      "id": "r-r-190",
+      "text": "Autoremediation fixes the wrong thing."
+    },
+    {
+      "id": "r-r-191",
+      "text": "Anxiety Disorder."
+    },
+    {
+      "id": "r-r-192",
+      "text": "No capacity planning."
+    },
+    {
+      "id": "r-r-193",
+      "text": "An emergency alert."
+    },
+    {
+      "id": "r-r-194",
+      "text": "An undetected outage."
+    },
+    {
+      "id": "r-r-195",
+      "text": "Using averages instead of percentiles."
+    },
+    {
+      "id": "r-r-196",
+      "text": "Fighting technical debt."
+    },
+    {
+      "id": "r-r-197",
+      "text": "Dashboard Junkyard."
+    },
+    {
+      "id": "r-r-198",
+      "text": "New source of income."
+    },
+    {
+      "id": "r-r-199",
+      "text": "Works on my machine."
+    },
+    {
+      "id": "r-r-200",
+      "text": "Unnecessary Star Wars references."
+    },
+    {
+      "id": "r-r-201",
+      "text": "An email about a new production incident."
+    },
+    {
+      "id": "r-r-202",
+      "text": "Chaos without Monkeys."
+    },
+    {
+      "id": "r-r-203",
+      "text": "Lord of Chaos."
+    }
+  ]
+}

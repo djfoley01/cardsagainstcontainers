@@ -1,0 +1,1010 @@
+{
+  "id": "developers",
+  "name": "Cards Against Developers",
+  "description": "Stack Overflow, legacy code and other daily indignities.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/crashtest-security/CardsAgainstDevelopers",
+    "license": "CC BY-NC-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
+    "upstreamCommit": "de3bb3d12664f4b6970aaf4538f6cb7c4c71ecad"
+  },
+  "prompts": [
+    {
+      "id": "d-p-001",
+      "text": "\"But online I read that ______.\"",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-002",
+      "text": "11 reasons to ______. Nr 5 will surprise you.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-003",
+      "text": "9gags most upvoted post is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-004",
+      "text": "After successfully selling my company I now ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-005",
+      "text": "After ten years working as a developer, I am addicted to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-006",
+      "text": "As a hobby project I ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-007",
+      "text": "Customer always complain about ______ in our software.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-008",
+      "text": "Deploying my application in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-009",
+      "text": "Excel should be used for ______ more often.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-010",
+      "text": "Fixing bugs by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-011",
+      "text": "For relaxing I do ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-012",
+      "text": "High quality software is made with ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-013",
+      "text": "I am using ______ for my monolith.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-014",
+      "text": "I asked my boss for a raise due to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-015",
+      "text": "I declined the pull request because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-016",
+      "text": "I destroyed ______ by ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "d-p-017",
+      "text": "I don't get laid because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-018",
+      "text": "I don't get paid because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-019",
+      "text": "I don't need backups, I have ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-020",
+      "text": "I filed a bug on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-021",
+      "text": "I had a problem with ______ and solved it by ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "d-p-022",
+      "text": "I integrated ______ into my DevSecOps pipeline.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-023",
+      "text": "I like to get drunk and ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-024",
+      "text": "I like to turn up to investor meetings ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-025",
+      "text": "I spent my last salary on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-026",
+      "text": "I successfully tested ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-027",
+      "text": "I switched to Linux because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-028",
+      "text": "I would sell my shares of the company for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-029",
+      "text": "Last deployment failed because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-030",
+      "text": "Last time I went outside, I experienced ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-031",
+      "text": "Last year North Korea spent 10 million on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-032",
+      "text": "My Cloud Drive won't sync because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-033",
+      "text": "My alternative to the gym is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-034",
+      "text": "My co-worker files a complaint because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-035",
+      "text": "My currently relationship status is ______ because of ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "d-p-036",
+      "text": "My job feels like ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-037",
+      "text": "My morning toilet session can be explained as ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-038",
+      "text": "My security is so good, it ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-039",
+      "text": "On my GitHub profile you will find ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-040",
+      "text": "On our Offsite we did ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-041",
+      "text": "Our USP is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-042",
+      "text": "Our systems for ______ runs only on raspberry pies.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-043",
+      "text": "Software development is like ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-044",
+      "text": "The 11-star user experience is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-045",
+      "text": "The booth is themed ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-046",
+      "text": "The customer requests ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-047",
+      "text": "The difference between RSA and DSA is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-048",
+      "text": "The documentation says you should ______, but to make it work you need to ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "d-p-049",
+      "text": "The new marketing campaign for April 1st will be ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-050",
+      "text": "The next blog article will be about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-051",
+      "text": "The next superior cloud service will use ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-052",
+      "text": "There still is a bug in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-053",
+      "text": "This year's marketing motto is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-054",
+      "text": "We use ______ for quality control.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-055",
+      "text": "When the marketing intern asks: \"Can you please change ______ on the website\"",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-056",
+      "text": "When the sales guys are laughing in their office they are ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-057",
+      "text": "Yesterday Bill Gates asked me ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-058",
+      "text": "______ as a Service",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-059",
+      "text": "______ makes the CEO happy.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-060",
+      "text": "______. How did this ever work?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "d-p-061",
+      "text": "______. Oh, this was earlier than expected.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "d-r-001",
+      "text": "\"Did you try turning it off and on again?\""
+    },
+    {
+      "id": "d-r-002",
+      "text": "\"I destroyed the internet\""
+    },
+    {
+      "id": "d-r-003",
+      "text": "\"I tested it\""
+    },
+    {
+      "id": "d-r-004",
+      "text": "\"Your\" opinion"
+    },
+    {
+      "id": "d-r-005",
+      "text": "45 minutes daily standup"
+    },
+    {
+      "id": "d-r-006",
+      "text": "A fridge filled with club mate"
+    },
+    {
+      "id": "d-r-007",
+      "text": "A missing semicolon"
+    },
+    {
+      "id": "d-r-008",
+      "text": "A short nap"
+    },
+    {
+      "id": "d-r-009",
+      "text": "A three day build pipeline"
+    },
+    {
+      "id": "d-r-010",
+      "text": "A/B testing"
+    },
+    {
+      "id": "d-r-011",
+      "text": "AI Hackathon"
+    },
+    {
+      "id": "d-r-012",
+      "text": "An oversized office chair"
+    },
+    {
+      "id": "d-r-013",
+      "text": "Backdoor Traffic"
+    },
+    {
+      "id": "d-r-014",
+      "text": "Beer Pong as a team event"
+    },
+    {
+      "id": "d-r-015",
+      "text": "Beer in the office"
+    },
+    {
+      "id": "d-r-016",
+      "text": "Being oddly specific"
+    },
+    {
+      "id": "d-r-017",
+      "text": "Big Data driven business model"
+    },
+    {
+      "id": "d-r-018",
+      "text": "Bill Gates"
+    },
+    {
+      "id": "d-r-019",
+      "text": "Black holes"
+    },
+    {
+      "id": "d-r-020",
+      "text": "Blinking ads"
+    },
+    {
+      "id": "d-r-021",
+      "text": "Browsing StackOverflow for hours without actually looking for a solution"
+    },
+    {
+      "id": "d-r-022",
+      "text": "Bruce Schneier"
+    },
+    {
+      "id": "d-r-023",
+      "text": "Burger Tuesday"
+    },
+    {
+      "id": "d-r-024",
+      "text": "CORS Headers"
+    },
+    {
+      "id": "d-r-025",
+      "text": "Cat videos"
+    },
+    {
+      "id": "d-r-026",
+      "text": "Church of the flying spaghetti monster"
+    },
+    {
+      "id": "d-r-027",
+      "text": "Code monkeys"
+    },
+    {
+      "id": "d-r-028",
+      "text": "Cold leftover pizza from last week"
+    },
+    {
+      "id": "d-r-029",
+      "text": "Comic Con"
+    },
+    {
+      "id": "d-r-030",
+      "text": "Commenting it out"
+    },
+    {
+      "id": "d-r-031",
+      "text": "Compilation error"
+    },
+    {
+      "id": "d-r-032",
+      "text": "Copy & Pasting from StackOverflow"
+    },
+    {
+      "id": "d-r-033",
+      "text": "Creating a buffer overflow"
+    },
+    {
+      "id": "d-r-034",
+      "text": "Cuddling with ewoks"
+    },
+    {
+      "id": "d-r-035",
+      "text": "Customer touchpoints"
+    },
+    {
+      "id": "d-r-036",
+      "text": "Darknet Marketplace"
+    },
+    {
+      "id": "d-r-037",
+      "text": "Darude Sandstorm"
+    },
+    {
+      "id": "d-r-038",
+      "text": "Day Drinking"
+    },
+    {
+      "id": "d-r-039",
+      "text": "Deleting one cell in Excel wrathing your whole data model"
+    },
+    {
+      "id": "d-r-040",
+      "text": "Deodorant instead of showers"
+    },
+    {
+      "id": "d-r-041",
+      "text": "DevOps Engineers"
+    },
+    {
+      "id": "d-r-042",
+      "text": "DevSecOps"
+    },
+    {
+      "id": "d-r-043",
+      "text": "Displaying success messages in red color to scare the hell out of others"
+    },
+    {
+      "id": "d-r-044",
+      "text": "Don't lick it"
+    },
+    {
+      "id": "d-r-045",
+      "text": "Donald Trump"
+    },
+    {
+      "id": "d-r-046",
+      "text": "Dry humping"
+    },
+    {
+      "id": "d-r-047",
+      "text": "Ejecting USB drives unsafely"
+    },
+    {
+      "id": "d-r-048",
+      "text": "Elon Musk"
+    },
+    {
+      "id": "d-r-049",
+      "text": "End to end encryption with a non-revocable static key"
+    },
+    {
+      "id": "d-r-050",
+      "text": "Explosive diarrhea"
+    },
+    {
+      "id": "d-r-051",
+      "text": "Fair hostesses"
+    },
+    {
+      "id": "d-r-052",
+      "text": "Fast food, five times a week"
+    },
+    {
+      "id": "d-r-053",
+      "text": "Fixing bugs during the penetration test"
+    },
+    {
+      "id": "d-r-054",
+      "text": "Forget to lock my computer"
+    },
+    {
+      "id": "d-r-055",
+      "text": "Hacker bootcamp"
+    },
+    {
+      "id": "d-r-056",
+      "text": "Hacking Vibrators"
+    },
+    {
+      "id": "d-r-057",
+      "text": "Having the last word"
+    },
+    {
+      "id": "d-r-058",
+      "text": "Hoodies and Ski masks"
+    },
+    {
+      "id": "d-r-059",
+      "text": "It is always a good idea to change a running system"
+    },
+    {
+      "id": "d-r-060",
+      "text": "It worked on staging"
+    },
+    {
+      "id": "d-r-061",
+      "text": "It's a feature"
+    },
+    {
+      "id": "d-r-062",
+      "text": "Just a minor refactoring"
+    },
+    {
+      "id": "d-r-063",
+      "text": "KISS"
+    },
+    {
+      "id": "d-r-064",
+      "text": "Layer 8 problem"
+    },
+    {
+      "id": "d-r-065",
+      "text": "Leaving the backdoor open"
+    },
+    {
+      "id": "d-r-066",
+      "text": "Legacy Code"
+    },
+    {
+      "id": "d-r-067",
+      "text": "Living in my mother's basement"
+    },
+    {
+      "id": "d-r-068",
+      "text": "Looking like I care"
+    },
+    {
+      "id": "d-r-069",
+      "text": "Lucky13"
+    },
+    {
+      "id": "d-r-070",
+      "text": "Magic Numbers"
+    },
+    {
+      "id": "d-r-071",
+      "text": "Making small changes in production"
+    },
+    {
+      "id": "d-r-072",
+      "text": "Male underboob sweat"
+    },
+    {
+      "id": "d-r-073",
+      "text": "Marc Zuckerberg"
+    },
+    {
+      "id": "d-r-074",
+      "text": "Microservice Architecture"
+    },
+    {
+      "id": "d-r-075",
+      "text": "Minecraft"
+    },
+    {
+      "id": "d-r-076",
+      "text": "My lovelife"
+    },
+    {
+      "id": "d-r-077",
+      "text": "NAT allergy"
+    },
+    {
+      "id": "d-r-078",
+      "text": "Not wearing pants during video chats"
+    },
+    {
+      "id": "d-r-079",
+      "text": "Null pointer exception"
+    },
+    {
+      "id": "d-r-080",
+      "text": "Nyan Cat"
+    },
+    {
+      "id": "d-r-081",
+      "text": "Old people smell"
+    },
+    {
+      "id": "d-r-082",
+      "text": "Opening an alpaca farm"
+    },
+    {
+      "id": "d-r-083",
+      "text": "Outsourcing to India"
+    },
+    {
+      "id": "d-r-084",
+      "text": "Overspecified requirements"
+    },
+    {
+      "id": "d-r-085",
+      "text": "PHP"
+    },
+    {
+      "id": "d-r-086",
+      "text": "Penetration without testing"
+    },
+    {
+      "id": "d-r-087",
+      "text": "Playing Mario cart.... in single player mode"
+    },
+    {
+      "id": "d-r-088",
+      "text": "Please beautify"
+    },
+    {
+      "id": "d-r-089",
+      "text": "Plugging in a USB drive correctly the first time"
+    },
+    {
+      "id": "d-r-090",
+      "text": "Plumber's smile"
+    },
+    {
+      "id": "d-r-091",
+      "text": "Popping the stack"
+    },
+    {
+      "id": "d-r-092",
+      "text": "Python"
+    },
+    {
+      "id": "d-r-093",
+      "text": "Quadrocopter with infrared camera"
+    },
+    {
+      "id": "d-r-094",
+      "text": "Quick fix"
+    },
+    {
+      "id": "d-r-095",
+      "text": "Quick search"
+    },
+    {
+      "id": "d-r-096",
+      "text": "Quoting the Big Bang Theory"
+    },
+    {
+      "id": "d-r-097",
+      "text": "Rebasing"
+    },
+    {
+      "id": "d-r-098",
+      "text": "Releasing features early"
+    },
+    {
+      "id": "d-r-099",
+      "text": "Releasing too early"
+    },
+    {
+      "id": "d-r-100",
+      "text": "Remote access"
+    },
+    {
+      "id": "d-r-101",
+      "text": "Reviewing pull requests"
+    },
+    {
+      "id": "d-r-102",
+      "text": "Rooftop barbecue party"
+    },
+    {
+      "id": "d-r-103",
+      "text": "Running a conference completely with volunteers"
+    },
+    {
+      "id": "d-r-104",
+      "text": "STDs"
+    },
+    {
+      "id": "d-r-105",
+      "text": "Scope Creep"
+    },
+    {
+      "id": "d-r-106",
+      "text": "Script Kiddy"
+    },
+    {
+      "id": "d-r-107",
+      "text": "Server farms"
+    },
+    {
+      "id": "d-r-108",
+      "text": "Shared Memory"
+    },
+    {
+      "id": "d-r-109",
+      "text": "Smiling a little bit too much"
+    },
+    {
+      "id": "d-r-110",
+      "text": "Software rollback"
+    },
+    {
+      "id": "d-r-111",
+      "text": "Something written in Fortran"
+    },
+    {
+      "id": "d-r-112",
+      "text": "Steve Jobs"
+    },
+    {
+      "id": "d-r-113",
+      "text": "Stormtroopers for quality control"
+    },
+    {
+      "id": "d-r-114",
+      "text": "Sun rays"
+    },
+    {
+      "id": "d-r-115",
+      "text": "Swinging my light saber"
+    },
+    {
+      "id": "d-r-116",
+      "text": "Swiping left and right"
+    },
+    {
+      "id": "d-r-117",
+      "text": "Technical Difficulties"
+    },
+    {
+      "id": "d-r-118",
+      "text": "Ten layered if statements"
+    },
+    {
+      "id": "d-r-119",
+      "text": "Terraforming"
+    },
+    {
+      "id": "d-r-120",
+      "text": "Testing early"
+    },
+    {
+      "id": "d-r-121",
+      "text": "Testing in production"
+    },
+    {
+      "id": "d-r-122",
+      "text": "That can't be too complicated"
+    },
+    {
+      "id": "d-r-123",
+      "text": "The 16th internship in the 12th company"
+    },
+    {
+      "id": "d-r-124",
+      "text": "The Linux Kernel"
+    },
+    {
+      "id": "d-r-125",
+      "text": "The dark side of the force"
+    },
+    {
+      "id": "d-r-126",
+      "text": "The difference between machine learning and AI"
+    },
+    {
+      "id": "d-r-127",
+      "text": "Tinder newsletter"
+    },
+    {
+      "id": "d-r-128",
+      "text": "Tiny student dorms"
+    },
+    {
+      "id": "d-r-129",
+      "text": "Too many hot girls"
+    },
+    {
+      "id": "d-r-130",
+      "text": "Touch control"
+    },
+    {
+      "id": "d-r-131",
+      "text": "Touching my joystick"
+    },
+    {
+      "id": "d-r-132",
+      "text": "Touching myself"
+    },
+    {
+      "id": "d-r-133",
+      "text": "Tripping the wire"
+    },
+    {
+      "id": "d-r-134",
+      "text": "Unexpected side effects"
+    },
+    {
+      "id": "d-r-135",
+      "text": "Unicorns"
+    },
+    {
+      "id": "d-r-136",
+      "text": "Useless meeting"
+    },
+    {
+      "id": "d-r-137",
+      "text": "User space function calls"
+    },
+    {
+      "id": "d-r-138",
+      "text": "Using Blockchain instead of a database"
+    },
+    {
+      "id": "d-r-139",
+      "text": "Using HTML as a programming language"
+    },
+    {
+      "id": "d-r-140",
+      "text": "Using Tabs instead of Spaces"
+    },
+    {
+      "id": "d-r-141",
+      "text": "Using XML instead of JSON"
+    },
+    {
+      "id": "d-r-142",
+      "text": "Using a light theme for the terminal"
+    },
+    {
+      "id": "d-r-143",
+      "text": "Using blockchain in every pitch"
+    },
+    {
+      "id": "d-r-144",
+      "text": "Using kubernetes for my static website with 100 visitors per month"
+    },
+    {
+      "id": "d-r-145",
+      "text": "Using more than 10 programming languages because I can"
+    },
+    {
+      "id": "d-r-146",
+      "text": "Using open source software just because it's free"
+    },
+    {
+      "id": "d-r-147",
+      "text": "Vendor lock Stockholm syndrome"
+    },
+    {
+      "id": "d-r-148",
+      "text": "Whistling the Tetris theme song"
+    },
+    {
+      "id": "d-r-149",
+      "text": "Winking at old people"
+    },
+    {
+      "id": "d-r-150",
+      "text": "Winning because of psychological warfare"
+    },
+    {
+      "id": "d-r-151",
+      "text": "Writing code without my supervisor telling me what to do"
+    },
+    {
+      "id": "d-r-152",
+      "text": "LaTeX"
+    },
+    {
+      "id": "d-r-153",
+      "text": "git --force push"
+    },
+    {
+      "id": "d-r-154",
+      "text": "iOS developers"
+    },
+    {
+      "id": "d-r-155",
+      "text": "in $O(1)$"
+    },
+    {
+      "id": "d-r-156",
+      "text": "rm -rf /"
+    },
+    {
+      "id": "d-r-157",
+      "text": "sudo"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+\BLANK kept me up all night.
+\BLANK kept me busy all day.
+\BLANK was the last thing I expected to find inside the VM.
+An SRE conference is never complete without \BLANK.
+A romantic, candlelit dinner would be incomplete without \BLANK.
+I can't believe I got away with \BLANK.
+I always include \BLANK in my reviewer feedback.
+I can't concentrate without \BLANK.
+During an incident I always \BLANK.
+I don't encrypt my files, I keep them hidden in \BLANK.
+I drink to forget \BLANK.
+I get by with a little help from \BLANK.
+I got 99 problems but \BLANK ain't one.
+I just hope the reviewers don't notice \BLANK.
+I just got out of an incomprehensible talk on \BLANK.
+I hope no one finds out about \BLANK.
+I woke up filled with shame about \BLANK.
+Did you hear that \BLANK is the new hot topic?
+I can't believe my grant application for \BLANK was denied!
+I swear I didn't go to SRECon because of the location, I went for \BLANK.
+An SRE talk titled \BLANK turned out to just be about \BLANK.
+I think I will skip the session on \BLANK this year.
+During an incident, I like to think about \BLANK.
+I woke up drenched in sweat from a nightmare about \BLANK.
+I'm sorry, Professor, but I couldn't complete my homework because of \BLANK.
+It took 72,000 instances, but I finally cracked \BLANK.
+My academic CV says I'm an expert on \BLANK.
+My career started with \BLANK.
+I'm hoping to avoid 2/3 of the program committee, because my paper is on \BLANK.
+It turns out that my company's password policy requires \BLANK.
+My student couldn't complete their homework due to \BLANK.
+One regret I have from my PhD is \BLANK.
+The next big thing will almost certainly be \BLANK.
+I'll eat my hat if anyone ever breaks \BLANK.
+I was surprised to see anyone awake at the end of my presentation on \BLANK.
+I find that \BLANK relieves oncall stress.
+Remembering \BLANK, then immediately vomiting.
+The way things are going, the best talk at SRECon 2049 will probably be about \BLANK.
+There is nothing quite like \BLANK, alone in the office at night.
+What gets better with age?
+What's an SRE's best friend?
+Why can't I sleep at night?
+What's my secret power?
+What is the best way to wind down at the end of a hard day?
+What is the best way to wind down at the end of a big incident?
+When my USENIX papers turn me into a billionaire, I will erect a 50-foot statue to commemorate \BLANK.
+When I am President of the United States, I will create the Department of \BLANK.
+The talk that had the most influence on my personal life was \BLANK.
+I deserve to get an ACM award for my groundbreaking contributions to \BLANK.
+Putting \BLANK in my application helped me immensely.
+My encryption scheme is extra secure because of \BLANK.
+Talk dirty to me. Tell me about \BLANK.
+What an SRE will find disturbing, yet oddly satisfying?
+What don't you want to find during an incident?
+What makes things awkward in an incident?
+Here is the pager, here is the incident, open your laptop and you will find \BLANK.
+I don't mean to brag, but they call the Chuck Norris of \BLANK.
+Do you lack sleep? Does it feel sometimes that the world is \BLANK ? Xanax.
+Hi, this is Maria from accounting. We noticed a 10.000 charge labeled as \BLANK. Can you explain?
+Get ready for the deployment freeze for Black Friday
+\BLANK, that's when I want to die.
+What never fails to liven up the party?
+A romantic dinner would be incomplete without \BLANK.
+What's the next SRE buzzword?
+In 100 years, SREs will \BLANK.
+What I will bring back in time to convince people that I am a good engineer?
+What's an engineer's besti weapon?
+What is the Public Relations are thinking about right now?
+\BLANK. High five team!
+Alternative medicine is now embracing the curative powers of \BLANK.
+What gives me unctrollable stress?
+SLO burns. What is it good for?
+Next on DevOps, is \BLANK.
+Which is the one that matters?
+Blameless posmortems bring a light to \BLANK.
+An SRE interview is never complete without \BLANK.
+A Disaster Recovery plan is never complete without \BLANK.
+A Chaos Engineering plan is never complete without \BLANK.

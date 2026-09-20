@@ -1,0 +1,1718 @@
+{
+  "id": "containers",
+  "name": "Cards Against Containers",
+  "description": "The original container and Kubernetes deck.",
+  "defaultEnabled": true,
+  "attribution": {
+    "source": "https://github.com/cardsagainstcontainers/deck",
+    "license": "CC BY-NC-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
+    "upstreamCommit": "1f36e01aff89337a76cf9debf825f2ca3c688be2"
+  },
+  "prompts": [
+    {
+      "id": "c-p-001",
+      "text": "______ is going to solve all our problems.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-002",
+      "text": "______ is the only way I can work with my colleagues.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-003",
+      "text": "'Everything fails all the time' was referring to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-004",
+      "text": "50% of digital transformation projects end in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-005",
+      "text": "75% of disciplinary action was because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-006",
+      "text": "Being pinged by PagerDuty because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-007",
+      "text": "Copying code directly from Stack Overflow led to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-008",
+      "text": "Dear boss, I need to go to KubeCon because I want to learn about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-009",
+      "text": "Every deployment has a sidecar for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-010",
+      "text": "For my next trick, I will containerise ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-011",
+      "text": "I drink to forget ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-012",
+      "text": "I passed my last tech interview by using mostly ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-013",
+      "text": "I passed the Certified Kubernetes Administrator exam by mostly studying ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-014",
+      "text": "I'm no scrum master, but I'm pretty sure your team is suffering from ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-015",
+      "text": "Installing with `curl xxx | sudo bash` often results in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-016",
+      "text": "Introducing a brand new CI/CD platform! It contains ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-017",
+      "text": "It really is for the best if the operations team don't know about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-018",
+      "text": "It's a pity that computer science graduates these days are all getting involved in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-019",
+      "text": "Just give ______ to operations, they can worry about the random failures.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-020",
+      "text": "Kubernetes the hard way would be so much better if it featured ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-021",
+      "text": "My favourite book is 'A dummies guide to ______'.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-022",
+      "text": "My favourite session at KubeCon was an in-depth discussion on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-023",
+      "text": "Our last crash-loop backoff was caused by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-024",
+      "text": "Our security strategy is underpinned by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-025",
+      "text": "The best story I read on k8s.af involved ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-026",
+      "text": "The company hackathon was completely ruined by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-027",
+      "text": "The Gartner magic quadrant for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-028",
+      "text": "The highlight of this weeks technology demo was ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-029",
+      "text": "The real reason we don't release on Fridays.",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-030",
+      "text": "The team are really struggling with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-031",
+      "text": "They said we were crazy. They said we couldn't containerise ______. They were wrong!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-032",
+      "text": "This isn't a witch hunt, we just want to know who was stupid enough to implement ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-033",
+      "text": "Troubleshooting a Kubernetes deployment using ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-034",
+      "text": "We complete all our documentation using ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-035",
+      "text": "We created dashboards in ______ so now we can visualise all our problems.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-036",
+      "text": "We have a ______ first strategy.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-037",
+      "text": "We implemented ______ because it looks great on my CV.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-038",
+      "text": "We implemented a service mesh because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-039",
+      "text": "We remediate vulnerabilities by implementing ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-040",
+      "text": "We secretly filmed you working on ______, pay us 5 bitcoin or we'll release the recording.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-041",
+      "text": "We've added ______ into DevOps.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-042",
+      "text": "What idea did you bring back from KubeCon?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-043",
+      "text": "What is a developer's best friend?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-044",
+      "text": "What makes you uncontrollably swear at the computer?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-045",
+      "text": "What makes your job exciting?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-046",
+      "text": "What never fails to liven up a retrospective?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-047",
+      "text": "What would your CISO find disturbing, yet oddly satisfying?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-048",
+      "text": "What's currently sending me 1000 alerts per second?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-049",
+      "text": "What's your secret power?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-050",
+      "text": "When Google first created Borg, they actually intended it for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-051",
+      "text": "Someone left an endpoint open to the internet, now we have lots of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-052",
+      "text": "We have a ______ strategy, it's going to solve all our problems",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-053",
+      "text": "I got 99 problems, but ______ ain't one",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-054",
+      "text": "All I see is ______ everywhere",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-055",
+      "text": "Coming to the CNCF this year, ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-056",
+      "text": "Our containers are riddled with bugs so we're going to implement ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-057",
+      "text": "We migrated all our applications to ______ to solve our problems!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-058",
+      "text": "The NSA are now deploying ______ in order to secure everything.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-059",
+      "text": "We finally managed to refactor our old applications into ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-060",
+      "text": "I don't solve problems with ______, I just kill the container.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-061",
+      "text": "We implemented ______ and now we're posting a long story on k8s.af",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-062",
+      "text": "Our main tool for passing an impromptu security audit is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-063",
+      "text": "Imagine if the Delorean in Back to the Future had been powered by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-064",
+      "text": "The banking industry was forever changed when we first introduced them to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-065",
+      "text": "Kubernetes is a slippery slope that leads to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-066",
+      "text": "What is infrastructures worst enemy?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-067",
+      "text": "Instead of coal, Father Christmas now gives bad DevOps teams ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-068",
+      "text": "The security team are currently crying because our project deployed ______?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-069",
+      "text": "The DevOps team are crying because the CTO decided we will be exclusively using ______?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-070",
+      "text": "I'm sorry, I couldn't complete that piece of work because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-071",
+      "text": "My next hit novel will include the exciting drama of how a company implemented ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-072",
+      "text": "The security team is hiding from me because I keep using ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-073",
+      "text": "I never truly understood DevSecOps until I encountered ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-074",
+      "text": "Why is your CPU fan constantly at 100%?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-075",
+      "text": "I won't produce any work this week as I'll be focused on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-076",
+      "text": "As a DevOps team lead, I'm no stranger to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-077",
+      "text": "A canary release is basically just doing ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-078",
+      "text": "We're using a ______ framework.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-079",
+      "text": "When we were at the design stage, the fundamental question we asked was ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-080",
+      "text": "This application is failing because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-081",
+      "text": "My favourite part of working from home is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-082",
+      "text": "What are you scared to tell your head of security about?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-083",
+      "text": "We have a cultural problem, we have too many / too much ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-084",
+      "text": "We implemented two-factor authentication by implementing ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-085",
+      "text": "After troubleshooting an intermittent problem for weeks, we finally discovered the root cause was ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-086",
+      "text": "To support the applications when they move to production, we use ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-087",
+      "text": "We don't like image scanning our containers because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-088",
+      "text": "Instead of doing the long overdue documentation, you're currently working on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-089",
+      "text": "If you had a university degree in ______ you'd be more hireable.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-090",
+      "text": "What is LD_PRELOAD really good for?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "c-p-091",
+      "text": "When everything is on fire, I grab ______ before running out of the building.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-092",
+      "text": "To improve our security, we decided to store all our sensitive data in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-093",
+      "text": "The question of 'Will it scale?' was finally answered with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-094",
+      "text": "______ over my dead body.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-095",
+      "text": "I had to put ______ in my container to make it working.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-096",
+      "text": "You missed something if you haven't used the ______ operator.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-097",
+      "text": "I'm sure ______ will reimplement ______ soon.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "c-p-098",
+      "text": "We deliver ______-class products.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-099",
+      "text": "Instead of a firewall, we implemented ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-100",
+      "text": "We store all the SSH keys in /www/______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-101",
+      "text": "Can we go-live with ______ by tomorrow?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-102",
+      "text": "Oh yeah, we pushed ______ to production yesterday! Didn't you know?",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "c-p-103",
+      "text": "My Inbox filters ______ emails to Trash.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "c-r-001",
+      "text": "Jenkins"
+    },
+    {
+      "id": "c-r-002",
+      "text": "Kubernetes"
+    },
+    {
+      "id": "c-r-003",
+      "text": "Containers"
+    },
+    {
+      "id": "c-r-004",
+      "text": "Cloud-Native"
+    },
+    {
+      "id": "c-r-005",
+      "text": "Terribly written code with questionable internal logic"
+    },
+    {
+      "id": "c-r-006",
+      "text": "Monolithic applications"
+    },
+    {
+      "id": "c-r-007",
+      "text": "Ian Coldwater"
+    },
+    {
+      "id": "c-r-008",
+      "text": "Duffie Cooley"
+    },
+    {
+      "id": "c-r-009",
+      "text": "Kris Nóva"
+    },
+    {
+      "id": "c-r-010",
+      "text": "Joe Beda"
+    },
+    {
+      "id": "c-r-011",
+      "text": "Kelsey Hightower"
+    },
+    {
+      "id": "c-r-012",
+      "text": "Craig McLuckie"
+    },
+    {
+      "id": "c-r-013",
+      "text": "Brendan Burns"
+    },
+    {
+      "id": "c-r-014",
+      "text": "Falco"
+    },
+    {
+      "id": "c-r-015",
+      "text": "Wireshark"
+    },
+    {
+      "id": "c-r-016",
+      "text": "eBPF"
+    },
+    {
+      "id": "c-r-017",
+      "text": "An odd feeling when a build passes first time"
+    },
+    {
+      "id": "c-r-018",
+      "text": "A complete and utter lack of monitoring"
+    },
+    {
+      "id": "c-r-019",
+      "text": "Automated penetration testing"
+    },
+    {
+      "id": "c-r-020",
+      "text": "Load balancers"
+    },
+    {
+      "id": "c-r-021",
+      "text": "Good old physical storage"
+    },
+    {
+      "id": "c-r-022",
+      "text": "An impending sense of doom"
+    },
+    {
+      "id": "c-r-023",
+      "text": "Analysing system calls"
+    },
+    {
+      "id": "c-r-024",
+      "text": "SQL injection"
+    },
+    {
+      "id": "c-r-025",
+      "text": "Interpretive dance"
+    },
+    {
+      "id": "c-r-026",
+      "text": "Friday releases"
+    },
+    {
+      "id": "c-r-027",
+      "text": "Being on call over a holiday weekend"
+    },
+    {
+      "id": "c-r-028",
+      "text": "DevSecOps"
+    },
+    {
+      "id": "c-r-029",
+      "text": "Rushing a release because you really need the bathroom"
+    },
+    {
+      "id": "c-r-030",
+      "text": "Total lack of comments in code"
+    },
+    {
+      "id": "c-r-031",
+      "text": "A massive data breach"
+    },
+    {
+      "id": "c-r-032",
+      "text": "NIST compliance"
+    },
+    {
+      "id": "c-r-033",
+      "text": "CIS benchmarks"
+    },
+    {
+      "id": "c-r-034",
+      "text": "YAML formatting"
+    },
+    {
+      "id": "c-r-035",
+      "text": "JSON"
+    },
+    {
+      "id": "c-r-036",
+      "text": "Infrastructure-as-Code"
+    },
+    {
+      "id": "c-r-037",
+      "text": "Lunch at your desk because you have too much work to take a break"
+    },
+    {
+      "id": "c-r-038",
+      "text": "The front cover of The Register"
+    },
+    {
+      "id": "c-r-039",
+      "text": "The top article on Hacker News"
+    },
+    {
+      "id": "c-r-040",
+      "text": "Directly executing GitHub projects without understanding the code"
+    },
+    {
+      "id": "c-r-041",
+      "text": "NodeJS dependencies"
+    },
+    {
+      "id": "c-r-042",
+      "text": "Istio"
+    },
+    {
+      "id": "c-r-043",
+      "text": "PubSubHub"
+    },
+    {
+      "id": "c-r-044",
+      "text": "Chaos engineering"
+    },
+    {
+      "id": "c-r-045",
+      "text": "Slack"
+    },
+    {
+      "id": "c-r-046",
+      "text": "Kubernetes the hard way"
+    },
+    {
+      "id": "c-r-047",
+      "text": "Machine Learning"
+    },
+    {
+      "id": "c-r-048",
+      "text": "Artificial Intelligence"
+    },
+    {
+      "id": "c-r-049",
+      "text": "Robots"
+    },
+    {
+      "id": "c-r-050",
+      "text": "PowerPoint"
+    },
+    {
+      "id": "c-r-051",
+      "text": "Quietly crying in the toilet cubicle"
+    },
+    {
+      "id": "c-r-052",
+      "text": "Updating your CV"
+    },
+    {
+      "id": "c-r-053",
+      "text": "Access keys in a public Github repo"
+    },
+    {
+      "id": "c-r-054",
+      "text": "Credentials in plain text"
+    },
+    {
+      "id": "c-r-055",
+      "text": "Buffer overflows"
+    },
+    {
+      "id": "c-r-056",
+      "text": "Prometheus"
+    },
+    {
+      "id": "c-r-057",
+      "text": "Catastrophic failure"
+    },
+    {
+      "id": "c-r-058",
+      "text": "Dumpster fires"
+    },
+    {
+      "id": "c-r-059",
+      "text": "Paradigm shift"
+    },
+    {
+      "id": "c-r-060",
+      "text": "Solving problems with an auto-scaler"
+    },
+    {
+      "id": "c-r-061",
+      "text": "Accepting PRs when drunk"
+    },
+    {
+      "id": "c-r-062",
+      "text": "Writing code with a hangover"
+    },
+    {
+      "id": "c-r-063",
+      "text": "Crippling technical debt"
+    },
+    {
+      "id": "c-r-064",
+      "text": "Unconditional management incompetence"
+    },
+    {
+      "id": "c-r-065",
+      "text": "Relationship breakdowns due to merge conflicts"
+    },
+    {
+      "id": "c-r-066",
+      "text": "Code reviews"
+    },
+    {
+      "id": "c-r-067",
+      "text": "Pair programming"
+    },
+    {
+      "id": "c-r-068",
+      "text": "Test-driven development"
+    },
+    {
+      "id": "c-r-069",
+      "text": "Non-Functional Requirements"
+    },
+    {
+      "id": "c-r-070",
+      "text": "Listening to a colleagues code problems and desperately trying to pretend to care"
+    },
+    {
+      "id": "c-r-071",
+      "text": "Unsolicited advice from an online stranger"
+    },
+    {
+      "id": "c-r-072",
+      "text": "A developer advocate"
+    },
+    {
+      "id": "c-r-073",
+      "text": "Caffeine"
+    },
+    {
+      "id": "c-r-074",
+      "text": "Unquestionable stupidity"
+    },
+    {
+      "id": "c-r-075",
+      "text": "Pretending to know what you're doing"
+    },
+    {
+      "id": "c-r-076",
+      "text": "Cute fluffy puppies & kittens playing together"
+    },
+    {
+      "id": "c-r-077",
+      "text": "Pretending to care"
+    },
+    {
+      "id": "c-r-078",
+      "text": "Agreeing we should document more but not doing it"
+    },
+    {
+      "id": "c-r-079",
+      "text": "The inevitability that everything fails anyway, Werner Vogels said so"
+    },
+    {
+      "id": "c-r-080",
+      "text": "Having no clue what a ticket is about but being forced to size it anyway"
+    },
+    {
+      "id": "c-r-081",
+      "text": "Insecure endpoints"
+    },
+    {
+      "id": "c-r-082",
+      "text": "Natural selection"
+    },
+    {
+      "id": "c-r-083",
+      "text": "Missing my family, but it's OK because the boss ordered pizza instead of paying overtime"
+    },
+    {
+      "id": "c-r-084",
+      "text": "A new CNCF project"
+    },
+    {
+      "id": "c-r-085",
+      "text": "A vendor sales pitch"
+    },
+    {
+      "id": "c-r-086",
+      "text": "YAML manifests"
+    },
+    {
+      "id": "c-r-087",
+      "text": "The uncomplicated lack of authentication"
+    },
+    {
+      "id": "c-r-088",
+      "text": "Authentication or authorisation, but not both"
+    },
+    {
+      "id": "c-r-089",
+      "text": "Emergency chocolate supply"
+    },
+    {
+      "id": "c-r-090",
+      "text": "Meetings that could have been an email"
+    },
+    {
+      "id": "c-r-091",
+      "text": "Email conversations that should have been a Slack thread"
+    },
+    {
+      "id": "c-r-092",
+      "text": "@here in #general"
+    },
+    {
+      "id": "c-r-093",
+      "text": "Only dressing your top half for a video call"
+    },
+    {
+      "id": "c-r-094",
+      "text": "The miracle of version control"
+    },
+    {
+      "id": "c-r-095",
+      "text": "Passive-aggressive sticky notes"
+    },
+    {
+      "id": "c-r-096",
+      "text": "Passive-aggressive posts in #random"
+    },
+    {
+      "id": "c-r-097",
+      "text": "Stack Overflow points"
+    },
+    {
+      "id": "c-r-098",
+      "text": "GitHub stars"
+    },
+    {
+      "id": "c-r-099",
+      "text": "Establishing dominance by questioning everything in a demo"
+    },
+    {
+      "id": "c-r-100",
+      "text": "Asking questions framed around your achievements during someone else's talk"
+    },
+    {
+      "id": "c-r-101",
+      "text": "Writing code in native VI"
+    },
+    {
+      "id": "c-r-102",
+      "text": "Customised EMACS"
+    },
+    {
+      "id": "c-r-103",
+      "text": "Discussing your relationship breakdown during a daily standup"
+    },
+    {
+      "id": "c-r-104",
+      "text": "Daily standups"
+    },
+    {
+      "id": "c-r-105",
+      "text": "A general lack of technical purpose"
+    },
+    {
+      "id": "c-r-106",
+      "text": "Doing the bare minimum required to keep your job"
+    },
+    {
+      "id": "c-r-107",
+      "text": "Giving the boring security fixes to the junior member of the team"
+    },
+    {
+      "id": "c-r-108",
+      "text": "Disabling CORS completely becauses that's unnecessary with microservices"
+    },
+    {
+      "id": "c-r-109",
+      "text": "A secrets vault"
+    },
+    {
+      "id": "c-r-110",
+      "text": "Plain text password storage"
+    },
+    {
+      "id": "c-r-111",
+      "text": "A deep-rooted fear of the security team"
+    },
+    {
+      "id": "c-r-112",
+      "text": "Seeing real exploits being used in a movie"
+    },
+    {
+      "id": "c-r-113",
+      "text": "Nodding in agreement, but having no intention of implementing these truly terrible ideas"
+    },
+    {
+      "id": "c-r-114",
+      "text": "Serverless"
+    },
+    {
+      "id": "c-r-115",
+      "text": "Outsourcing the problem"
+    },
+    {
+      "id": "c-r-116",
+      "text": "The root password"
+    },
+    {
+      "id": "c-r-117",
+      "text": "Doing the quick method, not the best method"
+    },
+    {
+      "id": "c-r-118",
+      "text": "Seeing if someone has already done it by searching the internet"
+    },
+    {
+      "id": "c-r-119",
+      "text": "Useless vendor swag"
+    },
+    {
+      "id": "c-r-120",
+      "text": "Unlimited and unwarranted confidence"
+    },
+    {
+      "id": "c-r-121",
+      "text": "Deploying 'Artificial Intelligence' by outsourcing to an off-shore team"
+    },
+    {
+      "id": "c-r-122",
+      "text": "The illusion of choice when being asked to decide on technology"
+    },
+    {
+      "id": "c-r-123",
+      "text": "Explosions"
+    },
+    {
+      "id": "c-r-124",
+      "text": "Apathetic procrastination"
+    },
+    {
+      "id": "c-r-125",
+      "text": "Giving 110%"
+    },
+    {
+      "id": "c-r-126",
+      "text": "Browsing k8s.af instead of doing actual work"
+    },
+    {
+      "id": "c-r-127",
+      "text": "Ignoring a pull request because they disagreed with you in a meeting"
+    },
+    {
+      "id": "c-r-128",
+      "text": "Visual Studio Code Plugins"
+    },
+    {
+      "id": "c-r-129",
+      "text": "Technical recruitment consultants pretending to be engineers"
+    },
+    {
+      "id": "c-r-130",
+      "text": "README.md"
+    },
+    {
+      "id": "c-r-131",
+      "text": "> /dev/null"
+    },
+    {
+      "id": "c-r-132",
+      "text": "Storing all the log files ... all of them ... forever ... because you might need them one day"
+    },
+    {
+      "id": "c-r-133",
+      "text": "Creating another golden signals dashboard"
+    },
+    {
+      "id": "c-r-134",
+      "text": "Your personal AWS account because the official request process is too slow"
+    },
+    {
+      "id": "c-r-135",
+      "text": "Terraforming everything"
+    },
+    {
+      "id": "c-r-136",
+      "text": "Fully refactoring the code from last sprint"
+    },
+    {
+      "id": "c-r-137",
+      "text": "Reading your own code and wondering what suicidal maniac wrote it"
+    },
+    {
+      "id": "c-r-138",
+      "text": "Scaling out all the things automatically"
+    },
+    {
+      "id": "c-r-139",
+      "text": "kubectl delete pods --all"
+    },
+    {
+      "id": "c-r-140",
+      "text": "Hopes and dreams"
+    },
+    {
+      "id": "c-r-141",
+      "text": "Squirrels chewing through network cables"
+    },
+    {
+      "id": "c-r-142",
+      "text": "The blockchain"
+    },
+    {
+      "id": "c-r-143",
+      "text": "Kubernetes network policies"
+    },
+    {
+      "id": "c-r-144",
+      "text": "Existential crisis for why we even need containers"
+    },
+    {
+      "id": "c-r-145",
+      "text": "base64 instead of actual encryption"
+    },
+    {
+      "id": "c-r-146",
+      "text": "Open Policy Agent"
+    },
+    {
+      "id": "c-r-147",
+      "text": "Running as root because it doesn't work otherwise"
+    },
+    {
+      "id": "c-r-148",
+      "text": "More sidecars than actual workloads"
+    },
+    {
+      "id": "c-r-149",
+      "text": "LD_PRELOAD to inject random libraries in production"
+    },
+    {
+      "id": "c-r-150",
+      "text": "Runtime anomalies that weren't detected in dev"
+    },
+    {
+      "id": "c-r-151",
+      "text": "Pretending you got exploited instead of admitting it was you cryptomining"
+    },
+    {
+      "id": "c-r-152",
+      "text": "Privileged: true"
+    },
+    {
+      "id": "c-r-153",
+      "text": "Doing preemptive upgrades at runtime to fix tomorrow's vulnerabilities"
+    },
+    {
+      "id": "c-r-154",
+      "text": "Breaking everything at once in a nice automated way"
+    },
+    {
+      "id": "c-r-155",
+      "text": "Exposing the management interface to the internet so you can access it while traveling"
+    },
+    {
+      "id": "c-r-156",
+      "text": "Hiding passwords in environmental variables"
+    },
+    {
+      "id": "c-r-157",
+      "text": "sudo !!"
+    },
+    {
+      "id": "c-r-158",
+      "text": "2FA defined as both username AND password"
+    },
+    {
+      "id": "c-r-159",
+      "text": "Pure entertainment value only"
+    },
+    {
+      "id": "c-r-160",
+      "text": "Deploying yet another firewall"
+    },
+    {
+      "id": "c-r-161",
+      "text": "Failed builds"
+    },
+    {
+      "id": "c-r-162",
+      "text": "Container Security"
+    },
+    {
+      "id": "c-r-163",
+      "text": "Scanning for vulnerabilities"
+    },
+    {
+      "id": "c-r-164",
+      "text": "LD_PRELOAD"
+    },
+    {
+      "id": "c-r-165",
+      "text": "Sidecars, lots of them"
+    },
+    {
+      "id": "c-r-166",
+      "text": "Vulnerabilities"
+    },
+    {
+      "id": "c-r-167",
+      "text": "Observability"
+    },
+    {
+      "id": "c-r-168",
+      "text": "Logs"
+    },
+    {
+      "id": "c-r-169",
+      "text": "Python"
+    },
+    {
+      "id": "c-r-170",
+      "text": "Golang"
+    },
+    {
+      "id": "c-r-171",
+      "text": "Java"
+    },
+    {
+      "id": "c-r-172",
+      "text": "A Wordpress e-commerce site"
+    },
+    {
+      "id": "c-r-173",
+      "text": "PHP"
+    },
+    {
+      "id": "c-r-174",
+      "text": "Cobol"
+    },
+    {
+      "id": "c-r-175",
+      "text": "Linux cgroups"
+    },
+    {
+      "id": "c-r-176",
+      "text": "PagerDuty"
+    },
+    {
+      "id": "c-r-177",
+      "text": "DevOps"
+    },
+    {
+      "id": "c-r-178",
+      "text": "PCI zones"
+    },
+    {
+      "id": "c-r-179",
+      "text": "Bamboo"
+    },
+    {
+      "id": "c-r-180",
+      "text": "Jira"
+    },
+    {
+      "id": "c-r-181",
+      "text": "Confluence"
+    },
+    {
+      "id": "c-r-182",
+      "text": "GitHub"
+    },
+    {
+      "id": "c-r-183",
+      "text": "Whatever's trending on Twitter"
+    },
+    {
+      "id": "c-r-184",
+      "text": "Service mesh"
+    },
+    {
+      "id": "c-r-185",
+      "text": "Microsoft Teams"
+    },
+    {
+      "id": "c-r-186",
+      "text": "Refactoring"
+    },
+    {
+      "id": "c-r-187",
+      "text": "CI/CD pipelines"
+    },
+    {
+      "id": "c-r-188",
+      "text": "Augmented Reality"
+    },
+    {
+      "id": "c-r-189",
+      "text": "How to exit VI"
+    },
+    {
+      "id": "c-r-190",
+      "text": "Nano"
+    },
+    {
+      "id": "c-r-191",
+      "text": "Windows Notepad"
+    },
+    {
+      "id": "c-r-192",
+      "text": "'On-premise'"
+    },
+    {
+      "id": "c-r-193",
+      "text": "Agile"
+    },
+    {
+      "id": "c-r-194",
+      "text": "Fail-fast"
+    },
+    {
+      "id": "c-r-195",
+      "text": "ElasticSearch"
+    },
+    {
+      "id": "c-r-196",
+      "text": "Grafana"
+    },
+    {
+      "id": "c-r-197",
+      "text": "NGINX"
+    },
+    {
+      "id": "c-r-198",
+      "text": "Nagios"
+    },
+    {
+      "id": "c-r-199",
+      "text": "RabbitMQ"
+    },
+    {
+      "id": "c-r-200",
+      "text": "NATS"
+    },
+    {
+      "id": "c-r-201",
+      "text": "Scope creep"
+    },
+    {
+      "id": "c-r-202",
+      "text": "Synergistic management solutions"
+    },
+    {
+      "id": "c-r-203",
+      "text": "Change management process"
+    },
+    {
+      "id": "c-r-204",
+      "text": "ITIL"
+    },
+    {
+      "id": "c-r-205",
+      "text": "Gap analysis"
+    },
+    {
+      "id": "c-r-206",
+      "text": "The reaction when asking if change management had been followed"
+    },
+    {
+      "id": "c-r-207",
+      "text": "Noise cancelling headphones"
+    },
+    {
+      "id": "c-r-208",
+      "text": "Open offices"
+    },
+    {
+      "id": "c-r-209",
+      "text": "Working from home"
+    },
+    {
+      "id": "c-r-210",
+      "text": "Espresso"
+    },
+    {
+      "id": "c-r-211",
+      "text": "Consensus protocols"
+    },
+    {
+      "id": "c-r-212",
+      "text": "Pizza teams"
+    },
+    {
+      "id": "c-r-213",
+      "text": "A new OpenSource project"
+    },
+    {
+      "id": "c-r-214",
+      "text": "TLS everywhere"
+    },
+    {
+      "id": "c-r-215",
+      "text": "Build pipelines"
+    },
+    {
+      "id": "c-r-216",
+      "text": "Chaos monkey"
+    },
+    {
+      "id": "c-r-217",
+      "text": "Farting as you walk past a colleagues desk"
+    },
+    {
+      "id": "c-r-218",
+      "text": "A balanced diet"
+    },
+    {
+      "id": "c-r-219",
+      "text": "Being able to talk to developers"
+    },
+    {
+      "id": "c-r-220",
+      "text": "The security team"
+    },
+    {
+      "id": "c-r-221",
+      "text": "LinkedIn"
+    },
+    {
+      "id": "c-r-222",
+      "text": "A ping-pong table"
+    },
+    {
+      "id": "c-r-223",
+      "text": "A project manager"
+    },
+    {
+      "id": "c-r-224",
+      "text": "Micromanagement"
+    },
+    {
+      "id": "c-r-225",
+      "text": "Imposter syndrome"
+    },
+    {
+      "id": "c-r-226",
+      "text": "32bit pointers"
+    },
+    {
+      "id": "c-r-227",
+      "text": "Inappropriate yodeling"
+    },
+    {
+      "id": "c-r-228",
+      "text": "A message bus"
+    },
+    {
+      "id": "c-r-229",
+      "text": "Stack Overflow"
+    },
+    {
+      "id": "c-r-230",
+      "text": "Whiteboarding the solution"
+    },
+    {
+      "id": "c-r-231",
+      "text": "Don't tell security and they can't say no"
+    },
+    {
+      "id": "c-r-232",
+      "text": "Pod Security Policies"
+    },
+    {
+      "id": "c-r-233",
+      "text": "ANY:ANY"
+    },
+    {
+      "id": "c-r-234",
+      "text": "GDPR compliance"
+    },
+    {
+      "id": "c-r-235",
+      "text": "Just closing the laptop and walking outside"
+    },
+    {
+      "id": "c-r-236",
+      "text": "Ignoring native features and using another product instead"
+    },
+    {
+      "id": "c-r-237",
+      "text": "Disabling SE Linux to make it work"
+    },
+    {
+      "id": "c-r-238",
+      "text": "Disabling AppArmor because it makes things unstable"
+    },
+    {
+      "id": "c-r-239",
+      "text": "Container Runtime Interface"
+    },
+    {
+      "id": "c-r-240",
+      "text": "Docker Image Format"
+    },
+    {
+      "id": "c-r-241",
+      "text": "Configuration Management"
+    },
+    {
+      "id": "c-r-242",
+      "text": "A 100 lines RUN"
+    },
+    {
+      "id": "c-r-243",
+      "text": "systemd"
+    },
+    {
+      "id": "c-r-244",
+      "text": "Multi-arch"
+    },
+    {
+      "id": "c-r-245",
+      "text": "Helm"
+    },
+    {
+      "id": "c-r-246",
+      "text": "Go template"
+    },
+    {
+      "id": "c-r-247",
+      "text": "CI/CD"
+    },
+    {
+      "id": "c-r-248",
+      "text": "Immutable Infrastructure"
+    },
+    {
+      "id": "c-r-249",
+      "text": "GitOps"
+    },
+    {
+      "id": "c-r-250",
+      "text": "DNS"
+    },
+    {
+      "id": "c-r-251",
+      "text": "Service Dicovery"
+    },
+    {
+      "id": "c-r-252",
+      "text": "Whatever the hell an Istio might be"
+    },
+    {
+      "id": "c-r-253",
+      "text": "An AWS service with more syllables than engineers"
+    },
+    {
+      "id": "c-r-254",
+      "text": "Your résumé"
+    },
+    {
+      "id": "c-r-255",
+      "text": "Copying and pasting from Stack Overflow"
+    },
+    {
+      "id": "c-r-256",
+      "text": "A Short Stack Developer"
+    },
+    {
+      "id": "c-r-257",
+      "text": "A technical preview that only works on Kelsey Hightower's laptop"
+    },
+    {
+      "id": "c-r-258",
+      "text": "An endless field of service meesh"
+    },
+    {
+      "id": "c-r-259",
+      "text": "An elaborate prank called the CNCF"
+    },
+    {
+      "id": "c-r-260",
+      "text": "A conference talk full of lies"
+    },
+    {
+      "id": "c-r-261",
+      "text": "A vendor named with leftover Scrabble tiles"
+    },
+    {
+      "id": "c-r-262",
+      "text": "Describing ':wq' as a 'container escape'"
+    },
+    {
+      "id": "c-r-263",
+      "text": "A new definition of microservice"
+    },
+    {
+      "id": "c-r-264",
+      "text": "A connection request from someone you don't know on LinkedIn"
+    },
+    {
+      "id": "c-r-265",
+      "text": "Shooting a Nerf gun at your boss"
+    },
+    {
+      "id": "c-r-266",
+      "text": "Admin rights"
+    },
+    {
+      "id": "c-r-267",
+      "text": "ALT + F4"
+    },
+    {
+      "id": "c-r-268",
+      "text": "646 Chrome Tabs"
+    },
+    {
+      "id": "c-r-269",
+      "text": "Command + CTRL + Q"
+    },
+    {
+      "id": "c-r-270",
+      "text": "Teams RAM Usage"
+    },
+    {
+      "id": "c-r-271",
+      "text": "@everyone in Company-wide Yammer page"
+    }
+  ]
+}

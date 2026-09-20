@@ -1,0 +1,12 @@
+{
+  "name": "@cac/shared",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./deck": "./src/deck.ts",
+    "./game": "./src/game.ts",
+    "./protocol": "./src/protocol.ts",
+    "./content-filter": "./src/content-filter.ts"
+  }
+}

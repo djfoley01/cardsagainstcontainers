@@ -1,0 +1,1178 @@
+{
+  "id": "sales",
+  "name": "Cards Against Sales",
+  "description": "The sales expansion pack.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/cardsagainstcontainers/deck",
+    "license": "CC BY-NC-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/2.0/",
+    "upstreamCommit": "1f36e01aff89337a76cf9debf825f2ca3c688be2"
+  },
+  "prompts": [
+    {
+      "id": "s-p-001",
+      "text": "I use ______ to call my commit for the quarter",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-002",
+      "text": "My preferred sales methodology is ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-003",
+      "text": "I smashed the quarter using mostly ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-004",
+      "text": "This years SKO featured mainly ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-005",
+      "text": "Updating Salesforce with ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-006",
+      "text": "I call my quarterly commit using ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-007",
+      "text": "I know we're suppose to use MEDDPICC, but I prefer using ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-008",
+      "text": "What's a sales engineers best friend?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-009",
+      "text": "What's a sales persons best friend?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-010",
+      "text": "Dear VP of Sales, I'm struggling with my commit because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-011",
+      "text": "When I'm VP of Sales, I'll force the sales team to do ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-012",
+      "text": "My latest Salesforce dashboard shows ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-013",
+      "text": "I prefer to think that ABC stands for Always Be ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-014",
+      "text": "The presidents club this year was nearly ruined by ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-015",
+      "text": "Why am I working on a Saturday again?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-016",
+      "text": "The boss said my commit wasn't high enough;#44; so I ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-017",
+      "text": "Glengarry Glen Ross really changed my approach to ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-018",
+      "text": "I always hit my target, mostly by ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-019",
+      "text": "At this years SKO, I'm really hoping to win the award for ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-020",
+      "text": "Life for the sales team was forever changed when our VP introduced ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-021",
+      "text": "My favourite strategy for new business prospecting is ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-022",
+      "text": "When prospecting, my strategy is to present on ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-023",
+      "text": "Step 1: Cold Call, Step 2: ______, Step 3: Profit!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-024",
+      "text": "I got 99 problems, but ______ ain't one.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-025",
+      "text": "They said we were crazy. They said we couldn't sell ______. They were wrong.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-026",
+      "text": "______: sales tested, VP approved.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-027",
+      "text": "Why are you drinking heavily at the moment?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-028",
+      "text": "We're struggling to hit our targets because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-029",
+      "text": "Why I got fired from my last job?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-030",
+      "text": "Please excuse me, I have a date with ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-031",
+      "text": "I dedicate at least an hour a week for ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-032",
+      "text": "My pipeline is full of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-033",
+      "text": "It's not my fault, it's because ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-034",
+      "text": "This year I'm investing heavily in ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-035",
+      "text": "I'm mostly hoping the board don't ask about ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-036",
+      "text": "My expenses this month are surprisingly high because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-037",
+      "text": "I know I'm not a VP, but I'm pretty sure our problem is ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-038",
+      "text": "What's the sound in the background during your conference call?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-039",
+      "text": "You forgot to mute yourself, we heard all about ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-040",
+      "text": "I know I said we should target them, but honestly they're a bunch of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-041",
+      "text": "Why am I sticky?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-042",
+      "text": "I never really understood ______ until I started sales",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-043",
+      "text": "My top prospecting strategy is ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-044",
+      "text": "What would your VP of Sales find disturbing, yet oddly satisfying?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-045",
+      "text": "______. It's a trap!",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-046",
+      "text": "Hey folks, in celebrationg of this years success, we'll be starting the night of with ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-047",
+      "text": "Instead of partying at this years SKO, we'll be ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-048",
+      "text": "What made your first deal so awkward?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-049",
+      "text": "Why did you lose your last deal?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-050",
+      "text": "What does the competition really suck at?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-051",
+      "text": "My mother always told me to ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-052",
+      "text": "What never fails to liven up SKO?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-053",
+      "text": "Why is my sales engineer hiding from me?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-054",
+      "text": "What gives me most frustration during a sale?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-055",
+      "text": "What am I hiding from the board during the next MBR?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-056",
+      "text": "What is the CEOs guilty pleasure?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-057",
+      "text": "Due to abuse, ______ is now not allowed on expenses",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-058",
+      "text": "I'm sorry, I couldnt update SFDC because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-059",
+      "text": "My strategy when presenting our solution involves ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-060",
+      "text": "My closing technique is purely ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-061",
+      "text": "What's my secret power?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-062",
+      "text": "Just once, I'd like to hear \"Congrats on ______\"",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-063",
+      "text": "Why is the Sales Manager crying?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-064",
+      "text": "50% of all deals end in ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-065",
+      "text": "All my sales losses were because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-066",
+      "text": "Let's try something new: If you miss your target, you'll have to ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-067",
+      "text": "How am I maintaining my customer relationships?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-068",
+      "text": "My technique for balancing work and family life.",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-069",
+      "text": "A sales pitch would not be complete without ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-070",
+      "text": "Our VP sets are sales targets using mostly ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-071",
+      "text": "Despite what the sales team committed, I'm commiting more to the business because ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-072",
+      "text": "The board are recommending we remove our VP of Sales because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-073",
+      "text": "Finance are questioning the amount of expenses for ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-074",
+      "text": "I'm no longer allowed in the office because of ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-075",
+      "text": "I love wrapping up meetings with ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-076",
+      "text": "For my top customers, I regularly send them ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-077",
+      "text": "I know its unfashionable, but I really like ______",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "s-p-078",
+      "text": "What really spiced up the legal negotiations?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "s-p-079",
+      "text": "When interviewing for new sales people, the number 1 skill I look for is ______",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "s-r-001",
+      "text": "Synergistic Management Solutions"
+    },
+    {
+      "id": "s-r-002",
+      "text": "Put a pin in it"
+    },
+    {
+      "id": "s-r-003",
+      "text": "A ouija board"
+    },
+    {
+      "id": "s-r-004",
+      "text": "Getting the basic technology of online meetings to work"
+    },
+    {
+      "id": "s-r-005",
+      "text": "Gut wrenching fear"
+    },
+    {
+      "id": "s-r-006",
+      "text": "The wheel of fortune"
+    },
+    {
+      "id": "s-r-007",
+      "text": "A random number generator"
+    },
+    {
+      "id": "s-r-008",
+      "text": "Demoing to someone who has no idea what you do"
+    },
+    {
+      "id": "s-r-009",
+      "text": "Lots of alcohol"
+    },
+    {
+      "id": "s-r-010",
+      "text": "Very expensive steaks"
+    },
+    {
+      "id": "s-r-011",
+      "text": "Very expensive wine"
+    },
+    {
+      "id": "s-r-012",
+      "text": "The Wolf of Wallstreet"
+    },
+    {
+      "id": "s-r-013",
+      "text": "The top article on Forbes"
+    },
+    {
+      "id": "s-r-014",
+      "text": "Watching a TED talk"
+    },
+    {
+      "id": "s-r-015",
+      "text": "The legal team"
+    },
+    {
+      "id": "s-r-016",
+      "text": "The hurdles of dealing with procurement"
+    },
+    {
+      "id": "s-r-017",
+      "text": "Taking a prospect out for a meal instead of spending time with the family"
+    },
+    {
+      "id": "s-r-018",
+      "text": "Sports analogies"
+    },
+    {
+      "id": "s-r-019",
+      "text": "Golfing on a Monday"
+    },
+    {
+      "id": "s-r-020",
+      "text": "Quietly sobbing during a QBR"
+    },
+    {
+      "id": "s-r-021",
+      "text": "\"Man up\""
+    },
+    {
+      "id": "s-r-022",
+      "text": "Forecasting"
+    },
+    {
+      "id": "s-r-023",
+      "text": "Uncontrollabe flatulence"
+    },
+    {
+      "id": "s-r-024",
+      "text": "Salesforce dashboards"
+    },
+    {
+      "id": "s-r-025",
+      "text": "Low base salary and high quota targets"
+    },
+    {
+      "id": "s-r-026",
+      "text": "Closing business at a sports game"
+    },
+    {
+      "id": "s-r-027",
+      "text": "Cold calling"
+    },
+    {
+      "id": "s-r-028",
+      "text": "LinkedIn profile pictures"
+    },
+    {
+      "id": "s-r-029",
+      "text": "Doing a deal review"
+    },
+    {
+      "id": "s-r-030",
+      "text": "Dark magic"
+    },
+    {
+      "id": "s-r-031",
+      "text": "Case studies"
+    },
+    {
+      "id": "s-r-032",
+      "text": "ROI calculators"
+    },
+    {
+      "id": "s-r-033",
+      "text": "Hopes and prayers"
+    },
+    {
+      "id": "s-r-034",
+      "text": "100 PowerPoint slides"
+    },
+    {
+      "id": "s-r-035",
+      "text": "Talking at prospects, not with them"
+    },
+    {
+      "id": "s-r-036",
+      "text": "Ignoring what they said because it was irrelevant to my sales pitch"
+    },
+    {
+      "id": "s-r-037",
+      "text": "Pitching to random people in the elevator"
+    },
+    {
+      "id": "s-r-038",
+      "text": "QBR presentations"
+    },
+    {
+      "id": "s-r-039",
+      "text": "Artificial Intelligence"
+    },
+    {
+      "id": "s-r-040",
+      "text": "Something with a blockchain in it"
+    },
+    {
+      "id": "s-r-041",
+      "text": "A Dilbert comic"
+    },
+    {
+      "id": "s-r-042",
+      "text": "Forgetting the webcam is still switched on"
+    },
+    {
+      "id": "s-r-043",
+      "text": "Forgetting to hit mute"
+    },
+    {
+      "id": "s-r-044",
+      "text": "Mindless idiots that don't realise how stupid they are"
+    },
+    {
+      "id": "s-r-045",
+      "text": "Dunning Kruger effect"
+    },
+    {
+      "id": "s-r-046",
+      "text": "Coronavirus"
+    },
+    {
+      "id": "s-r-047",
+      "text": "A mind-blowing hangover"
+    },
+    {
+      "id": "s-r-048",
+      "text": "Just installing the product, they'll love it"
+    },
+    {
+      "id": "s-r-049",
+      "text": "Red lining most of the contract"
+    },
+    {
+      "id": "s-r-050",
+      "text": "3 hour lunch meetings"
+    },
+    {
+      "id": "s-r-051",
+      "text": "Getting an executive involved"
+    },
+    {
+      "id": "s-r-052",
+      "text": "Detoxing after SKO"
+    },
+    {
+      "id": "s-r-053",
+      "text": "Total failure"
+    },
+    {
+      "id": "s-r-054",
+      "text": "LinkedIn inmails"
+    },
+    {
+      "id": "s-r-055",
+      "text": "Refusing to pickup the phone"
+    },
+    {
+      "id": "s-r-056",
+      "text": "The sales engineering messing up the demo"
+    },
+    {
+      "id": "s-r-057",
+      "text": "The product failing during a demo"
+    },
+    {
+      "id": "s-r-058",
+      "text": "Having faith in your gut feeling"
+    },
+    {
+      "id": "s-r-059",
+      "text": "Slides full of bullet points"
+    },
+    {
+      "id": "s-r-060",
+      "text": "Interpretive dancing"
+    },
+    {
+      "id": "s-r-061",
+      "text": "Talking over the customer because they're talking nonsense"
+    },
+    {
+      "id": "s-r-062",
+      "text": "Assigning all the actions to everyone else"
+    },
+    {
+      "id": "s-r-063",
+      "text": "Making sure the customer realises how stupid they are"
+    },
+    {
+      "id": "s-r-064",
+      "text": "The competitions incompetence"
+    },
+    {
+      "id": "s-r-065",
+      "text": "Dark and mysterious forces beyond our control"
+    },
+    {
+      "id": "s-r-066",
+      "text": "Trained army of squirrels"
+    },
+    {
+      "id": "s-r-067",
+      "text": "Champagne breakfast"
+    },
+    {
+      "id": "s-r-068",
+      "text": "A box full of bees"
+    },
+    {
+      "id": "s-r-069",
+      "text": "My soul"
+    },
+    {
+      "id": "s-r-070",
+      "text": "Only the good looking ones"
+    },
+    {
+      "id": "s-r-071",
+      "text": "Beer"
+    },
+    {
+      "id": "s-r-072",
+      "text": "Whiskey"
+    },
+    {
+      "id": "s-r-073",
+      "text": "Staring at my email hoping customers will contact me first"
+    },
+    {
+      "id": "s-r-074",
+      "text": "Supporting underwear"
+    },
+    {
+      "id": "s-r-075",
+      "text": "Setting my laptop on fire"
+    },
+    {
+      "id": "s-r-076",
+      "text": "Not understanding anything they're saying"
+    },
+    {
+      "id": "s-r-077",
+      "text": "Showing off the guns by pointing at things"
+    },
+    {
+      "id": "s-r-078",
+      "text": "Functional alcoholic"
+    },
+    {
+      "id": "s-r-079",
+      "text": "Procrastinating"
+    },
+    {
+      "id": "s-r-080",
+      "text": "Giving 110%"
+    },
+    {
+      "id": "s-r-081",
+      "text": "Ignoring the ugly ones on LinkedIn"
+    },
+    {
+      "id": "s-r-082",
+      "text": "Salesforce"
+    },
+    {
+      "id": "s-r-083",
+      "text": "Pipeline generation"
+    },
+    {
+      "id": "s-r-084",
+      "text": "Major industry events"
+    },
+    {
+      "id": "s-r-085",
+      "text": "Paying to win industry awards"
+    },
+    {
+      "id": "s-r-086",
+      "text": "Very unique features"
+    },
+    {
+      "id": "s-r-087",
+      "text": "Getting the sales engineer to sell the cool technical stuff"
+    },
+    {
+      "id": "s-r-088",
+      "text": "Michael Bay level explosions"
+    },
+    {
+      "id": "s-r-089",
+      "text": "Repressing any negative feelings"
+    },
+    {
+      "id": "s-r-090",
+      "text": "Genuine human connection"
+    },
+    {
+      "id": "s-r-091",
+      "text": "Completely fictional use-cases"
+    },
+    {
+      "id": "s-r-092",
+      "text": "Waking up in a side street"
+    },
+    {
+      "id": "s-r-093",
+      "text": "Trade disputes"
+    },
+    {
+      "id": "s-r-094",
+      "text": "Garden leave"
+    },
+    {
+      "id": "s-r-095",
+      "text": "Giving the customer the illusion of choice"
+    },
+    {
+      "id": "s-r-096",
+      "text": "Over-inflated list prices to give the perception of high discounts"
+    },
+    {
+      "id": "s-r-097",
+      "text": "Selling to a CxO"
+    },
+    {
+      "id": "s-r-098",
+      "text": "Losing out to a carpark project"
+    },
+    {
+      "id": "s-r-099",
+      "text": "Internal meetings"
+    },
+    {
+      "id": "s-r-100",
+      "text": "Planting land mines"
+    },
+    {
+      "id": "s-r-101",
+      "text": "Poor life choices"
+    },
+    {
+      "id": "s-r-102",
+      "text": "A silver bullet"
+    },
+    {
+      "id": "s-r-103",
+      "text": "Mummy issues"
+    },
+    {
+      "id": "s-r-104",
+      "text": "A general lack of purpose"
+    },
+    {
+      "id": "s-r-105",
+      "text": "An unachievable target"
+    },
+    {
+      "id": "s-r-106",
+      "text": "Missing your target by 1%"
+    },
+    {
+      "id": "s-r-107",
+      "text": "Marketing failing to educate the market"
+    },
+    {
+      "id": "s-r-108",
+      "text": "Selling to the same 3 customers for the past 20 years"
+    },
+    {
+      "id": "s-r-109",
+      "text": "Another recession"
+    },
+    {
+      "id": "s-r-110",
+      "text": "Unpacking all my business stuff on the table"
+    },
+    {
+      "id": "s-r-111",
+      "text": "Getting the inside sales team to do the boring work"
+    },
+    {
+      "id": "s-r-112",
+      "text": "Marketing"
+    },
+    {
+      "id": "s-r-113",
+      "text": "Office bullying"
+    },
+    {
+      "id": "s-r-114",
+      "text": "Masculine fragility"
+    },
+    {
+      "id": "s-r-115",
+      "text": "A celebrity cameo"
+    },
+    {
+      "id": "s-r-116",
+      "text": "A deep rooted fear of blue collar workers"
+    },
+    {
+      "id": "s-r-117",
+      "text": "Dutch courage"
+    },
+    {
+      "id": "s-r-118",
+      "text": "Alpha males"
+    },
+    {
+      "id": "s-r-119",
+      "text": "That scene in the Wolf of Wallstreet"
+    },
+    {
+      "id": "s-r-120",
+      "text": "The home office"
+    },
+    {
+      "id": "s-r-121",
+      "text": "Bluetooth headset"
+    },
+    {
+      "id": "s-r-122",
+      "text": "Poor people"
+    },
+    {
+      "id": "s-r-123",
+      "text": "Made up customer projects"
+    },
+    {
+      "id": "s-r-124",
+      "text": "Kicking the tires'"
+    },
+    {
+      "id": "s-r-125",
+      "text": "Simon Sinek"
+    },
+    {
+      "id": "s-r-126",
+      "text": "The blood of the competition"
+    },
+    {
+      "id": "s-r-127",
+      "text": "Breaking out in song and dance"
+    },
+    {
+      "id": "s-r-128",
+      "text": "Sweet, sweet vengeance"
+    },
+    {
+      "id": "s-r-129",
+      "text": "Blood curdling screams"
+    },
+    {
+      "id": "s-r-130",
+      "text": "Being a woman"
+    },
+    {
+      "id": "s-r-131",
+      "text": "Paper process"
+    },
+    {
+      "id": "s-r-132",
+      "text": "The economic buyer"
+    },
+    {
+      "id": "s-r-133",
+      "text": "Your champion quitting their job"
+    },
+    {
+      "id": "s-r-134",
+      "text": "Exactly what your sales manager said"
+    },
+    {
+      "id": "s-r-135",
+      "text": "Ignoring everyones advice and doing it your own way"
+    },
+    {
+      "id": "s-r-136",
+      "text": "Listening to your colleagues problems but secretly being happy it'll make you look good"
+    },
+    {
+      "id": "s-r-137",
+      "text": "Overachievement incentives"
+    },
+    {
+      "id": "s-r-138",
+      "text": "Creating Salesforce records to claim them as your own"
+    },
+    {
+      "id": "s-r-139",
+      "text": "Using crayons"
+    },
+    {
+      "id": "s-r-140",
+      "text": "Visualising the problem on a whiteboard"
+    },
+    {
+      "id": "s-r-141",
+      "text": "Doing a workshop"
+    },
+    {
+      "id": "s-r-142",
+      "text": "The VP of Sales"
+    },
+    {
+      "id": "s-r-143",
+      "text": "The Grim Reaper"
+    },
+    {
+      "id": "s-r-144",
+      "text": "Seeing what happens when you lock marketing and legal in a room together"
+    },
+    {
+      "id": "s-r-145",
+      "text": "Complete silence"
+    },
+    {
+      "id": "s-r-146",
+      "text": "Dressing as Batman"
+    },
+    {
+      "id": "s-r-147",
+      "text": "The sadness induced by missing your target"
+    },
+    {
+      "id": "s-r-148",
+      "text": "Sinhy objects"
+    },
+    {
+      "id": "s-r-149",
+      "text": "The latest tech gadget"
+    },
+    {
+      "id": "s-r-150",
+      "text": "Hugging the customer when the deal finally closes"
+    },
+    {
+      "id": "s-r-151",
+      "text": "Blood, sweat and tears"
+    },
+    {
+      "id": "s-r-152",
+      "text": "Mystical music"
+    },
+    {
+      "id": "s-r-153",
+      "text": "Hip-hop"
+    },
+    {
+      "id": "s-r-154",
+      "text": "Displaying emotions"
+    },
+    {
+      "id": "s-r-155",
+      "text": "A balanced breakfast at lunchtime"
+    },
+    {
+      "id": "s-r-156",
+      "text": "Just making it up"
+    },
+    {
+      "id": "s-r-157",
+      "text": "Natural selection"
+    },
+    {
+      "id": "s-r-158",
+      "text": "A dream without a plan"
+    },
+    {
+      "id": "s-r-159",
+      "text": "Estalbishing dominance in a meeting"
+    },
+    {
+      "id": "s-r-160",
+      "text": "Talking over someone else so they know you're in control"
+    },
+    {
+      "id": "s-r-161",
+      "text": "Passive aggresive emails"
+    },
+    {
+      "id": "s-r-162",
+      "text": "Drinking alone"
+    },
+    {
+      "id": "s-r-163",
+      "text": "It's 5 o'clock somewhere"
+    },
+    {
+      "id": "s-r-164",
+      "text": "Unfathomable stupidity"
+    },
+    {
+      "id": "s-r-165",
+      "text": "Reacting to failure by shouting at other people"
+    },
+    {
+      "id": "s-r-166",
+      "text": "Completely unwarranted confidence"
+    },
+    {
+      "id": "s-r-167",
+      "text": "The color of the logo in the UI"
+    },
+    {
+      "id": "s-r-168",
+      "text": "One great slide"
+    },
+    {
+      "id": "s-r-169",
+      "text": "All my real numbers are in excel"
+    },
+    {
+      "id": "s-r-170",
+      "text": "Taking conference calls in public"
+    },
+    {
+      "id": "s-r-171",
+      "text": "MEDDPICC"
+    },
+    {
+      "id": "s-r-172",
+      "text": "The challenger sale"
+    }
+  ]
+}

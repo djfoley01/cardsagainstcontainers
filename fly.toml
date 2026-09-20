@@ -1,0 +1,64 @@
+# Fly.io configuration.
+#
+# READ THIS FIRST: this app must run on exactly ONE machine.
+#
+# Every room lives in that machine's memory — that is the deliberate trade-off
+# recorded in docs/adr-001-hosting.md, and what lets the game work with no
+# database. If Fly ever runs two machines, players joining the same room code
+# can land on different ones and silently end up in different games.
+#
+# The concurrency limits below are set far above anything a happy hour will
+# reach, so the proxy never has cause to scale out. After the first deploy,
+# pin it explicitly:
+#
+#     fly scale count 1
+#
+# Change `app` and `primary_region` before deploying. List regions with
+# `fly platform regions` and pick the one nearest most of your team.
+
+app = "cards-against-containers"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "3000"
+  HOST = "0.0.0.0"
+  LOG_LEVEL = "info"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+
+  # Scale to zero between happy hours. An in-progress game holds open sockets,
+  # so the proxy sees it as active and won't stop it mid-round.
+  #
+  # "suspend" resumes in a few hundred ms versus ~2s for a cold start, and is
+  # the better default here — the first person to open the link is waiting.
+  # Switch to "stop" if you'd rather have a fully clean boot each time.
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    # Connections, not requests: this is a WebSocket app and every player holds
+    # one open for the whole session. Set high so autoscaling never triggers —
+    # see the single-machine warning above.
+    type = "connections"
+    soft_limit = 400
+    hard_limit = 500
+
+  # Fly runs this check itself; the Dockerfile HEALTHCHECK is ignored here.
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/healthz"
+
+[[vm]]
+  # A dozen players and a few hundred cards is a very small workload. Start
+  # here; `fly scale vm` upward only if you see memory pressure.
+  size = "shared-cpu-1x"
+  memory = "512mb"
