@@ -16,6 +16,19 @@
 FROM docker.io/library/node:26-alpine AS build
 WORKDIR /app
 
+# Corporate CA certificates, if any. The directory is empty by default, which
+# is why this is a plain COPY of the whole directory rather than a glob — a
+# glob that matches nothing fails the build.
+#
+# These go in before `npm ci`, because a TLS-inspecting proxy breaks the
+# install itself, which is where this problem almost always shows up.
+COPY certs/ /usr/local/share/ca-certificates/
+RUN apk add --no-cache ca-certificates && update-ca-certificates
+
+# npm runs under Node, which ignores the system trust store by default, so the
+# flag is needed here too or the install still fails behind a proxy.
+ENV NODE_OPTIONS=--use-system-ca
+
 # Copy manifests first so dependency layers cache independently of source.
 COPY package.json package-lock.json ./
 COPY packages/shared/package.json packages/shared/
@@ -40,11 +53,22 @@ WORKDIR /app
 
 ENV NODE_ENV=production \
     PORT=3000 \
-    HOST=0.0.0.0
+    HOST=0.0.0.0 \
+    # Node ships its own root store and ignores the system one unless told
+    # otherwise, so `update-ca-certificates` alone does NOT make Node trust a
+    # corporate CA. Verified: with a private CA installed but this flag unset,
+    # Node still rejects the connection. The Alpine bundle is the same Mozilla
+    # root list Node bundles, so this costs nothing for public TLS.
+    NODE_OPTIONS=--use-system-ca
 
-# Minimal init so signals are handled from the very first instant. See the
-# ENTRYPOINT comment at the bottom for why this is not optional here.
-RUN apk add --no-cache tini
+# tini: minimal init so signals are handled from the very first instant; see
+# the ENTRYPOINT comment at the bottom for why that is not optional here.
+# ca-certificates: maintains the trust store the flag above reads.
+RUN apk add --no-cache tini ca-certificates
+
+# Same certificates as the build stage. Empty by default; see certs/README.md.
+COPY certs/ /usr/local/share/ca-certificates/
+RUN update-ca-certificates
 
 COPY package.json package-lock.json ./
 COPY packages/shared/package.json packages/shared/

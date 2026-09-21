@@ -269,6 +269,13 @@ Then open http://localhost:8080. Docker works identically. Full walkthrough,
 including testing with three players on one machine, is in
 [docs/building.md](docs/building.md).
 
+Behind a TLS-inspecting corporate proxy, drop your root CA into `certs/` as a
+PEM `.crt` file and rebuild — it is installed in both the build and runtime
+stages. Note that `update-ca-certificates` alone is not enough for Node, which
+ignores the system trust store by default; the image sets
+`NODE_OPTIONS=--use-system-ca` for exactly that reason. See
+[certs/README.md](certs/README.md).
+
 Base images are fully qualified (`docker.io/library/node:26-alpine`) so the
 build works under Podman, which has no unqualified search registry by default.
 `tini` runs as PID 1: as PID 1 the kernel discards signals Node has no handler
