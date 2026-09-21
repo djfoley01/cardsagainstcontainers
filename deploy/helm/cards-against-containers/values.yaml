@@ -1,0 +1,98 @@
+# Cards Against Containers
+#
+# IMPORTANT: this application must run as exactly ONE replica.
+#
+# Every game room lives in the pod's memory — a deliberate design choice that
+# removes the need for a database entirely. With two replicas, players joining
+# the same room code can be routed to different pods and silently end up in
+# different games, with no error to tell them so.
+#
+# The chart refuses to render with replicaCount > 1 rather than let that
+# happen quietly. If you ever genuinely need to scale out, the application has
+# to move its room state into Redis first.
+
+replicaCount: 1
+
+image:
+  # Push the image somewhere your cluster can pull from. Inside OpenShift the
+  # integrated registry works well:
+  #   image-registry.openshift-image-registry.svc:5000/<namespace>/cards-against-containers
+  repository: cards-against-containers
+  tag: ""          # defaults to .Chart.AppVersion
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+service:
+  type: ClusterIP
+  port: 8080       # service port; the container always listens on 3000
+
+# OpenShift Route. Leave enabled on OpenShift; use ingress instead on plain
+# Kubernetes.
+route:
+  enabled: true
+  host: ""                 # empty lets OpenShift generate one
+  tls:
+    enabled: true
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  annotations:
+    # The default router timeout is 30s. Socket.IO pings every 25s so a game
+    # would *probably* survive, but the margin is thin and a dropped
+    # connection mid-round is the most visible failure this app has. An hour
+    # is comfortably longer than any happy hour.
+    haproxy.router.openshift.io/timeout: 1h
+
+# Plain Kubernetes ingress. Mutually exclusive with route.
+ingress:
+  enabled: false
+  className: ""
+  host: cards.example.com
+  annotations:
+    # Most ingress controllers need a raised timeout for long-lived
+    # WebSockets; these are the nginx-ingress keys.
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+  tls: []
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# Left empty by default because OpenShift's restricted-v2 SCC assigns an
+# arbitrary UID from the namespace range, and hardcoding runAsUser here would
+# be rejected. On plain Kubernetes you may want runAsUser: 1000.
+podSecurityContext: {}
+
+containerSecurityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: ["ALL"]
+  seccompProfile:
+    type: RuntimeDefault
+  readOnlyRootFilesystem: false   # Node writes to /tmp
+
+env:
+  logLevel: info
+  # Comma-separated origins for the game socket, or empty to allow same-origin.
+  corsOrigin: ""
+
+extraEnv: []
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+podAnnotations: {}
+podLabels: {}

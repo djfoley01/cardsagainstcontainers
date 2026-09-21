@@ -1,0 +1,40 @@
+Cards Against Containers is deploying.
+
+{{- if .Values.route.enabled }}
+
+Get the URL to share with your team:
+
+  oc get route {{ include "cac.fullname" . }} -o jsonpath='{"http{{ if .Values.route.tls.enabled }}s{{ end }}://"}{.spec.host}{"\n"}'
+{{- else if .Values.ingress.enabled }}
+
+  http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.host }}
+{{- else }}
+
+No route or ingress is enabled. Reach it with a port-forward:
+
+  kubectl port-forward svc/{{ include "cac.fullname" . }} 8080:{{ .Values.service.port }}
+  # then open http://localhost:8080
+{{- end }}
+
+Check it came up:
+
+  kubectl rollout status deploy/{{ include "cac.fullname" . }}
+  kubectl exec deploy/{{ include "cac.fullname" . }} -- \
+    node -e "fetch('http://127.0.0.1:3000/healthz').then(r=>r.text()).then(console.log)"
+
+How to play: one person opens the URL, picks a name and starts a room. Everyone
+else joins with the four-letter code. You need at least 3 players.
+
+Two things worth knowing before your happy hour:
+
+  * Game state lives in this pod's memory. Restarting it, redeploying, or a
+    liveness restart ends every game in progress. Players are told the room
+    has gone and are returned to the join screen, but the game is over.
+    Deploy before the happy hour, not during it.
+
+  * This chart runs a single replica on purpose and refuses to render with
+    more. Two pods would split players across two separate games with no
+    error shown to anyone.
+
+Card content is Creative Commons BY-NC-SA. Internal team use is fine; do not
+charge for access. Attribution is shown in the app.

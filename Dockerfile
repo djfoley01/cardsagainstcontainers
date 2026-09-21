@@ -42,6 +42,10 @@ ENV NODE_ENV=production \
     PORT=3000 \
     HOST=0.0.0.0
 
+# Minimal init so signals are handled from the very first instant. See the
+# ENTRYPOINT comment at the bottom for why this is not optional here.
+RUN apk add --no-cache tini
+
 COPY package.json package-lock.json ./
 COPY packages/shared/package.json packages/shared/
 COPY packages/server/package.json packages/server/
@@ -59,11 +63,33 @@ COPY --from=build /app/packages/client/dist/ packages/client/dist/
 # Drop the test files that live beside the source.
 RUN find packages -name '*.test.ts' -delete && rm -f packages/server/src/engine/testkit.ts
 
-USER node
+# A NUMERIC uid, not `USER node`. Kubernetes cannot resolve a username against
+# the image to confirm it is non-root, so `runAsNonRoot: true` fails with
+# CreateContainerConfigError against a named user.
+#
+# OpenShift overrides this anyway with an arbitrary high uid from the
+# namespace range, gid 0, and no /etc/passwd entry. That works here without
+# the usual `chgrp -R 0 && chmod -R g=u` fixup: that pattern grants group
+# *write* access, which only matters for images that write inside their own
+# directory. This one writes nothing at runtime — game state is in memory and
+# the decks are read-only — and the default 644/755 root-owned permissions are
+# already group-readable. Running the fixup anyway rewrites every file,
+# including node_modules, and cost 23 MB of duplicated layer for nothing.
+USER 1000
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||3000)+'/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
-# Node registers its own SIGTERM/SIGINT handlers in index.ts, so it can be PID 1.
+# Node registers SIGTERM/SIGINT handlers in index.ts, but it cannot register
+# them before it has finished loading its own modules — and as PID 1 the kernel
+# *discards* any signal with no handler installed. A container stopped during
+# that first moment of startup therefore ignores SIGTERM completely and has to
+# be SIGKILLed once the grace period expires (10s under podman, 30s under the
+# Helm chart's terminationGracePeriodSeconds).
+#
+# tini as PID 1 closes that window: it has handlers from its first instruction,
+# and forwards the signal to node, which is no longer PID 1 and so gets the
+# normal default-terminate behaviour even before its own handlers are up.
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "packages/server/src/index.ts"]

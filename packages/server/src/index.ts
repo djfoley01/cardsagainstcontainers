@@ -66,13 +66,38 @@ export async function build() {
 
 // Only start listening when run directly, so tests can import build().
 if (process.argv[1] && import.meta.url === `file://${process.argv[1]}`) {
-  const { app, close } = await build();
-  await app.listen({ port: PORT, host: HOST });
+  // Signal handlers go up BEFORE any async startup work.
+  //
+  // In a container this process is PID 1, and the kernel discards signals that
+  // PID 1 has no handler for. Registering these after `listen()` leaves a
+  // window during boot where SIGTERM is silently dropped, so a pod deleted
+  // mid-startup hangs until the grace period expires and it is SIGKILLed.
+  let closing = false;
+  let shutdown: (() => Promise<void>) | null = null;
+
+  const handle = (signal: string) => {
+    if (closing) return;
+    closing = true;
+    console.log(`${signal} received, shutting down`);
+    // Nothing to close yet means the signal landed mid-boot: just leave.
+    if (!shutdown) process.exit(0);
+    void shutdown().then(
+      () => process.exit(0),
+      () => process.exit(1),
+    );
+  };
 
   for (const signal of ['SIGINT', 'SIGTERM'] as const) {
-    process.once(signal, () => {
-      app.log.info(`${signal} received, shutting down`);
-      void close().then(() => process.exit(0));
-    });
+    process.once(signal, () => handle(signal));
   }
+
+  const { app, close } = await build();
+  shutdown = close;
+  // A signal that arrived while build() was running still needs honouring.
+  if (closing) {
+    await close();
+    process.exit(0);
+  }
+
+  await app.listen({ port: PORT, host: HOST });
 }

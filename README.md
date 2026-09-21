@@ -18,7 +18,7 @@ In development. See `docs/` for design decisions.
 | 4. Client core (join, lobby, hand) | Done |
 | 5. Judging, reveal, scoreboard | Done |
 | 6. Timers, disconnects, host controls | Done |
-| 7. Dockerfile + Fly deploy | Image done; deploy pending |
+| 7. Container image + deployment | Image and Helm chart done |
 
 ## Layout
 
@@ -261,13 +261,19 @@ and that no text is ever dealt twice when several are enabled together.
 ## Running the container
 
 ```sh
-podman build -t cac .
-podman run --rm -p 8080:3000 cac
+podman build -t cards-against-containers:0.1.0 .
+podman run -d --name cac -p 8080:3000 cards-against-containers:0.1.0
 ```
 
-Then open http://localhost:8080. Docker works identically. Base images are
-fully qualified (`docker.io/library/node:26-alpine`) so the build works under
-Podman, which has no unqualified search registry by default.
+Then open http://localhost:8080. Docker works identically. Full walkthrough,
+including testing with three players on one machine, is in
+[docs/building.md](docs/building.md).
+
+Base images are fully qualified (`docker.io/library/node:26-alpine`) so the
+build works under Podman, which has no unqualified search registry by default.
+`tini` runs as PID 1: as PID 1 the kernel discards signals Node has no handler
+for yet, so without it a container stopped during startup ignores SIGTERM and
+waits out the whole grace period before being killed.
 
 The image is a two-stage build: the first installs everything and bundles the
 client, the second keeps only what the server needs. There is deliberately no
@@ -280,6 +286,33 @@ execute fails the build rather than crash-looping in production.
 React, React-DOM and socket.io-client are **devDependencies** of the client on
 purpose: Vite compiles them into `dist/`, so the server never imports them and
 they have no business in the runtime image. That alone is ~11 MB.
+
+## Deploying on OpenShift
+
+A Helm chart is in `deploy/helm/cards-against-containers`, with a walkthrough in
+[docs/openshift.md](docs/openshift.md).
+
+```sh
+helm install cac deploy/helm/cards-against-containers -n happyhour \
+  --set image.repository=image-registry.openshift-image-registry.svc:5000/happyhour/cards-against-containers
+```
+
+The chart targets the default `restricted-v2` SCC and needs no privileges. It
+**refuses to render with more than one replica**, and uses the `Recreate`
+strategy rather than `RollingUpdate`, because two pods would split players
+across two separate games with nothing to tell them so.
+
+OpenShift assigns an arbitrary high UID with gid 0 and no `/etc/passwd` entry.
+The image is verified to run that way. Two things make that work:
+
+- The Dockerfile uses `USER 1000`, not `USER node`. Kubernetes cannot resolve a
+  username against an image to confirm it is non-root, so `runAsNonRoot: true`
+  fails with `CreateContainerConfigError` against a named user.
+- The chart sets no `runAsUser`, because the SCC wants to assign it.
+
+The Route raises the router timeout to an hour. The default is 30s; Socket.IO
+pings every 25s, so a game would probably survive it, but four seconds is not
+much margin for the most visible failure this app has.
 
 ## Hosting
 
