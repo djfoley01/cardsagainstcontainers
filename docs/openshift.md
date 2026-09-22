@@ -111,16 +111,41 @@ Two details that matter:
 ## WebSockets through the router
 
 OpenShift routes proxy WebSockets natively — no annotation is needed to permit
-the upgrade. What does matter is the timeout: the router's default is **30
-seconds**, and the chart raises it to an hour via
+the upgrade, and nothing special is required to carry the TCP connection.
+
+Timeouts are where it gets easy to get wrong, because **two different ones
+apply** and the obvious-looking annotation is not the one that matters:
+
+| Annotation | HAProxy setting | Applies to | Cluster default |
+| --- | --- | --- | --- |
+| `haproxy.router.openshift.io/timeout` | `timeout server` | Ordinary HTTP requests | `30s` (`ROUTER_DEFAULT_SERVER_TIMEOUT`) |
+| `haproxy.router.openshift.io/timeout-tunnel` | `timeout tunnel` | Connections **after** they upgrade to a WebSocket | `1h` (`ROUTER_DEFAULT_TUNNEL_TIMEOUT`) |
+
+The game's socket lives under `timeout-tunnel`. Once the connection upgrades,
+`timeout server` no longer governs it, so the 30-second HTTP default was never
+a threat to a game in progress — a point this document previously got wrong.
+
+The chart sets both explicitly:
 
 ```yaml
-haproxy.router.openshift.io/timeout: 1h
+haproxy.router.openshift.io/timeout: 30s
+haproxy.router.openshift.io/timeout-tunnel: 1h
 ```
 
-Socket.IO pings every 25s, so a game would *probably* survive the default, but
-the margin is four seconds and a dropped connection mid-round is the most
-visible failure this app has.
+Not because the defaults are wrong, but because they are only defaults: a
+platform team that lowered `ROUTER_DEFAULT_TUNNEL_TIMEOUT` cluster-wide would
+otherwise disconnect every player on a schedule nobody deploying this app would
+think to look for.
+
+**Do not set the tunnel timeout low.** A five- or ten-minute value does not
+degrade gracefully, it churns: every player is disconnected on that cycle,
+reconnects, and rejoins. The game survives — seats, hands and scores are held
+across a reconnect, and the client rejoins automatically — but it is visible and
+buys nothing. An hour comfortably outlasts a happy hour.
+
+One related wrinkle: the tunnel timeout resets whenever HAProxy reloads, which
+happens when routes change anywhere on the cluster. That works in your favour
+here rather than against it.
 
 The client also falls back to HTTP long-polling if a proxy refuses the upgrade
 entirely, so players behind a strict egress proxy still get in.

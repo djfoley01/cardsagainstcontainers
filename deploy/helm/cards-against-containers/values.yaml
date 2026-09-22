@@ -65,11 +65,27 @@ route:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
   annotations:
-    # The default router timeout is 30s. Socket.IO pings every 25s so a game
-    # would *probably* survive, but the margin is thin and a dropped
-    # connection mid-round is the most visible failure this app has. An hour
-    # is comfortably longer than any happy hour.
-    haproxy.router.openshift.io/timeout: 1h
+    # Two different timeouts apply, and confusing them is easy:
+    #
+    #   timeout        -> HAProxy `timeout server`, for ordinary HTTP
+    #                     requests. Cluster default 30s
+    #                     (ROUTER_DEFAULT_SERVER_TIMEOUT).
+    #   timeout-tunnel -> HAProxy `timeout tunnel`, which is what governs a
+    #                     connection *after* it upgrades to a WebSocket.
+    #                     Cluster default 1h (ROUTER_DEFAULT_TUNNEL_TIMEOUT).
+    #
+    # The game's socket lives under timeout-tunnel, not timeout, so the 30s
+    # HTTP default was never a threat to it. Both are set explicitly anyway:
+    # the cluster defaults are only defaults, and a platform team that lowered
+    # ROUTER_DEFAULT_TUNNEL_TIMEOUT would otherwise disconnect every player on
+    # a silent schedule.
+    #
+    # Do not set this low. A short tunnel timeout does not fail gracefully so
+    # much as churn: every player is disconnected on that cycle, reconnects,
+    # and rejoins. The game survives it — seats and scores are held — but it is
+    # visible and pointless. 1h comfortably outlasts a happy hour.
+    haproxy.router.openshift.io/timeout: 30s
+    haproxy.router.openshift.io/timeout-tunnel: 1h
 
 # Plain Kubernetes ingress. Mutually exclusive with route.
 ingress:

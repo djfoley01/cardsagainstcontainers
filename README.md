@@ -320,9 +320,12 @@ The image is verified to run that way. Two things make that work:
   fails with `CreateContainerConfigError` against a named user.
 - The chart sets no `runAsUser`, because the SCC wants to assign it.
 
-The Route raises the router timeout to an hour. The default is 30s; Socket.IO
-pings every 25s, so a game would probably survive it, but four seconds is not
-much margin for the most visible failure this app has.
+Routes proxy WebSockets natively. Two timeouts apply and the obvious one is not
+the relevant one: `haproxy.router.openshift.io/timeout` governs `timeout server`
+for ordinary HTTP (default 30s), while an upgraded WebSocket is governed by
+`haproxy.router.openshift.io/timeout-tunnel` (default 1h). The chart sets both
+explicitly, since a cluster whose tunnel default was lowered would otherwise
+disconnect every player on a schedule nobody would think to look for.
 
 ## Hosting
 
