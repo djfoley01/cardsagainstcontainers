@@ -72,6 +72,9 @@ export class Harness {
       const player = this.state.players[id];
       if (!player?.connected || id === this.state.czarId || except.includes(id)) continue;
       if (this.state.submissions.some((s) => s.playerId === id)) continue;
+      // A player can be dealt fewer cards than the prompt needs when a small
+      // deck runs dry; the engine excuses them, so the harness must too.
+      if (player.hand.length < prompt.pick) continue;
       this.dispatch({ type: 'submit', playerId: id, cards: player.hand.slice(0, prompt.pick) });
     }
   }

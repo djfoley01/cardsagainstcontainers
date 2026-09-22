@@ -2,7 +2,7 @@ apiVersion: v2
 name: cards-against-containers
 description: Cards Against Containers — a multiplayer party game for distributed teams
 type: application
-version: 0.1.0
-appVersion: "0.1.0"
+version: 0.2.0
+appVersion: "0.2.0"
 keywords: [game, party, team-building, openshift]
 home: https://github.com/cardsagainstcontainers/deck

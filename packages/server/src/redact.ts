@@ -109,7 +109,9 @@ export function toPublicState(state: GameState, viewerId: string, decks: DeckInd
     prompt: prompt(state.promptId, decks),
     submissions,
     submissionCount: state.submissions.length,
-    awaitingCount: requiredSubmitters(state).filter((id) => !hasSubmitted(state, id)).length,
+    awaitingCount: requiredSubmitters(state, prompt(state.promptId, decks)?.pick ?? 1).filter(
+      (id) => !hasSubmitted(state, id),
+    ).length,
     lastResult: state.lastResult ? publicResult(state, state.lastResult, decks) : null,
     // Newest first, capped: the history panel doesn't need the whole night.
     history: state.history.slice(-20).reverse().map((r) => publicResult(state, r, decks)),

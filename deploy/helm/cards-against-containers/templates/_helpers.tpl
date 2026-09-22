@@ -16,9 +16,12 @@ the checks below would protect nothing.
 {{- if lt (int .Values.containerPort) 1024 -}}
 {{- fail "containerPort must be 1024 or above: the container runs as a non-root user and cannot bind a privileged port, so the process would die with EACCES" -}}
 {{- end -}}
+{{- if and .Values.customDecks.configMap .Values.customDecks.persistentVolumeClaim -}}
+{{- fail "customDecks: set either configMap or persistentVolumeClaim, not both — they would mount over each other at the same path" -}}
+{{- end -}}
 {{- range .Values.extraEnv -}}
-{{- if or (eq .name "PORT") (eq .name "HOST") -}}
-{{- fail "set containerPort instead of overriding PORT or HOST through extraEnv: the declared containerPort and the probes are derived from it, and overriding the variable alone leaves them pointing at a port nothing is listening on, so the pod restarts forever" -}}
+{{- if or (eq .name "PORT") (eq .name "HOST") (eq .name "CAC_DECK_DIRS") -}}
+{{- fail "set containerPort (or customDecks.mountPath) instead of overriding PORT, HOST or CAC_DECK_DIRS through extraEnv: the declared containerPort and the probes are derived from it, and overriding the variable alone leaves them pointing at a port nothing is listening on, so the pod restarts forever" -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}

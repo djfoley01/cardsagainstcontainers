@@ -137,6 +137,7 @@ export type GameErrorCode =
   | 'IS_CZAR'
   | 'WRONG_PHASE'
   | 'NOT_ENOUGH_PLAYERS'
+  | 'NOT_ENOUGH_CARDS'
   | 'UNKNOWN_PLAYER'
   | 'ALREADY_SUBMITTED'
   | 'BAD_SUBMISSION'

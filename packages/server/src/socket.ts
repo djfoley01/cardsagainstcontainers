@@ -151,7 +151,8 @@ export function attachSocketHandlers(io: GameServer, registry: RoomRegistry): vo
         room.dispatch(engineAction);
       } catch (err) {
         if (err instanceof GameError) {
-          socket.emit('actionError', { code: err.code, message: describe(err.code) });
+          // GameError may carry a more specific message than the generic text.
+          socket.emit('actionError', { code: err.code, message: err.message || describe(err.code) });
           return;
         }
         throw err;
@@ -253,6 +254,8 @@ function describe(code: string): string {
       return "That isn't available right now.";
     case 'NOT_ENOUGH_PLAYERS':
       return 'You need at least three players to start.';
+    case 'NOT_ENOUGH_CARDS':
+      return 'Not enough answer cards for this many players. Enable another deck.';
     case 'ALREADY_SUBMITTED':
       return "You've already played this round.";
     case 'BAD_SUBMISSION':

@@ -32,8 +32,10 @@ image:
   # On OpenShift the integrated registry avoids Docker Hub entirely:
   #   image-registry.openshift-image-registry.svc:5000/<namespace>/cards-against-containers
   #
-  # Published 2026-09-21, amd64 only:
-  #   sha256:2ea16a482c29c8ab49168d50d12370fe3384358eb02c04733d45d855added903
+  # Published 2026-09-22, amd64 only. This is the digest the
+  # registry serves, not podman's first RepoDigest, which can be a local-only
+  # manifest that does not pull.
+  #   sha256:4ec26221f6d115f01ed84b87e8d174c42bbfc489e2f261b21737f9a316fdfb8b
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -98,6 +100,27 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
   tls: []
+
+# Custom decks, mounted into the container and picked up without a restart.
+#
+# The built-in decks always ship in the image; these are additional. The server
+# watches this directory, so adding a deck mid-evening updates lobbies in place
+# instead of restarting and ending every game in progress.
+#
+# Use the deck builder at /decks in the running app to write a deck and copy
+# out ready-to-apply ConfigMap YAML.
+customDecks:
+  # Mount an existing ConfigMap whose keys are <name>.json.
+  #   oc create configmap cac-custom-decks --from-file=myteam.json
+  configMap: ""
+
+  # Or mount a PersistentVolumeClaim, if you want decks to be writable and to
+  # outlive the ConfigMap's 1 MiB ceiling. Only one of these may be set.
+  persistentVolumeClaim: ""
+
+  # Where they are mounted. The server reads CAC_DECK_DIRS, which the chart
+  # sets to this path.
+  mountPath: /decks/custom
 
 resources:
   requests:

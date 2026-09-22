@@ -171,6 +171,79 @@ describe('room scheduling', () => {
   });
 });
 
+describe('hot-reloading decks', () => {
+  test('a room in the lobby adopts a newly added deck', () => {
+    const timers = new FakeTimers();
+    const registry = new RoomRegistry(decks, timers);
+    const room = registry.create();
+    room.dispatch({ type: 'join', playerId: 'ana', name: 'ana' });
+
+    const extra = { ...decks[0]!, id: 'newdeck', name: 'New Deck' };
+    const { adopted, unchanged } = registry.setDecks([...decks, extra]);
+    assert.equal(adopted, 1);
+    assert.equal(unchanged, 0);
+    assert.ok(room.decks.all.some((d) => d.id === 'newdeck'));
+    registry.stop();
+  });
+
+  test('a game in progress keeps the decks it was dealt from', () => {
+    const timers = new FakeTimers();
+    const registry = new RoomRegistry(decks, timers);
+    const room = registry.create();
+    for (const name of ['ana', 'ben', 'cy']) room.dispatch({ type: 'join', playerId: name, name });
+    room.dispatch({ type: 'startGame', playerId: 'ana' });
+
+    const handBefore = [...room.state.players['ana']!.hand];
+    const promptBefore = room.state.promptId;
+
+    // Reload with a completely different deck set. A mid-game room must not
+    // adopt it: every card in hand is referenced by id.
+    const { adopted, unchanged } = registry.setDecks([decks[1]!]);
+    assert.equal(adopted, 0);
+    assert.equal(unchanged, 1);
+    assert.deepEqual(room.state.players['ana']!.hand, handBefore);
+    assert.equal(room.state.promptId, promptBefore);
+
+    // And every card still resolves — nothing vanished from the hand.
+    for (const id of handBefore) {
+      assert.ok(room.decks.responses.get(id), `card ${id} disappeared from the index`);
+    }
+    registry.stop();
+  });
+
+  test('rooms created after a reload get the new decks', () => {
+    const timers = new FakeTimers();
+    const registry = new RoomRegistry(decks, timers);
+    const extra = { ...decks[0]!, id: 'newdeck', name: 'New Deck' };
+    registry.setDecks([...decks, extra]);
+    const room = registry.create();
+    assert.ok(room.decks.all.some((d) => d.id === 'newdeck'));
+    registry.stop();
+  });
+
+  test('a lobby whose enabled deck disappears falls back rather than breaking', () => {
+    const timers = new FakeTimers();
+    const registry = new RoomRegistry(decks, timers);
+    const room = registry.create({ deckIds: ['sales'] });
+    room.dispatch({ type: 'join', playerId: 'ana', name: 'ana' });
+
+    // 'sales' is gone from the new list entirely.
+    registry.setDecks(decks.filter((d) => d.id !== 'sales'));
+    assert.ok(!room.state.settings.deckIds.includes('sales'));
+    assert.ok(room.state.settings.deckIds.length > 0, 'deck selection must never be empty');
+    registry.stop();
+  });
+
+  test('the registry reports the current deck list', () => {
+    const timers = new FakeTimers();
+    const registry = new RoomRegistry(decks, timers);
+    assert.equal(registry.deckList.length, decks.length);
+    registry.setDecks([decks[0]!]);
+    assert.equal(registry.deckList.length, 1);
+    registry.stop();
+  });
+});
+
 describe('room codes', () => {
   test('are four characters from the unambiguous alphabet', () => {
     for (let i = 0; i < 500; i++) {

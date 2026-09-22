@@ -60,6 +60,10 @@ spec:
               value: production
             - name: LOG_LEVEL
               value: {{ .Values.env.logLevel | quote }}
+            {{- if or .Values.customDecks.configMap .Values.customDecks.persistentVolumeClaim }}
+            - name: CAC_DECK_DIRS
+              value: {{ .Values.customDecks.mountPath | quote }}
+            {{- end }}
             {{- if .Values.env.corsOrigin }}
             - name: CORS_ORIGIN
               value: {{ .Values.env.corsOrigin | quote }}
@@ -90,6 +94,28 @@ spec:
             failureThreshold: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if or .Values.customDecks.configMap .Values.customDecks.persistentVolumeClaim }}
+          volumeMounts:
+            - name: custom-decks
+              mountPath: {{ .Values.customDecks.mountPath }}
+              {{- if .Values.customDecks.configMap }}
+              readOnly: true
+              {{- end }}
+          {{- end }}
+      {{- if or .Values.customDecks.configMap .Values.customDecks.persistentVolumeClaim }}
+      volumes:
+        - name: custom-decks
+          {{- if .Values.customDecks.configMap }}
+          configMap:
+            name: {{ .Values.customDecks.configMap }}
+            # The ConfigMap may legitimately not exist yet; the server treats a
+            # missing deck directory as "no custom decks" rather than an error.
+            optional: true
+          {{- else }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.customDecks.persistentVolumeClaim }}
+          {{- end }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

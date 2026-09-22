@@ -10,7 +10,8 @@ import { fileURLToPath } from 'node:url';
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import { Server } from 'socket.io';
-import { loadDecks } from './decks.ts';
+import { watch, type FSWatcher } from 'node:fs';
+import { extraDeckDirsFromEnv, loadDecksDetailed } from './decks.ts';
 import { RoomRegistry } from './registry.ts';
 import { attachSocketHandlers, type GameServer } from './socket.ts';
 
@@ -21,14 +22,43 @@ const PORT = Number(process.env['PORT'] ?? 3000);
 const HOST = process.env['HOST'] ?? '0.0.0.0';
 
 export async function build() {
-  const decks = loadDecks();
+  const extraDirs = extraDeckDirsFromEnv();
+  const initial = loadDecksDetailed({ extraDirs });
   const app = Fastify({ logger: { level: process.env['LOG_LEVEL'] ?? 'info' } });
-  const registry = new RoomRegistry(decks);
+  const registry = new RoomRegistry(initial.decks);
+
+  for (const problem of initial.problems) app.log.warn(`deck: ${problem}`);
+  app.log.info(
+    `loaded ${initial.decks.length} deck(s): ${initial.decks.map((d) => d.id).join(', ')}` +
+      (extraDirs.length > 0 ? ` (custom deck dirs: ${extraDirs.join(', ')})` : ''),
+  );
+
+  /** Re-read every deck directory and hand the result to the registry. */
+  function reloadDecks(reason: string): void {
+    let result;
+    try {
+      result = loadDecksDetailed({ extraDirs });
+    } catch (err) {
+      // Never let a bad reload take down a running server.
+      app.log.error(`deck reload failed (${reason}): ${(err as Error).message}`);
+      return;
+    }
+    for (const problem of result.problems) app.log.warn(`deck: ${problem}`);
+    const { adopted, unchanged } = registry.setDecks(result.decks);
+    app.log.info(
+      `decks reloaded (${reason}): ${result.decks.length} deck(s) — ` +
+        `${adopted} room(s) updated, ${unchanged} left alone (game in progress)`,
+    );
+  }
 
   app.get('/healthz', async () => ({
     ok: true,
     rooms: registry.size,
-    decks: decks.map((d) => ({ id: d.id, prompts: d.prompts.length, responses: d.responses.length })),
+    decks: registry.deckList.map((d) => ({
+      id: d.id,
+      prompts: d.prompts.length,
+      responses: d.responses.length,
+    })),
   }));
 
   // The client build won't exist until milestone 4; serving it is optional so
@@ -55,13 +85,39 @@ export async function build() {
   attachSocketHandlers(io, registry);
   registry.startSweeping();
 
+  // Watch the custom deck directories so a deck dropped in during the evening
+  // takes effect without a restart — a restart would end every game running.
+  //
+  // Changes are debounced because writers are rarely atomic: an editor saving
+  // a file, or a kubelet swapping a ConfigMap's ..data symlink, produces a
+  // burst of events, and reloading on each one would read half-written files.
+  const watchers: FSWatcher[] = [];
+  let debounce: NodeJS.Timeout | null = null;
+  for (const dir of extraDirs) {
+    try {
+      watchers.push(
+        watch(dir, { persistent: false }, () => {
+          if (debounce) clearTimeout(debounce);
+          debounce = setTimeout(() => reloadDecks(`change in ${dir}`), 1_000);
+        }),
+      );
+      app.log.info(`watching ${dir} for deck changes`);
+    } catch (err) {
+      // A directory that does not exist yet is normal: the ConfigMap may be
+      // created after the app. It simply will not hot-reload until a restart.
+      app.log.warn(`not watching ${dir}: ${(err as Error).message}`);
+    }
+  }
+
   const close = async () => {
+    if (debounce) clearTimeout(debounce);
+    for (const w of watchers) w.close();
     registry.stop();
     await io.close();
     await app.close();
   };
 
-  return { app, io, registry, close };
+  return { app, io, registry, close, reloadDecks };
 }
 
 // Only start listening when run directly, so tests can import build().

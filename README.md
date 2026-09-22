@@ -18,7 +18,8 @@ In development. See `docs/` for design decisions.
 | 4. Client core (join, lobby, hand) | Done |
 | 5. Judging, reveal, scoreboard | Done |
 | 6. Timers, disconnects, host controls | Done |
-| 7. Container image + deployment | Image and Helm chart done |
+| 7. Container image + deployment | Done |
+| 8. Custom decks + deck builder | Done |
 
 ## Layout
 
@@ -57,7 +58,7 @@ npm run deck:import
 
 ```sh
 npm install
-npm test           # strip check + typecheck + 131 tests
+npm test           # strip check + typecheck + 178 tests
 
 # Two terminals for development:
 npm run dev        # game server on :3000
@@ -122,6 +123,22 @@ Rules worth knowing:
   and judged while it runs.
 - Cards are conserved: a test asserts no response card is ever created or lost
   across rounds, reshuffles and players leaving.
+
+## Custom decks
+
+Built-in decks ship in the image; more can be mounted from any directory listed
+in `CAC_DECK_DIRS`. The server watches them, so a deck added mid-evening takes
+effect without a restart — a restart would end every game in progress.
+
+Write one at **`/decks`** in the running app: it validates as you type using the
+same module the server uses to load deck files, so a deck that is clean in the
+builder is guaranteed to load. It emits both the deck JSON and ready-to-apply
+ConfigMap YAML.
+
+See [docs/custom-decks.md](docs/custom-decks.md). Two details worth knowing:
+card ids are regenerated as `<deck-id>-p-001` so a custom deck cannot silently
+overwrite a built-in card, and a game refuses to start if the enabled decks
+cannot deal every player a full hand.
 
 ## Server
 
@@ -261,8 +278,8 @@ and that no text is ever dealt twice when several are enabled together.
 ## Running the container
 
 ```sh
-podman build -t cards-against-containers:0.1.0 .
-podman run -d --name cac -p 8080:3000 cards-against-containers:0.1.0
+podman build -t cards-against-containers:0.2.0 .
+podman run -d --name cac -p 8080:3000 cards-against-containers:0.2.0
 ```
 
 Then open http://localhost:8080. Docker works identically. Full walkthrough,

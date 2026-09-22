@@ -1,7 +1,7 @@
 {
   "name": "cards-against-containers",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -13,7 +13,7 @@
     "deck:import": "node scripts/import-deck.ts",
     "typecheck": "tsc && tsc -p packages/client",
     "check:strip": "node --no-warnings scripts/check-strip-safe.ts",
-    "test": "npm run check:strip && npm run typecheck && npm test --workspace @cac/server",
+    "test": "npm run check:strip && npm run typecheck && npm test --workspace @cac/server && npm test --workspace @cac/client",
     "dev": "node --watch packages/server/src/index.ts",
     "start": "node packages/server/src/index.ts",
     "build": "npm run build --workspace @cac/client",

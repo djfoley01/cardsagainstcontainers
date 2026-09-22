@@ -57,9 +57,20 @@ export function connectedIds(state: GameState): string[] {
   return state.seatOrder.filter((id) => state.players[id]?.connected);
 }
 
-/** Players who must submit before judging can begin: connected, not the czar. */
-export function requiredSubmitters(state: GameState): string[] {
-  return connectedIds(state).filter((id) => id !== state.czarId);
+/**
+ * Players who must submit before judging can begin: connected, not the czar,
+ * and actually holding enough cards to play.
+ *
+ * That last condition is not hypothetical. A small deck played on its own can
+ * run out mid-deal — a five-card custom deck across three players leaves two
+ * of them with nothing. Such a player physically cannot submit, so counting
+ * them as owing a submission waits forever: with timers off nothing advances,
+ * and the round is wedged until the host intervenes.
+ */
+export function requiredSubmitters(state: GameState, pick = 1): string[] {
+  return connectedIds(state).filter(
+    (id) => id !== state.czarId && (state.players[id]?.hand.length ?? 0) >= pick,
+  );
 }
 
 export function hasSubmitted(state: GameState, playerId: string): boolean {
@@ -204,8 +215,14 @@ function beginJudging(state: GameState, ctx: EngineContext): void {
 /** Move to judging if everyone who still can submit already has. */
 function maybeBeginJudging(state: GameState, ctx: EngineContext): void {
   if (state.phase !== 'submitting') return;
-  const required = requiredSubmitters(state);
-  if (required.length === 0) return;
+  const pick = currentPrompt(state, ctx.decks)?.pick ?? 1;
+  const required = requiredSubmitters(state, pick);
+  if (required.length === 0) {
+    // Nobody left who can play — everyone disconnected, or an unusually thin
+    // pile left them short. Bin the round rather than waiting on no one.
+    if (state.submissions.length > 0) beginJudging(state, ctx);
+    return;
+  }
   if (required.every((id) => hasSubmitted(state, id))) beginJudging(state, ctx);
 }
 
@@ -574,6 +591,24 @@ export function reduce(state: GameState, action: Action, ctx: EngineContext): Ga
       requireHost(next, action.playerId);
       requirePhase(next, 'lobby', 'gameOver');
       if (connectedIds(next).length < MIN_PLAYERS) throw new GameError('NOT_ENOUGH_PLAYERS');
+
+      // Refuse a deck selection too small to deal everyone a hand.
+      //
+      // Without this the deal runs dry part way through: the players at the
+      // end of the seat order get nothing, cannot submit, and the round waits
+      // on them forever. Cards are conserved once dealt, so checking here is
+      // enough — a game that can start can always refill.
+      const seats = next.seatOrder.length;
+      const available = ctx.decks.all
+        .filter((d) => next.settings.deckIds.includes(d.id))
+        .reduce((n, d) => n + d.responses.length, 0);
+      if (available < seats * next.settings.handSize) {
+        throw new GameError(
+          'NOT_ENOUGH_CARDS',
+          `The selected decks have ${available} answer cards; ${seats} players need ` +
+            `${seats * next.settings.handSize}. Enable another deck or lower the hand size.`,
+        );
+      }
       // Replaying from gameOver is a fresh game on the same seats.
       for (const player of Object.values(next.players)) {
         player.score = 0;

@@ -27,7 +27,7 @@ export class RoomRegistry {
   private sweepHandle: unknown = null;
 
   // Written longhand: Node's strip-only mode rejects parameter properties.
-  private readonly decks: readonly Deck[];
+  private decks: readonly Deck[];
   private readonly timers: Timers;
 
   constructor(decks: readonly Deck[], timers: Timers = realTimers) {
@@ -37,6 +37,30 @@ export class RoomRegistry {
 
   get size(): number {
     return this.rooms.size;
+  }
+
+  get deckList(): readonly Deck[] {
+    return this.decks;
+  }
+
+  /**
+   * Swap in a freshly loaded deck list. New rooms get it immediately; rooms
+   * sitting in a lobby adopt it so the deck list updates in front of them;
+   * games already under way keep the decks they were dealt from.
+   *
+   * The array is replaced rather than mutated, because each Room holds its own
+   * index built from whatever it was handed — mutating in place would reach
+   * backwards into games in progress.
+   */
+  setDecks(decks: readonly Deck[]): { adopted: number; unchanged: number } {
+    this.decks = decks;
+    let adopted = 0;
+    let unchanged = 0;
+    for (const room of this.rooms.values()) {
+      if (room.adoptDecks(decks)) adopted++;
+      else unchanged++;
+    }
+    return { adopted, unchanged };
   }
 
   create(settings: Partial<GameSettings> = {}, rand: () => number = Math.random): Room {

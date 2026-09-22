@@ -22,10 +22,12 @@ export function JoinScreen({
   connection,
   onCreate,
   onJoin,
+  onOpenBuilder,
 }: {
   connection: ConnectionState;
   onCreate: (name: string) => Promise<JoinAck>;
   onJoin: (code: string, name: string) => Promise<JoinAck>;
+  onOpenBuilder: () => void;
 }) {
   const [name, setName] = useState(rememberedName);
   const [code, setCode] = useState(codeFromUrl);
@@ -135,6 +137,14 @@ export function JoinScreen({
           </p>
         )}
       </form>
+
+      <button
+        type="button"
+        onClick={onOpenBuilder}
+        className="mx-auto text-sm font-semibold text-felt-500 underline underline-offset-4 transition hover:text-accent-400"
+      >
+        Make your own deck
+      </button>
 
       <p className="text-center text-xs leading-relaxed text-felt-700">
         Card content from{' '}

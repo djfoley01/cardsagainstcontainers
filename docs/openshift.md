@@ -32,14 +32,14 @@ registry is usually easiest on an internal cluster.
 oc new-project happyhour
 
 # Build locally and push to the integrated registry.
-podman build -t cards-against-containers:0.1.0 .
+podman build -t cards-against-containers:0.2.0 .
 
 oc registry login
 REGISTRY=$(oc get route default-route -n openshift-image-registry \
   -o jsonpath='{.spec.host}')
-podman tag cards-against-containers:0.1.0 \
-  "$REGISTRY/happyhour/cards-against-containers:0.1.0"
-podman push "$REGISTRY/happyhour/cards-against-containers:0.1.0"
+podman tag cards-against-containers:0.2.0 \
+  "$REGISTRY/happyhour/cards-against-containers:0.2.0"
+podman push "$REGISTRY/happyhour/cards-against-containers:0.2.0"
 ```
 
 If the registry route isn't exposed, build in-cluster instead — this needs no
@@ -69,7 +69,7 @@ instead — which avoids Docker Hub's rate limits entirely — override it:
 helm install cac deploy/helm/cards-against-containers \
   --namespace happyhour \
   --set image.repository=image-registry.openshift-image-registry.svc:5000/happyhour/cards-against-containers \
-  --set image.tag=0.1.0
+  --set image.tag=0.2.0
 ```
 
 Leave `route.host` empty and OpenShift generates a hostname. To pin one:

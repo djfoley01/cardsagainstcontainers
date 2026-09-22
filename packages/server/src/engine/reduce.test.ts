@@ -757,6 +757,57 @@ describe('player removal mid-round', () => {
   });
 });
 
+describe('decks too small to play', () => {
+  test('a deck that cannot fill every hand is refused at start, with numbers', () => {
+    // The custom-deck case: someone writes five great cards and plays it alone.
+    const h = new Harness([tinyDeck(5, 5)], { deckIds: ['tiny'] });
+    h.join('ana', 'ben', 'cy');
+    assert.throws(
+      () => h.dispatch({ type: 'startGame', playerId: 'ana' }),
+      (err: unknown) =>
+        err instanceof GameError &&
+        err.code === 'NOT_ENOUGH_CARDS' &&
+        /5 answer cards; 3 players need 30/.test(err.message),
+    );
+  });
+
+  test('the same deck plays fine alongside a big one', () => {
+    const h = new Harness([...decks, tinyDeck(5, 5)], { deckIds: ['containers', 'tiny'] });
+    h.join('ana', 'ben', 'cy');
+    h.dispatch({ type: 'startGame', playerId: 'ana' });
+    assert.equal(h.state.phase, 'submitting');
+    for (const id of h.state.seatOrder) assert.equal(h.state.players[id]!.hand.length, 10);
+  });
+
+  test('a smaller hand size makes a small deck playable', () => {
+    const h = new Harness([tinyDeck(5, 30)], { deckIds: ['tiny'], handSize: 10 });
+    h.join('ana', 'ben', 'cy');
+    h.dispatch({ type: 'startGame', playerId: 'ana' });
+    assert.equal(h.state.phase, 'submitting');
+  });
+
+  test('exactly enough cards is enough', () => {
+    const h = new Harness([tinyDeck(5, 30)], { deckIds: ['tiny'] });
+    h.join('ana', 'ben', 'cy');
+    h.dispatch({ type: 'startGame', playerId: 'ana' });
+    assert.equal(h.state.phase, 'submitting');
+    assert.equal(h.state.responseDraw.length, 0, 'should have dealt the pile exactly dry');
+  });
+
+  test('a player holding too few cards is not waited on', () => {
+    // Defence in depth: the start check makes this rare, but a player joining
+    // mid-game against a thin pile can still end up short.
+    const h = new Harness(decks, { deckIds: ['containers'], submitTimerMs: null });
+    h.join('ana', 'ben', 'cy');
+    h.dispatch({ type: 'startGame', playerId: 'ana' });
+    const short = h.state.seatOrder.find((id) => id !== h.state.czarId)!;
+    h.state.players[short]!.hand = [];
+
+    h.submitAll();
+    assert.equal(h.state.phase, 'judging', 'the round waited on a player who held nothing');
+  });
+});
+
 describe('multiple decks', () => {
   test('every shipped deck loads with cards and attribution', () => {
     assert.equal(decks.length, 4);

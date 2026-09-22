@@ -2,10 +2,13 @@
  * The waiting room: share the code, tune settings, start the game.
  */
 import { useState } from 'react';
-import { MIN_PLAYERS, type GameSettings } from '@cac/shared/game';
+import { MAX_PLAYERS, MIN_PLAYERS, type GameSettings } from '@cac/shared/game';
 import type { ClientAction, PublicGameState } from '@cac/shared/protocol';
 import { PlayerList } from './PlayerList.tsx';
 import { Attribution } from './Attribution.tsx';
+
+/** Beyond this many decks the list gets a capped height. Below it, never. */
+const SCROLL_AFTER = 8;
 
 export function Lobby({
   state,
@@ -17,7 +20,24 @@ export function Lobby({
   const [copied, setCopied] = useState(false);
   const isHost = state.you.isHost;
   const connected = state.players.filter((p) => p.connected).length;
-  const canStart = connected >= MIN_PLAYERS;
+
+  /**
+   * The combined pool from the decks that are ticked.
+   *
+   * This mirrors the rule the server enforces when starting a game: every
+   * player must be dealt a full hand, so the deck selection needs
+   * players x handSize answers. Showing it here means you find out before
+   * pressing Start rather than being told no afterwards.
+   */
+  const pool = (() => {
+    const selected = state.availableDecks.filter((d) => state.settings.deckIds.includes(d.id));
+    const prompts = selected.reduce((n, d) => n + d.prompts, 0);
+    const responses = selected.reduce((n, d) => n + d.responses, 0);
+    const seats = Math.floor(responses / Math.max(1, state.settings.handSize));
+    return { prompts, responses, seats, enough: seats >= Math.max(connected, MIN_PLAYERS) };
+  })();
+
+  const canStart = connected >= MIN_PLAYERS && pool.enough;
 
   const shareUrl = `${window.location.origin}/${state.roomCode}`;
 
@@ -68,9 +88,14 @@ export function Lobby({
             Players ({connected})
           </h2>
           <PlayerList state={state} onKick={(id) => act({ type: 'kick', targetId: id })} />
-          {!canStart && (
+          {connected < MIN_PLAYERS && (
             <p className="text-sm text-warn-400">
               Need at least {MIN_PLAYERS} players — {MIN_PLAYERS - connected} more to go.
+            </p>
+          )}
+          {connected >= MIN_PLAYERS && !pool.enough && (
+            <p className="text-sm text-warn-400">
+              Not enough answer cards for {connected} players. Enable another deck.
             </p>
           )}
         </div>
@@ -78,32 +103,57 @@ export function Lobby({
         <div className="flex flex-col gap-4 rounded-2xl bg-felt-900 p-4 ring-1 ring-white/10">
           <h2 className="text-xs font-bold tracking-wider text-felt-500 uppercase">Settings</h2>
 
-          <fieldset className="flex flex-col gap-2" disabled={!isHost}>
+          <fieldset className="flex min-w-0 flex-col gap-1.5" disabled={!isHost}>
             <legend className="mb-1 text-sm font-semibold text-felt-300">Decks</legend>
-            {state.availableDecks.map((deck) => (
-              <label
-                key={deck.id}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 ring-1 transition ${
-                  state.settings.deckIds.includes(deck.id)
-                    ? 'bg-accent-500/10 ring-accent-500/40'
-                    : 'bg-felt-800 ring-transparent'
-                } ${isHost ? 'cursor-pointer' : 'opacity-70'}`}
-              >
-                <input
-                  type="checkbox"
-                  checked={state.settings.deckIds.includes(deck.id)}
-                  onChange={() => toggleDeck(deck.id)}
-                  className="mt-0.5 size-4 shrink-0 accent-[oklch(0.68_0.17_195)]"
-                />
-                <span className="flex-1">
-                  <span className="block text-sm font-semibold text-white">{deck.name}</span>
-                  <span className="block text-xs text-felt-500">{deck.description}</span>
-                  <span className="block text-[0.7rem] text-felt-700">
-                    {deck.prompts} prompts · {deck.responses} answers
+
+            {/* One line per deck. The description moves to a tooltip and the
+                per-deck card counts are replaced by the combined total below:
+                the number that decides anything is the pool you end up with,
+                not how each deck contributes to it.
+
+                Capped height only once the list is genuinely long. A scroll
+                region hides which boxes are ticked, which is the one thing
+                this control exists to show, so it is a safety valve for a
+                wall of custom decks rather than the normal layout. */}
+            <div
+              className={
+                state.availableDecks.length > SCROLL_AFTER
+                  ? 'flex max-h-64 flex-col gap-1.5 overflow-y-auto pr-1'
+                  : 'flex flex-col gap-1.5'
+              }
+            >
+              {state.availableDecks.map((deck) => (
+                <label
+                  key={deck.id}
+                  title={`${deck.description || deck.name} — ${deck.prompts} prompts, ${deck.responses} answers`}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-1.5 ring-1 transition ${
+                    state.settings.deckIds.includes(deck.id)
+                      ? 'bg-accent-500/10 ring-accent-500/40'
+                      : 'bg-felt-800 ring-transparent'
+                  } ${isHost ? 'cursor-pointer' : 'opacity-70'}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={state.settings.deckIds.includes(deck.id)}
+                    onChange={() => toggleDeck(deck.id)}
+                    className="size-4 shrink-0 accent-[oklch(0.68_0.17_195)]"
+                  />
+                  <span className="min-w-0 flex-1 truncate text-sm font-semibold text-white">
+                    {deck.name}
                   </span>
-                </span>
-              </label>
-            ))}
+                  <span className="shrink-0 font-mono text-[0.7rem] text-felt-700">
+                    {deck.responses}
+                  </span>
+                </label>
+              ))}
+            </div>
+
+            <p className={`mt-1 text-xs ${pool.enough ? 'text-felt-500' : 'text-warn-400'}`}>
+              {pool.prompts} prompts · {pool.responses} answers —{' '}
+              {pool.enough
+                ? `enough for ${Math.min(pool.seats, MAX_PLAYERS)} players`
+                : `not enough for ${connected} players, need ${connected * state.settings.handSize}`}
+            </p>
           </fieldset>
 
           <label className="flex items-center justify-between gap-3 text-sm">

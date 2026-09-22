@@ -32,7 +32,8 @@ export const realTimers: Timers = {
 
 export class Room {
   readonly code: string;
-  readonly decks: DeckIndex;
+  /** Snapshotted at construction; see adoptDecks for when it may change. */
+  decks: DeckIndex;
   state: GameState;
   /** Last time anything happened here, for idle cleanup. */
   lastActivity: number;
@@ -65,6 +66,31 @@ export class Room {
   }
 
   private readonly rng = createRng(Math.floor(Math.random() * 2 ** 31));
+
+  /**
+   * Take a newly loaded deck list, but only while still in the lobby.
+   *
+   * Cards are referenced by id from hands, piles and submissions. Swapping the
+   * deck index under a game in progress would leave those ids resolving to
+   * nothing, and cards would quietly vanish from players' hands. A lobby has
+   * nothing dealt yet, so there is nothing to invalidate — which is what makes
+   * adding a deck mid-evening safe.
+   */
+  adoptDecks(decks: readonly Deck[]): boolean {
+    if (this.closed || this.state.phase !== 'lobby') return false;
+    this.decks = buildDeckIndex(decks);
+    // Drop any enabled deck that no longer exists, and never leave the
+    // selection empty, which the engine rejects.
+    const available = new Set(decks.map((d) => d.id));
+    const kept = this.state.settings.deckIds.filter((id) => available.has(id));
+    this.state.settings = {
+      ...this.state.settings,
+      deckIds: kept.length > 0 ? kept : [decks[0]!.id],
+    };
+    this.state = reduce(this.state, { type: 'reap' }, this.context());
+    for (const listener of this.listeners) listener(this.state);
+    return true;
+  }
 
   onChange(fn: (state: GameState) => void): () => void {
     this.listeners.add(fn);
