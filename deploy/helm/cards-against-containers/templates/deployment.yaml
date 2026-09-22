@@ -47,11 +47,13 @@ spec:
           {{- end }}
           ports:
             - name: http
-              containerPort: 3000
+              containerPort: {{ .Values.containerPort }}
               protocol: TCP
           env:
+            # Single source of truth: the same value drives the listener, the
+            # declared port and the probes, so they cannot drift apart.
             - name: PORT
-              value: "3000"
+              value: {{ .Values.containerPort | quote }}
             - name: HOST
               value: "0.0.0.0"
             - name: NODE_ENV

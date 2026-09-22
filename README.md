@@ -300,9 +300,12 @@ A Helm chart is in `deploy/helm/cards-against-containers`, with a walkthrough in
 [docs/openshift.md](docs/openshift.md).
 
 ```sh
-helm install cac deploy/helm/cards-against-containers -n happyhour \
-  --set image.repository=image-registry.openshift-image-registry.svc:5000/happyhour/cards-against-containers
+helm install cac deploy/helm/cards-against-containers -n happyhour
 ```
+
+The chart defaults to the published image on Docker Hub, pinned to the chart's
+`appVersion` rather than a floating `latest` — a pull that silently changed the
+image would end every game in progress the next time the pod restarted.
 
 The chart targets the default `restricted-v2` SCC and needs no privileges. It
 **refuses to render with more than one replica**, and uses the `Recreate`

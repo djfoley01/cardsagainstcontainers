@@ -55,6 +55,16 @@ That produces an ImageStream you can reference as
 
 ## 2. Install the chart
 
+The chart points at the published image by default, so this is enough:
+
+```sh
+helm install cac deploy/helm/cards-against-containers --namespace happyhour
+```
+
+That pulls `docker.io/djfoley01/cards-against-containers` at the chart's
+`appVersion`. To use the image you built into the integrated registry in step 1
+instead — which avoids Docker Hub's rate limits entirely — override it:
+
 ```sh
 helm install cac deploy/helm/cards-against-containers \
   --namespace happyhour \
@@ -119,10 +129,12 @@ entirely, so players behind a strict egress proxy still get in.
 
 | Value | Default | Notes |
 | --- | --- | --- |
-| `image.repository` | `cards-against-containers` | Must point somewhere the cluster can pull from |
+| `image.repository` | `docker.io/djfoley01/cards-against-containers` | Override for the integrated registry, or to avoid Docker Hub rate limits |
+| `image.tag` | chart `appVersion` | Pinned deliberately; `latest` exists on the registry but floating it hides what is running |
 | `route.host` | `""` | Empty means OpenShift generates one |
 | `resources.limits.memory` | `512Mi` | Plenty for a dozen players |
 | `env.logLevel` | `info` | `warn` if the request logging is noisy |
+| `containerPort` | `3000` | Must be >= 1024; the pod runs non-root. Sets the listener, the declared port and the probes together |
 | `ingress.enabled` | `false` | Use instead of `route` on plain Kubernetes |
 
 ## Access
@@ -134,6 +146,13 @@ behind whatever your cluster uses for internal-only routes, or use
 `oc port-forward` for a one-off.
 
 ## Troubleshooting
+
+**Pod restarts forever with failing probes** — usually a port mismatch. Change
+`containerPort` rather than setting `PORT` through `extraEnv`: the declared
+port and the probes are derived from `containerPort`, so overriding the
+variable alone leaves the probes pointing at a port nothing is listening on.
+The chart now refuses to render that combination, and refuses a port below
+1024, which the non-root pod cannot bind.
 
 **Pod is `CreateContainerConfigError`** — almost always the numeric-UID problem
 above. Check `oc describe pod` for "container has runAsNonRoot and image has

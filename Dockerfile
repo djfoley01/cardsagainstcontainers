@@ -19,11 +19,27 @@ WORKDIR /app
 # Corporate CA certificates, if any. The directory is empty by default, which
 # is why this is a plain COPY of the whole directory rather than a glob — a
 # glob that matches nothing fails the build.
-#
-# These go in before `npm ci`, because a TLS-inspecting proxy breaks the
-# install itself, which is where this problem almost always shows up.
 COPY certs/ /usr/local/share/ca-certificates/
-RUN apk add --no-cache ca-certificates && update-ca-certificates
+
+# Trust them BEFORE anything touches the network.
+#
+# Alpine's repositories are HTTPS, so `apk` itself needs the corporate CA.
+# That makes `apk add ca-certificates` a chicken-and-egg: the command that
+# would install trust cannot run until trust exists. The base image already
+# ships /etc/ssl/certs/ca-certificates.crt, so appending to it with plain
+# shell needs no package manager, no network, and no proxy access.
+#
+# The blank line before each certificate matters: if the existing bundle does
+# not end in a newline, concatenating straight onto it fuses two PEM blocks
+# together and the whole file silently stops parsing.
+RUN set -eu; \
+    if ls /usr/local/share/ca-certificates/*.crt >/dev/null 2>&1; then \
+      for cert in /usr/local/share/ca-certificates/*.crt; do \
+        printf '\n' >> /etc/ssl/certs/ca-certificates.crt; \
+        cat "$cert" >> /etc/ssl/certs/ca-certificates.crt; \
+      done; \
+      echo "installed $(ls -1 /usr/local/share/ca-certificates/*.crt | wc -l) custom CA certificate(s)"; \
+    fi
 
 # npm runs under Node, which ignores the system trust store by default, so the
 # flag is needed here too or the install still fails behind a proxy.
@@ -61,14 +77,35 @@ ENV NODE_ENV=production \
     # root list Node bundles, so this costs nothing for public TLS.
     NODE_OPTIONS=--use-system-ca
 
-# tini: minimal init so signals are handled from the very first instant; see
-# the ENTRYPOINT comment at the bottom for why that is not optional here.
-# ca-certificates: maintains the trust store the flag above reads.
-RUN apk add --no-cache tini ca-certificates
-
-# Same certificates as the build stage. Empty by default; see certs/README.md.
+# Corporate CA certificates, if any. The directory is empty by default, which
+# is why this is a plain COPY of the whole directory rather than a glob — a
+# glob that matches nothing fails the build.
 COPY certs/ /usr/local/share/ca-certificates/
-RUN update-ca-certificates
+
+# Trust them BEFORE anything touches the network.
+#
+# Alpine's repositories are HTTPS, so `apk` itself needs the corporate CA.
+# That makes `apk add ca-certificates` a chicken-and-egg: the command that
+# would install trust cannot run until trust exists. The base image already
+# ships /etc/ssl/certs/ca-certificates.crt, so appending to it with plain
+# shell needs no package manager, no network, and no proxy access.
+#
+# The blank line before each certificate matters: if the existing bundle does
+# not end in a newline, concatenating straight onto it fuses two PEM blocks
+# together and the whole file silently stops parsing.
+RUN set -eu; \
+    if ls /usr/local/share/ca-certificates/*.crt >/dev/null 2>&1; then \
+      for cert in /usr/local/share/ca-certificates/*.crt; do \
+        printf '\n' >> /etc/ssl/certs/ca-certificates.crt; \
+        cat "$cert" >> /etc/ssl/certs/ca-certificates.crt; \
+      done; \
+      echo "installed $(ls -1 /usr/local/share/ca-certificates/*.crt | wc -l) custom CA certificate(s)"; \
+    fi
+
+# Only now is the network usable behind a TLS-inspecting proxy. tini is a
+# minimal init so signals are handled from the very first instant; see the
+# ENTRYPOINT comment at the bottom for why that is not optional here.
+RUN apk add --no-cache tini
 
 COPY package.json package-lock.json ./
 COPY packages/shared/package.json packages/shared/

@@ -13,6 +13,14 @@ the checks below would protect nothing.
 {{- if and .Values.route.enabled .Values.ingress.enabled -}}
 {{- fail "enable either route (OpenShift) or ingress (plain Kubernetes), not both" -}}
 {{- end -}}
+{{- if lt (int .Values.containerPort) 1024 -}}
+{{- fail "containerPort must be 1024 or above: the container runs as a non-root user and cannot bind a privileged port, so the process would die with EACCES" -}}
+{{- end -}}
+{{- range .Values.extraEnv -}}
+{{- if or (eq .name "PORT") (eq .name "HOST") -}}
+{{- fail "set containerPort instead of overriding PORT or HOST through extraEnv: the declared containerPort and the probes are derived from it, and overriding the variable alone leaves them pointing at a port nothing is listening on, so the pod restarts forever" -}}
+{{- end -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "cac.name" -}}

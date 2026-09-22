@@ -89,11 +89,26 @@ podman logs -f cac
 podman run --rm -p 8080:3000 cards-against-containers:0.1.0
 ```
 
-**Change the port or log level:**
+**Change the published port** — the left-hand number is the host port and can
+be anything:
 
 ```sh
-podman run -d --name cac -p 9000:3000 \
-  -e LOG_LEVEL=warn \
+podman run -d --name cac -p 9000:3000 cards-against-containers:0.1.0
+```
+
+**Change the port inside the container** with `PORT`. It must be **1024 or
+above**: the container runs as a non-root user and a privileged port fails with
+`listen EACCES: permission denied`.
+
+```sh
+podman run -d --name cac -p 8080:9999 -e PORT=9999 \
+  cards-against-containers:0.1.0
+```
+
+**Change the log level:**
+
+```sh
+podman run -d --name cac -p 8080:3000 -e LOG_LEVEL=warn \
   cards-against-containers:0.1.0
 ```
 
@@ -123,9 +138,22 @@ the build stage and the runtime stage. The directory is empty by default and
 the build works fine that way.
 
 Requirements: **PEM format** (`-----BEGIN CERTIFICATE-----`) even though the
-extension is `.crt`, one certificate per file, and the extension must be
-`.crt` — `update-ca-certificates` silently ignores `.pem` and DER files.
-Convert DER with `openssl x509 -inform der -in ca.der -out ca.crt`.
+extension is `.crt`, and the extension must be `.crt` since that is what the
+build globs for. Convert DER with
+`openssl x509 -inform der -in ca.der -out ca.crt`.
+
+### Why not `apk add ca-certificates`
+
+Alpine's package repositories are HTTPS. Behind a TLS-inspecting proxy `apk`
+cannot connect until the corporate CA is already trusted, so
+`apk add ca-certificates && update-ca-certificates` cannot be what installs
+it — the command that would establish trust needs trust to run. That ordering
+was the first version of this Dockerfile and it failed exactly that way.
+
+The build instead appends the certificates to the bundle the base image already
+ships, with plain shell: no package manager, no network, no proxy access. That
+step is verified to build under `--network none`. Only afterwards does the
+runtime stage `apk add tini`, by which point the proxy is trusted.
 
 ### Node ignores the system trust store
 

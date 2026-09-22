@@ -14,11 +14,26 @@
 replicaCount: 1
 
 image:
-  # Push the image somewhere your cluster can pull from. Inside OpenShift the
-  # integrated registry works well:
+  repository: docker.io/djfoley01/cards-against-containers
+
+  # Empty means .Chart.AppVersion, which is pinned to a released tag rather
+  # than `latest`. A `latest` tag also exists on the registry, but floating it
+  # here would make it impossible to tell what is actually running, and a pull
+  # that silently changed the image would end every game in progress the next
+  # time the pod restarted. Set it explicitly to override.
+  tag: ""
+
+  # The registry is public, so an unauthenticated cluster can pull it — but
+  # Docker Hub rate-limits anonymous pulls per egress IP and a corporate
+  # cluster's budget is usually already spent. If pods land in
+  # ImagePullBackOff with `toomanyrequests`, add a pull secret; see
+  # docs/building.md.
+  #
+  # On OpenShift the integrated registry avoids Docker Hub entirely:
   #   image-registry.openshift-image-registry.svc:5000/<namespace>/cards-against-containers
-  repository: cards-against-containers
-  tag: ""          # defaults to .Chart.AppVersion
+  #
+  # Published 2026-09-21, amd64 only:
+  #   sha256:2ea16a482c29c8ab49168d50d12370fe3384358eb02c04733d45d855added903
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -30,9 +45,15 @@ serviceAccount:
   name: ""
   annotations: {}
 
+# The port the app listens on inside the pod. Anything >= 1024 works; the
+# container runs as a non-root user and cannot bind a privileged port, so 80
+# or 443 will fail with EACCES. Change this rather than setting PORT through
+# extraEnv, which would leave the probes pointing at the wrong port.
+containerPort: 3000
+
 service:
   type: ClusterIP
-  port: 8080       # service port; the container always listens on 3000
+  port: 8080       # service port, independent of containerPort
 
 # OpenShift Route. Leave enabled on OpenShift; use ingress instead on plain
 # Kubernetes.
