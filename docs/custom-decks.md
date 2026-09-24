@@ -7,6 +7,21 @@ The server **watches those directories**, so a deck added during the evening
 takes effect without a restart — and a restart would end every game in
 progress.
 
+## Decks that ship in the image
+
+Seven decks ship built in; only Cards Against Containers is on by default. The
+other six are toggled in the lobby, and the three written for this project —
+Terraform, OpenShift and Nutanix — keep their cards as plain text under
+`decks/source/<deck>/prompts.txt` and `responses.txt`. To add or reword a card,
+edit the text file and regenerate:
+
+```sh
+npm run deck:import
+```
+
+That path is for decks that belong in the repository. Everything below is for
+decks that do not.
+
 ## Writing a deck
 
 Open **`/decks`** in the running app, or follow the "Make your own deck" link on

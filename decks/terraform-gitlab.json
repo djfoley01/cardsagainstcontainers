@@ -1,0 +1,816 @@
+{
+  "id": "terraform-gitlab",
+  "name": "Cards Against Terraform",
+  "description": "State files, pipelines, and the plan nobody read.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/cardsagainstcontainers/deck",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "upstreamCommit": "original content authored for this project, not vendored"
+  },
+  "prompts": [
+    {
+      "id": "terraform-gitlab-p-001",
+      "text": "terraform plan says ______ will be destroyed.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-002",
+      "text": "The state file has been locked for six hours by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-003",
+      "text": "Our pipeline has been pending for forty minutes because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-004",
+      "text": "What did the three thousand line plan output actually change?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-005",
+      "text": "I fixed the flaky pipeline by adding ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-006",
+      "text": "terraform apply -auto-approve in production, followed immediately by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-007",
+      "text": "The merge request was blocked by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-008",
+      "text": "Why is the runner offline again?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-009",
+      "text": "We manage ______ with a null_resource and a shell script.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-010",
+      "text": "The module registry is just ______ with extra steps.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-011",
+      "text": "What is in the .gitlab-ci.yml that nobody understands?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-012",
+      "text": "Error: Provider produced inconsistent final plan. Caused by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-013",
+      "text": "Our disaster recovery plan is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-014",
+      "text": "We pinned the provider version after ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-015",
+      "text": "What broke when someone ran terraform destroy on the wrong workspace?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-016",
+      "text": "The pipeline passed, but ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-017",
+      "text": "I spent the entire sprint on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-018",
+      "text": "Configuration drift is usually caused by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-019",
+      "text": "We replaced our YAML anchors with ______ and ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "terraform-gitlab-p-020",
+      "text": "What does -target actually mean?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-021",
+      "text": "The CI cache contains ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-022",
+      "text": "Why did the deploy job run against production?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-023",
+      "text": "The real reason we adopted Terragrunt was ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-024",
+      "text": "Our secrets are stored in ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-025",
+      "text": "The code review consisted entirely of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-026",
+      "text": "terraform import finally worked after ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-027",
+      "text": "What do we do when the state file gets corrupted?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-028",
+      "text": "Our merge train derailed because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-029",
+      "text": "I approved the manual job without reading ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-030",
+      "text": "The infrastructure diagram is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-031",
+      "text": "We swapped ______ for ______ and the pipeline got slower.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "terraform-gitlab-p-032",
+      "text": "The runner ran out of disk because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-033",
+      "text": "What is count = var.enabled ? 1 : 0 really hiding?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-034",
+      "text": "The postmortem blamed ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-035",
+      "text": "Our onboarding document says to start with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-036",
+      "text": "What is the first thing that breaks on a Monday morning?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-037",
+      "text": "depends_on was added to work around ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-038",
+      "text": "The plan and the apply disagreed about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-039",
+      "text": "Why is the pipeline YAML nine hundred lines long?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-040",
+      "text": "We finally deleted ______ after three years.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-041",
+      "text": "No changes. Your infrastructure matches the configuration. Except for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-042",
+      "text": "The hotfix branch contains ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-043",
+      "text": "What is the one job nobody is allowed to retry?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-044",
+      "text": "Our change management process is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-045",
+      "text": "The shared runner was busy with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-046",
+      "text": "This terraform module has one input and ______ outputs.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-047",
+      "text": "The only person who understands the pipeline is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-048",
+      "text": "We cannot upgrade the provider because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-049",
+      "text": "What goes in the variables file that should not?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "terraform-gitlab-p-050",
+      "text": "Rolling back meant ______.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "terraform-gitlab-r-001",
+      "text": "The entire production VPC"
+    },
+    {
+      "id": "terraform-gitlab-r-002",
+      "text": "A state file in someone's Downloads folder"
+    },
+    {
+      "id": "terraform-gitlab-r-003",
+      "text": "Six hundred lines of YAML nobody reads"
+    },
+    {
+      "id": "terraform-gitlab-r-004",
+      "text": "A runner with no tags"
+    },
+    {
+      "id": "terraform-gitlab-r-005",
+      "text": "docker:dind, for the fourth time"
+    },
+    {
+      "id": "terraform-gitlab-r-006",
+      "text": "A commit message that just says \"fix\""
+    },
+    {
+      "id": "terraform-gitlab-r-007",
+      "text": "The intern's first merge request"
+    },
+    {
+      "id": "terraform-gitlab-r-008",
+      "text": "terraform state rm and a prayer"
+    },
+    {
+      "id": "terraform-gitlab-r-009",
+      "text": "A module pinned to a branch called wip"
+    },
+    {
+      "id": "terraform-gitlab-r-010",
+      "text": "The DynamoDB lock table"
+    },
+    {
+      "id": "terraform-gitlab-r-011",
+      "text": "Copying the state file to S3 by hand"
+    },
+    {
+      "id": "terraform-gitlab-r-012",
+      "text": "A pipeline that only runs on Tuesdays"
+    },
+    {
+      "id": "terraform-gitlab-r-013",
+      "text": "allow_failure: true"
+    },
+    {
+      "id": "terraform-gitlab-r-014",
+      "text": "An orphaned load balancer costing nine hundred dollars a month"
+    },
+    {
+      "id": "terraform-gitlab-r-015",
+      "text": "The one engineer who left in March"
+    },
+    {
+      "id": "terraform-gitlab-r-016",
+      "text": "A cron job on someone's laptop"
+    },
+    {
+      "id": "terraform-gitlab-r-017",
+      "text": "Manual approval at two in the morning"
+    },
+    {
+      "id": "terraform-gitlab-r-018",
+      "text": "A variable called temp_fix_do_not_remove"
+    },
+    {
+      "id": "terraform-gitlab-r-019",
+      "text": "Provider version 2.x, forever"
+    },
+    {
+      "id": "terraform-gitlab-r-020",
+      "text": "Rebasing onto main at five on a Friday"
+    },
+    {
+      "id": "terraform-gitlab-r-021",
+      "text": "A merge conflict in the lock file"
+    },
+    {
+      "id": "terraform-gitlab-r-022",
+      "text": "An untagged resource"
+    },
+    {
+      "id": "terraform-gitlab-r-023",
+      "text": "Clicking around in the console instead"
+    },
+    {
+      "id": "terraform-gitlab-r-024",
+      "text": "The staging environment, which is production"
+    },
+    {
+      "id": "terraform-gitlab-r-025",
+      "text": "A nine-stage pipeline that does one thing"
+    },
+    {
+      "id": "terraform-gitlab-r-026",
+      "text": "A retry loop hiding a real failure"
+    },
+    {
+      "id": "terraform-gitlab-r-027",
+      "text": "Hardcoded credentials in a tfvars file"
+    },
+    {
+      "id": "terraform-gitlab-r-028",
+      "text": "A data source that queries itself"
+    },
+    {
+      "id": "terraform-gitlab-r-029",
+      "text": "The Terraform registry being down"
+    },
+    {
+      "id": "terraform-gitlab-r-030",
+      "text": "Three hundred resources in one root module"
+    },
+    {
+      "id": "terraform-gitlab-r-031",
+      "text": "A pipeline schedule nobody remembers creating"
+    },
+    {
+      "id": "terraform-gitlab-r-032",
+      "text": "sleep 30"
+    },
+    {
+      "id": "terraform-gitlab-r-033",
+      "text": "An artifact that expired before anyone downloaded it"
+    },
+    {
+      "id": "terraform-gitlab-r-034",
+      "text": "The wrong AWS account"
+    },
+    {
+      "id": "terraform-gitlab-r-035",
+      "text": "A cycle error with no explanation"
+    },
+    {
+      "id": "terraform-gitlab-r-036",
+      "text": "Deleting the .terraform directory and starting again"
+    },
+    {
+      "id": "terraform-gitlab-r-037",
+      "text": "A provider that ignores ignore_changes"
+    },
+    {
+      "id": "terraform-gitlab-r-038",
+      "text": "Someone's personal access token"
+    },
+    {
+      "id": "terraform-gitlab-r-039",
+      "text": "A job that passes locally and only locally"
+    },
+    {
+      "id": "terraform-gitlab-r-040",
+      "text": "The CI variable that was masked but not protected"
+    },
+    {
+      "id": "terraform-gitlab-r-041",
+      "text": "Force-pushing to a protected branch"
+    },
+    {
+      "id": "terraform-gitlab-r-042",
+      "text": "A module with twelve layers of indirection"
+    },
+    {
+      "id": "terraform-gitlab-r-043",
+      "text": "An apply that ran for two hours and changed a tag"
+    },
+    {
+      "id": "terraform-gitlab-r-044",
+      "text": "The stale plan from last week"
+    },
+    {
+      "id": "terraform-gitlab-r-045",
+      "text": "Running it again and hoping"
+    },
+    {
+      "id": "terraform-gitlab-r-046",
+      "text": "A review app that never got torn down"
+    },
+    {
+      "id": "terraform-gitlab-r-047",
+      "text": "An IAM policy of pure asterisks"
+    },
+    {
+      "id": "terraform-gitlab-r-048",
+      "text": "A README written before the rewrite"
+    },
+    {
+      "id": "terraform-gitlab-r-049",
+      "text": "Importing four hundred resources one at a time"
+    },
+    {
+      "id": "terraform-gitlab-r-050",
+      "text": "The GitLab instance being upgraded mid-deploy"
+    },
+    {
+      "id": "terraform-gitlab-r-051",
+      "text": "A terraform version constraint of >= 0.12"
+    },
+    {
+      "id": "terraform-gitlab-r-052",
+      "text": "Using local state on a shared project"
+    },
+    {
+      "id": "terraform-gitlab-r-053",
+      "text": "Committing the state file to git"
+    },
+    {
+      "id": "terraform-gitlab-r-054",
+      "text": "A pre-commit hook that everybody skips"
+    },
+    {
+      "id": "terraform-gitlab-r-055",
+      "text": "Naming things"
+    },
+    {
+      "id": "terraform-gitlab-r-056",
+      "text": "Terragrunt wrapping Terraform wrapping a shell script"
+    },
+    {
+      "id": "terraform-gitlab-r-057",
+      "text": "A stage called misc"
+    },
+    {
+      "id": "terraform-gitlab-r-058",
+      "text": "An environment called new-prod-2-final"
+    },
+    {
+      "id": "terraform-gitlab-r-059",
+      "text": "Copy-pasted from another team's repo"
+    },
+    {
+      "id": "terraform-gitlab-r-060",
+      "text": "A plan that only runs when nobody is watching"
+    },
+    {
+      "id": "terraform-gitlab-r-061",
+      "text": "The ticket that was closed as \"works as designed\""
+    },
+    {
+      "id": "terraform-gitlab-r-062",
+      "text": "Blaming the provider"
+    },
+    {
+      "id": "terraform-gitlab-r-063",
+      "text": "The CI lint job failing on indentation"
+    },
+    {
+      "id": "terraform-gitlab-r-064",
+      "text": "A pipeline badge that has been red since April"
+    },
+    {
+      "id": "terraform-gitlab-r-065",
+      "text": "Merging without a review because it was urgent"
+    },
+    {
+      "id": "terraform-gitlab-r-066",
+      "text": "Deploying on the last day before holiday"
+    },
+    {
+      "id": "terraform-gitlab-r-067",
+      "text": "A module version bump nobody tested"
+    },
+    {
+      "id": "terraform-gitlab-r-068",
+      "text": "An output marked sensitive containing nothing sensitive"
+    },
+    {
+      "id": "terraform-gitlab-r-069",
+      "text": "The one resource that always shows as changed"
+    },
+    {
+      "id": "terraform-gitlab-r-070",
+      "text": "A Slack alert everybody muted"
+    },
+    {
+      "id": "terraform-gitlab-r-071",
+      "text": "Adding lifecycle { ignore_changes = all }"
+    },
+    {
+      "id": "terraform-gitlab-r-072",
+      "text": "Two engineers applying at the same time"
+    },
+    {
+      "id": "terraform-gitlab-r-073",
+      "text": "A remote backend in a different region"
+    },
+    {
+      "id": "terraform-gitlab-r-074",
+      "text": "A job that takes eleven minutes to install dependencies"
+    },
+    {
+      "id": "terraform-gitlab-r-075",
+      "text": "The runner cache, which has never been hit"
+    },
+    {
+      "id": "terraform-gitlab-r-076",
+      "text": "Reading the documentation, eventually"
+    },
+    {
+      "id": "terraform-gitlab-r-077",
+      "text": "A workspace called test that holds customer data"
+    },
+    {
+      "id": "terraform-gitlab-r-078",
+      "text": "A count that quietly reindexed everything"
+    },
+    {
+      "id": "terraform-gitlab-r-079",
+      "text": "Renaming a resource and destroying it"
+    },
+    {
+      "id": "terraform-gitlab-r-080",
+      "text": "The pipeline that deploys the pipeline"
+    },
+    {
+      "id": "terraform-gitlab-r-081",
+      "text": "Letting it drift"
+    },
+    {
+      "id": "terraform-gitlab-r-082",
+      "text": "An emergency change with no ticket"
+    },
+    {
+      "id": "terraform-gitlab-r-083",
+      "text": "A provider upgrade guide forty pages long"
+    },
+    {
+      "id": "terraform-gitlab-r-084",
+      "text": "A shared module owned by nobody"
+    },
+    {
+      "id": "terraform-gitlab-r-085",
+      "text": "Tagging the release before the tests finish"
+    },
+    {
+      "id": "terraform-gitlab-r-086",
+      "text": "A stage that exists only to print \"OK\""
+    },
+    {
+      "id": "terraform-gitlab-r-087",
+      "text": "Exporting the plan to a file and losing it"
+    },
+    {
+      "id": "terraform-gitlab-r-088",
+      "text": "Writing HCL that generates more HCL"
+    },
+    {
+      "id": "terraform-gitlab-r-089",
+      "text": "A rule with both only and rules"
+    },
+    {
+      "id": "terraform-gitlab-r-090",
+      "text": "One very long if statement in Bash"
+    },
+    {
+      "id": "terraform-gitlab-r-091",
+      "text": "A job artifact containing the whole node_modules"
+    },
+    {
+      "id": "terraform-gitlab-r-092",
+      "text": "Terraform Cloud, briefly"
+    },
+    {
+      "id": "terraform-gitlab-r-093",
+      "text": "The last engineer who touched it"
+    },
+    {
+      "id": "terraform-gitlab-r-094",
+      "text": "Running plan in a loop until it succeeds"
+    },
+    {
+      "id": "terraform-gitlab-r-095",
+      "text": "An approval from someone on holiday"
+    },
+    {
+      "id": "terraform-gitlab-r-096",
+      "text": "The compliance scan that runs after deploy"
+    },
+    {
+      "id": "terraform-gitlab-r-097",
+      "text": "A resource created in the console and never imported"
+    },
+    {
+      "id": "terraform-gitlab-r-098",
+      "text": "An unpinned action from a stranger's repository"
+    },
+    {
+      "id": "terraform-gitlab-r-099",
+      "text": "The word \"temporary\" in a filename"
+    },
+    {
+      "id": "terraform-gitlab-r-100",
+      "text": "Manually editing the state file"
+    },
+    {
+      "id": "terraform-gitlab-r-101",
+      "text": "An entire environment nobody can account for"
+    },
+    {
+      "id": "terraform-gitlab-r-102",
+      "text": "A pipeline stage called cleanup that cleans nothing"
+    },
+    {
+      "id": "terraform-gitlab-r-103",
+      "text": "Restarting the runner"
+    },
+    {
+      "id": "terraform-gitlab-r-104",
+      "text": "The apply that succeeded but changed nothing"
+    },
+    {
+      "id": "terraform-gitlab-r-105",
+      "text": "A merge request with four hundred files"
+    },
+    {
+      "id": "terraform-gitlab-r-106",
+      "text": "A dependency on a branch that was deleted"
+    },
+    {
+      "id": "terraform-gitlab-r-107",
+      "text": "The billing alert that arrived too late"
+    },
+    {
+      "id": "terraform-gitlab-r-108",
+      "text": "A variable with a default of null"
+    },
+    {
+      "id": "terraform-gitlab-r-109",
+      "text": "A module that only works in one region"
+    },
+    {
+      "id": "terraform-gitlab-r-110",
+      "text": "Deleting everything and rebuilding from scratch"
+    },
+    {
+      "id": "terraform-gitlab-r-111",
+      "text": "Pointing at main and hoping it is stable"
+    },
+    {
+      "id": "terraform-gitlab-r-112",
+      "text": "An override file nobody knew existed"
+    },
+    {
+      "id": "terraform-gitlab-r-113",
+      "text": "Two sources of truth"
+    },
+    {
+      "id": "terraform-gitlab-r-114",
+      "text": "The shell script that predates the company"
+    },
+    {
+      "id": "terraform-gitlab-r-115",
+      "text": "A comment saying \"do not change this\""
+    },
+    {
+      "id": "terraform-gitlab-r-116",
+      "text": "Quoting a boolean"
+    },
+    {
+      "id": "terraform-gitlab-r-117",
+      "text": "The pipeline finishing after the meeting ended"
+    },
+    {
+      "id": "terraform-gitlab-r-118",
+      "text": "Adding another stage"
+    },
+    {
+      "id": "terraform-gitlab-r-119",
+      "text": "Infrastructure as suggestion"
+    },
+    {
+      "id": "terraform-gitlab-r-120",
+      "text": "Clicking retry until it turns green"
+    },
+    {
+      "id": "terraform-gitlab-r-121",
+      "text": "A YAML file that is technically valid"
+    },
+    {
+      "id": "terraform-gitlab-r-122",
+      "text": "Someone else's problem"
+    },
+    {
+      "id": "terraform-gitlab-r-123",
+      "text": "A change window that closed an hour ago"
+    },
+    {
+      "id": "terraform-gitlab-r-124",
+      "text": "The one test that is always skipped"
+    },
+    {
+      "id": "terraform-gitlab-r-125",
+      "text": "Applying from a laptop on hotel wifi"
+    }
+  ]
+}

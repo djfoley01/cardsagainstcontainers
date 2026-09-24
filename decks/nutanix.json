@@ -1,0 +1,828 @@
+{
+  "id": "nutanix",
+  "name": "Cards Against Nutanix",
+  "description": "CVMs, Curator scans and one-click upgrades.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/cardsagainstcontainers/deck",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "upstreamCommit": "original content authored for this project, not vendored"
+  },
+  "prompts": [
+    {
+      "id": "nutanix-p-001",
+      "text": "The CVM is using ______ of the host's memory.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-002",
+      "text": "NCC reported ______ warnings and one actual problem.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-003",
+      "text": "Prism Central has been loading for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-004",
+      "text": "What is Curator scanning for at three in the morning?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-005",
+      "text": "The LCM upgrade stalled on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-006",
+      "text": "Why did the cluster go into read-only mode?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-007",
+      "text": "Our replication factor is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-008",
+      "text": "Stargate restarted because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-009",
+      "text": "What did the one-click upgrade actually click?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-010",
+      "text": "The support case was escalated over ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-011",
+      "text": "We bought Nutanix to get away from ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-012",
+      "text": "The protection domain was replicating ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-013",
+      "text": "What is in the Zeus configuration that nobody should touch?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-014",
+      "text": "Foundation failed to image the node because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-015",
+      "text": "Our capacity planning is based on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-016",
+      "text": "The AHV host went into maintenance mode for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-017",
+      "text": "Why is data locality not helping?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-018",
+      "text": "The witness VM is running on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-019",
+      "text": "What happens when you lose two nodes in an RF2 cluster?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-020",
+      "text": "Nutanix Move migrated everything except ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-021",
+      "text": "The dedupe savings report shows ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-022",
+      "text": "We licensed ______ and used it once.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-023",
+      "text": "The oplog filled up because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-024",
+      "text": "What does aCLI do that Prism cannot?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-025",
+      "text": "The Cassandra ring is missing ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-026",
+      "text": "Our DR test consisted of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-027",
+      "text": "Medusa is holding metadata for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-028",
+      "text": "The cluster expansion added ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-029",
+      "text": "Why is the storage pool at ninety-four percent?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-030",
+      "text": "The snapshot schedule kept ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-031",
+      "text": "We replaced ______ with ______ and the latency doubled.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "nutanix-p-032",
+      "text": "The Prism API returned ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-033",
+      "text": "What is the real reason we still run vSphere on top?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-034",
+      "text": "The node was removed from the cluster and ______ happened.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-035",
+      "text": "Our runbook for a CVM failure is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-036",
+      "text": "What is the loudest thing in the datacentre?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-037",
+      "text": "Flow microsegmentation is blocking ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-038",
+      "text": "The NDB database clone took ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-039",
+      "text": "Why did the VM migrate at the worst possible moment?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-040",
+      "text": "Our hyperconverged strategy is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-041",
+      "text": "The erasure coding job is competing with ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-042",
+      "text": "What did the health check email say this time?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-043",
+      "text": "The cluster name is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-044",
+      "text": "We scaled out by adding ______ and ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "nutanix-p-045",
+      "text": "Why does the performance graph have a gap?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-046",
+      "text": "The AOS upgrade required ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-047",
+      "text": "What is running on the cluster that nobody can identify?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-048",
+      "text": "Karbon was deprecated in favour of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-049",
+      "text": "Our backup window is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "nutanix-p-050",
+      "text": "The vendor demo did not mention ______.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "nutanix-r-001",
+      "text": "Thirty-two gigabytes of CVM, per host"
+    },
+    {
+      "id": "nutanix-r-002",
+      "text": "A Curator full scan at peak hours"
+    },
+    {
+      "id": "nutanix-r-003",
+      "text": "The oplog, entirely full"
+    },
+    {
+      "id": "nutanix-r-004",
+      "text": "Stargate, having a moment"
+    },
+    {
+      "id": "nutanix-r-005",
+      "text": "A Cassandra ring that lost quorum"
+    },
+    {
+      "id": "nutanix-r-006",
+      "text": "Metadata, all of it, twice"
+    },
+    {
+      "id": "nutanix-r-007",
+      "text": "A node that was never fully removed"
+    },
+    {
+      "id": "nutanix-r-008",
+      "text": "RF2 and a lot of optimism"
+    },
+    {
+      "id": "nutanix-r-009",
+      "text": "One-click upgrades, in seven steps"
+    },
+    {
+      "id": "nutanix-r-010",
+      "text": "An LCM inventory that never finishes"
+    },
+    {
+      "id": "nutanix-r-011",
+      "text": "Prism Element, which we were told to stop using"
+    },
+    {
+      "id": "nutanix-r-012",
+      "text": "Prism Central, at one frame per second"
+    },
+    {
+      "id": "nutanix-r-013",
+      "text": "A support tunnel that will not open"
+    },
+    {
+      "id": "nutanix-r-014",
+      "text": "Logbay, collecting everything"
+    },
+    {
+      "id": "nutanix-r-015",
+      "text": "NCC, reporting on NCC"
+    },
+    {
+      "id": "nutanix-r-016",
+      "text": "Two hundred INFO-level warnings"
+    },
+    {
+      "id": "nutanix-r-017",
+      "text": "A firmware version two years old"
+    },
+    {
+      "id": "nutanix-r-018",
+      "text": "The one host with a different BIOS"
+    },
+    {
+      "id": "nutanix-r-019",
+      "text": "Foundation, on the wrong VLAN"
+    },
+    {
+      "id": "nutanix-r-020",
+      "text": "IPMI, unreachable"
+    },
+    {
+      "id": "nutanix-r-021",
+      "text": "A CVM that will not come back up"
+    },
+    {
+      "id": "nutanix-r-022",
+      "text": "Rolling reboot, halfway through"
+    },
+    {
+      "id": "nutanix-r-023",
+      "text": "An upgrade that needed another upgrade first"
+    },
+    {
+      "id": "nutanix-r-024",
+      "text": "The compatibility matrix"
+    },
+    {
+      "id": "nutanix-r-025",
+      "text": "A hypervisor upgrade nobody scheduled"
+    },
+    {
+      "id": "nutanix-r-026",
+      "text": "AHV, which we still call KVM"
+    },
+    {
+      "id": "nutanix-r-027",
+      "text": "vSphere on top of it, for reasons"
+    },
+    {
+      "id": "nutanix-r-028",
+      "text": "A vCenter licence we cannot cancel"
+    },
+    {
+      "id": "nutanix-r-029",
+      "text": "Migrating away from VMware, slowly"
+    },
+    {
+      "id": "nutanix-r-030",
+      "text": "Nutanix Move, running for three days"
+    },
+    {
+      "id": "nutanix-r-031",
+      "text": "A VM with VMware Tools still installed"
+    },
+    {
+      "id": "nutanix-r-032",
+      "text": "Snapshots older than the VM"
+    },
+    {
+      "id": "nutanix-r-033",
+      "text": "A protection domain replicating to itself"
+    },
+    {
+      "id": "nutanix-r-034",
+      "text": "An async DR schedule of every minute"
+    },
+    {
+      "id": "nutanix-r-035",
+      "text": "Metro availability, untested"
+    },
+    {
+      "id": "nutanix-r-036",
+      "text": "The witness VM on the cluster it witnesses"
+    },
+    {
+      "id": "nutanix-r-037",
+      "text": "A DR site that is also production"
+    },
+    {
+      "id": "nutanix-r-038",
+      "text": "Restoring from a snapshot taken after the incident"
+    },
+    {
+      "id": "nutanix-r-039",
+      "text": "Failing over, then failing back"
+    },
+    {
+      "id": "nutanix-r-040",
+      "text": "The storage pool at ninety-eight percent"
+    },
+    {
+      "id": "nutanix-r-041",
+      "text": "Thin provisioning meeting reality"
+    },
+    {
+      "id": "nutanix-r-042",
+      "text": "A VM with a two terabyte disk and no data"
+    },
+    {
+      "id": "nutanix-r-043",
+      "text": "Deduplication savings of four percent"
+    },
+    {
+      "id": "nutanix-r-044",
+      "text": "Compression, on already-compressed data"
+    },
+    {
+      "id": "nutanix-r-045",
+      "text": "Erasure coding running during the backup window"
+    },
+    {
+      "id": "nutanix-r-046",
+      "text": "Data locality, defeated by vMotion"
+    },
+    {
+      "id": "nutanix-r-047",
+      "text": "A noisy neighbour VM"
+    },
+    {
+      "id": "nutanix-r-048",
+      "text": "One database consuming every IOP"
+    },
+    {
+      "id": "nutanix-r-049",
+      "text": "Latency, suddenly"
+    },
+    {
+      "id": "nutanix-r-050",
+      "text": "The performance graph with a suspicious gap"
+    },
+    {
+      "id": "nutanix-r-051",
+      "text": "A benchmark run on an empty cluster"
+    },
+    {
+      "id": "nutanix-r-052",
+      "text": "The vendor's reference architecture"
+    },
+    {
+      "id": "nutanix-r-053",
+      "text": "A proof of concept that became production"
+    },
+    {
+      "id": "nutanix-r-054",
+      "text": "Adding a node instead of investigating"
+    },
+    {
+      "id": "nutanix-r-055",
+      "text": "Three nodes, minimum, forever"
+    },
+    {
+      "id": "nutanix-r-056",
+      "text": "A four-node cluster doing nothing"
+    },
+    {
+      "id": "nutanix-r-057",
+      "text": "Buying more hardware"
+    },
+    {
+      "id": "nutanix-r-058",
+      "text": "The quote from the account team"
+    },
+    {
+      "id": "nutanix-r-059",
+      "text": "A licence tier we did not need"
+    },
+    {
+      "id": "nutanix-r-060",
+      "text": "Calm, licensed and never opened"
+    },
+    {
+      "id": "nutanix-r-061",
+      "text": "Flow, blocking DNS"
+    },
+    {
+      "id": "nutanix-r-062",
+      "text": "Nutanix Files, used as a dumping ground"
+    },
+    {
+      "id": "nutanix-r-063",
+      "text": "Nutanix Objects, for one bucket"
+    },
+    {
+      "id": "nutanix-r-064",
+      "text": "NDB cloning a database for the eleventh time"
+    },
+    {
+      "id": "nutanix-r-065",
+      "text": "Karbon, renamed again"
+    },
+    {
+      "id": "nutanix-r-066",
+      "text": "Kubernetes on hyperconverged infrastructure"
+    },
+    {
+      "id": "nutanix-r-067",
+      "text": "An air conditioning unit"
+    },
+    {
+      "id": "nutanix-r-068",
+      "text": "The fans spinning up at three in the morning"
+    },
+    {
+      "id": "nutanix-r-069",
+      "text": "A datacentre nobody has visited in two years"
+    },
+    {
+      "id": "nutanix-r-070",
+      "text": "The rack diagram that is out of date"
+    },
+    {
+      "id": "nutanix-r-071",
+      "text": "A cable labelled \"do not remove\""
+    },
+    {
+      "id": "nutanix-r-072",
+      "text": "Someone unplugging the wrong node"
+    },
+    {
+      "id": "nutanix-r-073",
+      "text": "A power event at the co-lo"
+    },
+    {
+      "id": "nutanix-r-074",
+      "text": "The UPS that did not"
+    },
+    {
+      "id": "nutanix-r-075",
+      "text": "A cluster split into two halves"
+    },
+    {
+      "id": "nutanix-r-076",
+      "text": "Quorum, lost"
+    },
+    {
+      "id": "nutanix-r-077",
+      "text": "Read-only mode"
+    },
+    {
+      "id": "nutanix-r-078",
+      "text": "The health check email nobody reads"
+    },
+    {
+      "id": "nutanix-r-079",
+      "text": "An alert about an alert"
+    },
+    {
+      "id": "nutanix-r-080",
+      "text": "A ticket auto-closed after thirty days"
+    },
+    {
+      "id": "nutanix-r-081",
+      "text": "Support asking for logs we already sent"
+    },
+    {
+      "id": "nutanix-r-082",
+      "text": "Escalating to engineering"
+    },
+    {
+      "id": "nutanix-r-083",
+      "text": "A known issue documented after we hit it"
+    },
+    {
+      "id": "nutanix-r-084",
+      "text": "Release notes read afterwards"
+    },
+    {
+      "id": "nutanix-r-085",
+      "text": "A field advisory"
+    },
+    {
+      "id": "nutanix-r-086",
+      "text": "The KB article that exactly describes it"
+    },
+    {
+      "id": "nutanix-r-087",
+      "text": "Rebooting the CVM"
+    },
+    {
+      "id": "nutanix-r-088",
+      "text": "Restarting the service and moving on"
+    },
+    {
+      "id": "nutanix-r-089",
+      "text": "aCLI, because Prism will not"
+    },
+    {
+      "id": "nutanix-r-090",
+      "text": "nCLI, from muscle memory"
+    },
+    {
+      "id": "nutanix-r-091",
+      "text": "SSH to the CVM, which we are not supposed to do"
+    },
+    {
+      "id": "nutanix-r-092",
+      "text": "A cluster stop, on purpose"
+    },
+    {
+      "id": "nutanix-r-093",
+      "text": "An unplanned cluster stop"
+    },
+    {
+      "id": "nutanix-r-094",
+      "text": "Genesis, restarting everything"
+    },
+    {
+      "id": "nutanix-r-095",
+      "text": "The API returning a task UUID and nothing else"
+    },
+    {
+      "id": "nutanix-r-096",
+      "text": "Polling a task that never completes"
+    },
+    {
+      "id": "nutanix-r-097",
+      "text": "A v3 API call that needs a v2 call first"
+    },
+    {
+      "id": "nutanix-r-098",
+      "text": "Automating it with a shell script"
+    },
+    {
+      "id": "nutanix-r-099",
+      "text": "A Python script from a community blog post"
+    },
+    {
+      "id": "nutanix-r-100",
+      "text": "Prism, clicked manually instead"
+    },
+    {
+      "id": "nutanix-r-101",
+      "text": "An export to CSV"
+    },
+    {
+      "id": "nutanix-r-102",
+      "text": "A screenshot pasted into a document"
+    },
+    {
+      "id": "nutanix-r-103",
+      "text": "Capacity planning in a spreadsheet"
+    },
+    {
+      "id": "nutanix-r-104",
+      "text": "Ninety days of runway, allegedly"
+    },
+    {
+      "id": "nutanix-r-105",
+      "text": "A growth forecast from before the migration"
+    },
+    {
+      "id": "nutanix-r-106",
+      "text": "The VM sprawl audit"
+    },
+    {
+      "id": "nutanix-r-107",
+      "text": "Four hundred powered-off VMs"
+    },
+    {
+      "id": "nutanix-r-108",
+      "text": "An orphaned snapshot from 2021"
+    },
+    {
+      "id": "nutanix-r-109",
+      "text": "A test VM called temp"
+    },
+    {
+      "id": "nutanix-r-110",
+      "text": "A VM that nobody will claim"
+    },
+    {
+      "id": "nutanix-r-111",
+      "text": "Shutting it down and waiting for complaints"
+    },
+    {
+      "id": "nutanix-r-112",
+      "text": "The department that never responded"
+    },
+    {
+      "id": "nutanix-r-113",
+      "text": "A chargeback model nobody agreed to"
+    },
+    {
+      "id": "nutanix-r-114",
+      "text": "The one workload that must never move"
+    },
+    {
+      "id": "nutanix-r-115",
+      "text": "Affinity rules, layered"
+    },
+    {
+      "id": "nutanix-r-116",
+      "text": "A VM pinned to a failing host"
+    },
+    {
+      "id": "nutanix-r-117",
+      "text": "Live migration during the demo"
+    },
+    {
+      "id": "nutanix-r-118",
+      "text": "The hypervisor deciding for itself"
+    },
+    {
+      "id": "nutanix-r-119",
+      "text": "Twenty VMs migrating at once"
+    },
+    {
+      "id": "nutanix-r-120",
+      "text": "The ten gigabit link, saturated"
+    },
+    {
+      "id": "nutanix-r-121",
+      "text": "Jumbo frames, configured on one switch"
+    },
+    {
+      "id": "nutanix-r-122",
+      "text": "A network team that says it is not the network"
+    },
+    {
+      "id": "nutanix-r-123",
+      "text": "An MTU mismatch"
+    },
+    {
+      "id": "nutanix-r-124",
+      "text": "Spanning tree, reconverging"
+    },
+    {
+      "id": "nutanix-r-125",
+      "text": "The backup job overlapping the upgrade"
+    },
+    {
+      "id": "nutanix-r-126",
+      "text": "A backup window that no longer fits"
+    },
+    {
+      "id": "nutanix-r-127",
+      "text": "Restoring a single file from a full clone"
+    },
+    {
+      "id": "nutanix-r-128",
+      "text": "Testing the backup, eventually"
+    }
+  ]
+}

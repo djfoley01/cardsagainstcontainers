@@ -12,9 +12,16 @@ why the Helm chart pins `appVersion` instead of tracking it.
 
 ## 0.2.0
 
-Custom decks, and a builder for writing them.
+Custom decks, a builder for writing them, and three new decks.
 
 ### Added
+
+- **Three decks written for this project**, all off by default:
+  *Cards Against Terraform* (50/125), *Cards Against OpenShift* (52/126) and
+  *Cards Against Nutanix* (50/128). Each holds enough answers to be played on
+  its own at a full table. Cards live as plain text in
+  `decks/source/<deck>/`, so adding one means editing a text file and running
+  `npm run deck:import`.
 
 - **Custom decks** load from any directory listed in `CAC_DECK_DIRS`
   (colon-separated, like `PATH`), alongside the decks built into the image.

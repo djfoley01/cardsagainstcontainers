@@ -1,0 +1,50 @@
+terraform plan says ______ will be destroyed.
+The state file has been locked for six hours by ______.
+Our pipeline has been pending for forty minutes because of ______.
+What did the three thousand line plan output actually change?
+I fixed the flaky pipeline by adding ______.
+terraform apply -auto-approve in production, followed immediately by ______.
+The merge request was blocked by ______.
+Why is the runner offline again?
+We manage ______ with a null_resource and a shell script.
+The module registry is just ______ with extra steps.
+What is in the .gitlab-ci.yml that nobody understands?
+Error: Provider produced inconsistent final plan. Caused by ______.
+Our disaster recovery plan is ______.
+We pinned the provider version after ______.
+What broke when someone ran terraform destroy on the wrong workspace?
+The pipeline passed, but ______.
+I spent the entire sprint on ______.
+Configuration drift is usually caused by ______.
+We replaced our YAML anchors with ______ and ______.
+What does -target actually mean?
+The CI cache contains ______.
+Why did the deploy job run against production?
+The real reason we adopted Terragrunt was ______.
+Our secrets are stored in ______.
+The code review consisted entirely of ______.
+terraform import finally worked after ______.
+What do we do when the state file gets corrupted?
+Our merge train derailed because of ______.
+I approved the manual job without reading ______.
+The infrastructure diagram is ______.
+We swapped ______ for ______ and the pipeline got slower.
+The runner ran out of disk because of ______.
+What is count = var.enabled ? 1 : 0 really hiding?
+The postmortem blamed ______.
+Our onboarding document says to start with ______.
+What is the first thing that breaks on a Monday morning?
+depends_on was added to work around ______.
+The plan and the apply disagreed about ______.
+Why is the pipeline YAML nine hundred lines long?
+We finally deleted ______ after three years.
+No changes. Your infrastructure matches the configuration. Except for ______.
+The hotfix branch contains ______.
+What is the one job nobody is allowed to retry?
+Our change management process is ______.
+The shared runner was busy with ______.
+This terraform module has one input and ______ outputs.
+The only person who understands the pipeline is ______.
+We cannot upgrade the provider because of ______.
+What goes in the variables file that should not?
+Rolling back meant ______.

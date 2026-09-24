@@ -1,0 +1,126 @@
+A pod that assumes it is root
+restricted-v2, doing its job
+An image built for the wrong architecture
+oc debug node/ and a lot of guessing
+A PodDisruptionBudget of minAvailable: 100%
+The one node with local storage on it
+Forty gigabytes of must-gather nobody will read
+An operator stuck on Installing since March
+A route with the wrong termination policy
+Deleting the pod until it works
+An emptyDir that was supposed to be persistent
+The default service account
+A certificate that expired on a Saturday
+A cluster upgrade started on a Friday
+Somebody's personal kubeconfig
+anyuid, granted "temporarily" in 2023
+The registry pull secret that was never renewed
+A quota of one CPU for the whole team
+An image tag of :latest
+Running as UID 1000, hardcoded
+A liveness probe with a one second timeout
+The monitoring stack, eating eight gigabytes
+Two operators fighting over the same CRD
+A CSV stuck in Pending
+An ImageContentSourcePolicy with a typo
+The mirror registry running out of disk
+A cluster-admin binding on a service account
+oc apply -f . on the whole directory
+A finalizer that never finalizes
+Terminating, forever
+A namespace that will not delete
+Six hundred ConfigMaps
+A Helm release nobody owns
+The catalog source being unreachable
+Node pressure on a single node
+An etcd database of nine gigabytes
+Trying it in the web console instead
+A DeploymentConfig from 2019
+An ImageStream that stopped importing silently
+A cron job that scales the cluster
+Someone running oc delete project by tab completion
+The wrong context in kubeconfig
+Logging into the production cluster by accident
+A support case with no must-gather attached
+An unsupported kernel module
+SELinux, doing exactly what it said it would
+CRI-O restarting under memory pressure
+A sidecar that outlives the main container
+Requests set to zero, limits set to nothing
+A PVC that will not bind
+A StorageClass with no provisioner
+ReadWriteMany, which nobody supports
+Three thousand events in one namespace
+A webhook that blocks every create
+An admission controller with a five second timeout
+The kubelet running out of inotify watches
+An operator that reconciles every second
+A CRD with no validation
+The cluster network operator, mid-thought
+A route hostname longer than sixty-three characters
+Edge termination when it needed re-encrypt
+A service with no endpoints
+A selector that matches nothing
+A NetworkPolicy that blocks DNS
+The default deny nobody tested
+Draining a node during business hours
+A machine config that failed to apply
+Nodes rebooting one by one, slowly
+A subscription on the wrong channel
+Upgrading two minor versions at once
+EUS, eventually
+Quay being down
+A pull secret scoped to the wrong namespace
+Skipping the release notes
+A Tekton pipeline with twelve tasks and no cache
+ArgoCD showing OutOfSync forever
+A GitOps repo with manual changes on top
+Drift, reconciled hourly, back to wrong
+An alert that fires every night at three
+Alertmanager routing to a deleted channel
+Silencing it for ninety days
+A dashboard nobody opens
+Prometheus retention set to fifteen days
+Grepping the logs by hand
+A container with no logs at all
+stdout, mercifully
+A log forwarder shipping to nowhere
+Six gigabytes of debug logging
+The one engineer with cluster-admin
+A JIRA ticket for a firewall rule
+Waiting on the network team
+A change advisory board meeting
+An air-gapped environment with no mirror
+Copying images on a USB stick
+A subscription that expired
+Entitlement certificates
+Running oc adm policy add-scc-to-user
+The cluster that was never upgraded
+A version two releases behind support
+An operator with no uninstall path
+Custom resources left behind
+A backup nobody has restored from
+etcd defragmentation at last
+The control plane at ninety percent memory
+An infra node doing application work
+Taints and tolerations nobody understands
+Node affinity written once and copied forever
+A cluster with one worker node
+Scaling to zero and forgetting
+A HorizontalPodAutoscaler with no metrics
+Metrics Server, missing
+A readiness probe that checks nothing
+Port 8080, assumed
+An init container that waits for DNS
+Hostname resolution, intermittently
+A service mesh installed for one service
+Istio, briefly
+mTLS breaking the health check
+The sidecar injector, disabled quietly
+Pods that start before the database
+A job that never completes
+A CronJob with concurrencyPolicy: Allow
+Four hundred completed pods
+Deleting the namespace and starting over
+Reading the events, finally
+oc describe, at last

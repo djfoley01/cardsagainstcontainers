@@ -1,0 +1,832 @@
+{
+  "id": "openshift",
+  "name": "Cards Against OpenShift",
+  "description": "CrashLoopBackOff, SCCs and the cluster upgrade.",
+  "defaultEnabled": false,
+  "attribution": {
+    "source": "https://github.com/cardsagainstcontainers/deck",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "upstreamCommit": "original content authored for this project, not vendored"
+  },
+  "prompts": [
+    {
+      "id": "openshift-p-001",
+      "text": "The pod is stuck in CrashLoopBackOff because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-002",
+      "text": "oc adm must-gather returned four gigabytes of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-003",
+      "text": "The node will not drain because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-004",
+      "text": "What is blocking the cluster upgrade?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-005",
+      "text": "Our SCC exception was granted for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-006",
+      "text": "The operator has been Progressing for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-007",
+      "text": "Why can the developers not deploy?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-008",
+      "text": "The route returns 503 because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-009",
+      "text": "I gave someone cluster-admin to fix ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-010",
+      "text": "The air-gapped install failed on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-011",
+      "text": "What does the Cluster Version Operator actually do all day?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-012",
+      "text": "The image will not pull because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-013",
+      "text": "Our etcd backup strategy is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-014",
+      "text": "The Machine Config Operator rebooted every node for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-015",
+      "text": "What is in the openshift-* namespace that should not be?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-016",
+      "text": "The build failed at the S2I step because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-017",
+      "text": "Why is the console showing a yellow banner?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-018",
+      "text": "We moved from DeploymentConfig to Deployment and lost ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-019",
+      "text": "Our disconnected mirror is missing ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-020",
+      "text": "The pod security admission warning was about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-021",
+      "text": "What did the CrashLoopBackOff logs actually say?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-022",
+      "text": "I spent two days on ______ before reading the events.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-023",
+      "text": "The quota was exceeded by ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-024",
+      "text": "Our GitOps repo is the source of truth for everything except ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-025",
+      "text": "The upgrade channel was set to ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-026",
+      "text": "What runs as root that really should not?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-027",
+      "text": "The PodDisruptionBudget is protecting ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-028",
+      "text": "Prometheus is alerting about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-029",
+      "text": "We wrote a custom operator to manage ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-030",
+      "text": "The certificate expired on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-031",
+      "text": "oc login says my token is invalid because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-032",
+      "text": "What is the actual difference between a project and a namespace?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-033",
+      "text": "The ImageStream is pointing at ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-034",
+      "text": "Our multi-tenancy strategy is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-035",
+      "text": "The cluster autoscaler added forty nodes for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-036",
+      "text": "Why did the default route hostname change?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-037",
+      "text": "The Tekton pipeline has been running for ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-038",
+      "text": "What happens when you oc delete the wrong namespace?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-039",
+      "text": "Our resource requests are based on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-040",
+      "text": "The operator subscription is stuck on ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-041",
+      "text": "I opened a support case about ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-042",
+      "text": "The arbitrary UID broke ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-043",
+      "text": "What is the one thing the web console cannot do?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-044",
+      "text": "Our production namespace is called ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-045",
+      "text": "The ingress controller was replaced by ______ and ______.",
+      "blanks": 2,
+      "pick": 2
+    },
+    {
+      "id": "openshift-p-046",
+      "text": "Why is the monitoring stack using more memory than the apps?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-047",
+      "text": "The node went NotReady because of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-048",
+      "text": "We run ______ on the control plane nodes.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-049",
+      "text": "The ClusterTask was deprecated in favour of ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-050",
+      "text": "Our onboarding for new developers is ______.",
+      "blanks": 1,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-051",
+      "text": "What did we learn from the last outage?",
+      "blanks": 0,
+      "pick": 1
+    },
+    {
+      "id": "openshift-p-052",
+      "text": "Storage is provisioned by ______.",
+      "blanks": 1,
+      "pick": 1
+    }
+  ],
+  "responses": [
+    {
+      "id": "openshift-r-001",
+      "text": "A pod that assumes it is root"
+    },
+    {
+      "id": "openshift-r-002",
+      "text": "restricted-v2, doing its job"
+    },
+    {
+      "id": "openshift-r-003",
+      "text": "An image built for the wrong architecture"
+    },
+    {
+      "id": "openshift-r-004",
+      "text": "oc debug node/ and a lot of guessing"
+    },
+    {
+      "id": "openshift-r-005",
+      "text": "A PodDisruptionBudget of minAvailable: 100%"
+    },
+    {
+      "id": "openshift-r-006",
+      "text": "The one node with local storage on it"
+    },
+    {
+      "id": "openshift-r-007",
+      "text": "Forty gigabytes of must-gather nobody will read"
+    },
+    {
+      "id": "openshift-r-008",
+      "text": "An operator stuck on Installing since March"
+    },
+    {
+      "id": "openshift-r-009",
+      "text": "A route with the wrong termination policy"
+    },
+    {
+      "id": "openshift-r-010",
+      "text": "Deleting the pod until it works"
+    },
+    {
+      "id": "openshift-r-011",
+      "text": "An emptyDir that was supposed to be persistent"
+    },
+    {
+      "id": "openshift-r-012",
+      "text": "The default service account"
+    },
+    {
+      "id": "openshift-r-013",
+      "text": "A certificate that expired on a Saturday"
+    },
+    {
+      "id": "openshift-r-014",
+      "text": "A cluster upgrade started on a Friday"
+    },
+    {
+      "id": "openshift-r-015",
+      "text": "Somebody's personal kubeconfig"
+    },
+    {
+      "id": "openshift-r-016",
+      "text": "anyuid, granted \"temporarily\" in 2023"
+    },
+    {
+      "id": "openshift-r-017",
+      "text": "The registry pull secret that was never renewed"
+    },
+    {
+      "id": "openshift-r-018",
+      "text": "A quota of one CPU for the whole team"
+    },
+    {
+      "id": "openshift-r-019",
+      "text": "An image tag of :latest"
+    },
+    {
+      "id": "openshift-r-020",
+      "text": "Running as UID 1000, hardcoded"
+    },
+    {
+      "id": "openshift-r-021",
+      "text": "A liveness probe with a one second timeout"
+    },
+    {
+      "id": "openshift-r-022",
+      "text": "The monitoring stack, eating eight gigabytes"
+    },
+    {
+      "id": "openshift-r-023",
+      "text": "Two operators fighting over the same CRD"
+    },
+    {
+      "id": "openshift-r-024",
+      "text": "A CSV stuck in Pending"
+    },
+    {
+      "id": "openshift-r-025",
+      "text": "An ImageContentSourcePolicy with a typo"
+    },
+    {
+      "id": "openshift-r-026",
+      "text": "The mirror registry running out of disk"
+    },
+    {
+      "id": "openshift-r-027",
+      "text": "A cluster-admin binding on a service account"
+    },
+    {
+      "id": "openshift-r-028",
+      "text": "oc apply -f . on the whole directory"
+    },
+    {
+      "id": "openshift-r-029",
+      "text": "A finalizer that never finalizes"
+    },
+    {
+      "id": "openshift-r-030",
+      "text": "Terminating, forever"
+    },
+    {
+      "id": "openshift-r-031",
+      "text": "A namespace that will not delete"
+    },
+    {
+      "id": "openshift-r-032",
+      "text": "Six hundred ConfigMaps"
+    },
+    {
+      "id": "openshift-r-033",
+      "text": "A Helm release nobody owns"
+    },
+    {
+      "id": "openshift-r-034",
+      "text": "The catalog source being unreachable"
+    },
+    {
+      "id": "openshift-r-035",
+      "text": "Node pressure on a single node"
+    },
+    {
+      "id": "openshift-r-036",
+      "text": "An etcd database of nine gigabytes"
+    },
+    {
+      "id": "openshift-r-037",
+      "text": "Trying it in the web console instead"
+    },
+    {
+      "id": "openshift-r-038",
+      "text": "A DeploymentConfig from 2019"
+    },
+    {
+      "id": "openshift-r-039",
+      "text": "An ImageStream that stopped importing silently"
+    },
+    {
+      "id": "openshift-r-040",
+      "text": "A cron job that scales the cluster"
+    },
+    {
+      "id": "openshift-r-041",
+      "text": "Someone running oc delete project by tab completion"
+    },
+    {
+      "id": "openshift-r-042",
+      "text": "The wrong context in kubeconfig"
+    },
+    {
+      "id": "openshift-r-043",
+      "text": "Logging into the production cluster by accident"
+    },
+    {
+      "id": "openshift-r-044",
+      "text": "A support case with no must-gather attached"
+    },
+    {
+      "id": "openshift-r-045",
+      "text": "An unsupported kernel module"
+    },
+    {
+      "id": "openshift-r-046",
+      "text": "SELinux, doing exactly what it said it would"
+    },
+    {
+      "id": "openshift-r-047",
+      "text": "CRI-O restarting under memory pressure"
+    },
+    {
+      "id": "openshift-r-048",
+      "text": "A sidecar that outlives the main container"
+    },
+    {
+      "id": "openshift-r-049",
+      "text": "Requests set to zero, limits set to nothing"
+    },
+    {
+      "id": "openshift-r-050",
+      "text": "A PVC that will not bind"
+    },
+    {
+      "id": "openshift-r-051",
+      "text": "A StorageClass with no provisioner"
+    },
+    {
+      "id": "openshift-r-052",
+      "text": "ReadWriteMany, which nobody supports"
+    },
+    {
+      "id": "openshift-r-053",
+      "text": "Three thousand events in one namespace"
+    },
+    {
+      "id": "openshift-r-054",
+      "text": "A webhook that blocks every create"
+    },
+    {
+      "id": "openshift-r-055",
+      "text": "An admission controller with a five second timeout"
+    },
+    {
+      "id": "openshift-r-056",
+      "text": "The kubelet running out of inotify watches"
+    },
+    {
+      "id": "openshift-r-057",
+      "text": "An operator that reconciles every second"
+    },
+    {
+      "id": "openshift-r-058",
+      "text": "A CRD with no validation"
+    },
+    {
+      "id": "openshift-r-059",
+      "text": "The cluster network operator, mid-thought"
+    },
+    {
+      "id": "openshift-r-060",
+      "text": "A route hostname longer than sixty-three characters"
+    },
+    {
+      "id": "openshift-r-061",
+      "text": "Edge termination when it needed re-encrypt"
+    },
+    {
+      "id": "openshift-r-062",
+      "text": "A service with no endpoints"
+    },
+    {
+      "id": "openshift-r-063",
+      "text": "A selector that matches nothing"
+    },
+    {
+      "id": "openshift-r-064",
+      "text": "A NetworkPolicy that blocks DNS"
+    },
+    {
+      "id": "openshift-r-065",
+      "text": "The default deny nobody tested"
+    },
+    {
+      "id": "openshift-r-066",
+      "text": "Draining a node during business hours"
+    },
+    {
+      "id": "openshift-r-067",
+      "text": "A machine config that failed to apply"
+    },
+    {
+      "id": "openshift-r-068",
+      "text": "Nodes rebooting one by one, slowly"
+    },
+    {
+      "id": "openshift-r-069",
+      "text": "A subscription on the wrong channel"
+    },
+    {
+      "id": "openshift-r-070",
+      "text": "Upgrading two minor versions at once"
+    },
+    {
+      "id": "openshift-r-071",
+      "text": "EUS, eventually"
+    },
+    {
+      "id": "openshift-r-072",
+      "text": "Quay being down"
+    },
+    {
+      "id": "openshift-r-073",
+      "text": "A pull secret scoped to the wrong namespace"
+    },
+    {
+      "id": "openshift-r-074",
+      "text": "Skipping the release notes"
+    },
+    {
+      "id": "openshift-r-075",
+      "text": "A Tekton pipeline with twelve tasks and no cache"
+    },
+    {
+      "id": "openshift-r-076",
+      "text": "ArgoCD showing OutOfSync forever"
+    },
+    {
+      "id": "openshift-r-077",
+      "text": "A GitOps repo with manual changes on top"
+    },
+    {
+      "id": "openshift-r-078",
+      "text": "Drift, reconciled hourly, back to wrong"
+    },
+    {
+      "id": "openshift-r-079",
+      "text": "An alert that fires every night at three"
+    },
+    {
+      "id": "openshift-r-080",
+      "text": "Alertmanager routing to a deleted channel"
+    },
+    {
+      "id": "openshift-r-081",
+      "text": "Silencing it for ninety days"
+    },
+    {
+      "id": "openshift-r-082",
+      "text": "A dashboard nobody opens"
+    },
+    {
+      "id": "openshift-r-083",
+      "text": "Prometheus retention set to fifteen days"
+    },
+    {
+      "id": "openshift-r-084",
+      "text": "Grepping the logs by hand"
+    },
+    {
+      "id": "openshift-r-085",
+      "text": "A container with no logs at all"
+    },
+    {
+      "id": "openshift-r-086",
+      "text": "stdout, mercifully"
+    },
+    {
+      "id": "openshift-r-087",
+      "text": "A log forwarder shipping to nowhere"
+    },
+    {
+      "id": "openshift-r-088",
+      "text": "Six gigabytes of debug logging"
+    },
+    {
+      "id": "openshift-r-089",
+      "text": "The one engineer with cluster-admin"
+    },
+    {
+      "id": "openshift-r-090",
+      "text": "A JIRA ticket for a firewall rule"
+    },
+    {
+      "id": "openshift-r-091",
+      "text": "Waiting on the network team"
+    },
+    {
+      "id": "openshift-r-092",
+      "text": "A change advisory board meeting"
+    },
+    {
+      "id": "openshift-r-093",
+      "text": "An air-gapped environment with no mirror"
+    },
+    {
+      "id": "openshift-r-094",
+      "text": "Copying images on a USB stick"
+    },
+    {
+      "id": "openshift-r-095",
+      "text": "A subscription that expired"
+    },
+    {
+      "id": "openshift-r-096",
+      "text": "Entitlement certificates"
+    },
+    {
+      "id": "openshift-r-097",
+      "text": "Running oc adm policy add-scc-to-user"
+    },
+    {
+      "id": "openshift-r-098",
+      "text": "The cluster that was never upgraded"
+    },
+    {
+      "id": "openshift-r-099",
+      "text": "A version two releases behind support"
+    },
+    {
+      "id": "openshift-r-100",
+      "text": "An operator with no uninstall path"
+    },
+    {
+      "id": "openshift-r-101",
+      "text": "Custom resources left behind"
+    },
+    {
+      "id": "openshift-r-102",
+      "text": "A backup nobody has restored from"
+    },
+    {
+      "id": "openshift-r-103",
+      "text": "etcd defragmentation at last"
+    },
+    {
+      "id": "openshift-r-104",
+      "text": "The control plane at ninety percent memory"
+    },
+    {
+      "id": "openshift-r-105",
+      "text": "An infra node doing application work"
+    },
+    {
+      "id": "openshift-r-106",
+      "text": "Taints and tolerations nobody understands"
+    },
+    {
+      "id": "openshift-r-107",
+      "text": "Node affinity written once and copied forever"
+    },
+    {
+      "id": "openshift-r-108",
+      "text": "A cluster with one worker node"
+    },
+    {
+      "id": "openshift-r-109",
+      "text": "Scaling to zero and forgetting"
+    },
+    {
+      "id": "openshift-r-110",
+      "text": "A HorizontalPodAutoscaler with no metrics"
+    },
+    {
+      "id": "openshift-r-111",
+      "text": "Metrics Server, missing"
+    },
+    {
+      "id": "openshift-r-112",
+      "text": "A readiness probe that checks nothing"
+    },
+    {
+      "id": "openshift-r-113",
+      "text": "Port 8080, assumed"
+    },
+    {
+      "id": "openshift-r-114",
+      "text": "An init container that waits for DNS"
+    },
+    {
+      "id": "openshift-r-115",
+      "text": "Hostname resolution, intermittently"
+    },
+    {
+      "id": "openshift-r-116",
+      "text": "A service mesh installed for one service"
+    },
+    {
+      "id": "openshift-r-117",
+      "text": "Istio, briefly"
+    },
+    {
+      "id": "openshift-r-118",
+      "text": "mTLS breaking the health check"
+    },
+    {
+      "id": "openshift-r-119",
+      "text": "The sidecar injector, disabled quietly"
+    },
+    {
+      "id": "openshift-r-120",
+      "text": "Pods that start before the database"
+    },
+    {
+      "id": "openshift-r-121",
+      "text": "A job that never completes"
+    },
+    {
+      "id": "openshift-r-122",
+      "text": "A CronJob with concurrencyPolicy: Allow"
+    },
+    {
+      "id": "openshift-r-123",
+      "text": "Four hundred completed pods"
+    },
+    {
+      "id": "openshift-r-124",
+      "text": "Deleting the namespace and starting over"
+    },
+    {
+      "id": "openshift-r-125",
+      "text": "Reading the events, finally"
+    },
+    {
+      "id": "openshift-r-126",
+      "text": "oc describe, at last"
+    }
+  ]
+}

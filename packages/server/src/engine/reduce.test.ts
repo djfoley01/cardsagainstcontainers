@@ -9,6 +9,7 @@ import {
 } from '@cac/shared/game';
 import { ROUND_RESULT_MS } from './reduce.ts';
 import { blockedTerm } from '@cac/shared/content-filter';
+import { validateDeckJson } from '@cac/shared/deck-validate';
 import { Harness, countPrompts, countResponses, loadDecks, tinyDeck } from './testkit.ts';
 
 const decks = loadDecks();
@@ -810,13 +811,15 @@ describe('decks too small to play', () => {
 
 describe('multiple decks', () => {
   test('every shipped deck loads with cards and attribution', () => {
-    assert.equal(decks.length, 4);
+    assert.equal(decks.length, 7);
     for (const deck of decks) {
       assert.ok(deck.prompts.length > 0, `${deck.id} has no prompts`);
       assert.ok(deck.responses.length > 0, `${deck.id} has no responses`);
       assert.ok(deck.attribution.license.length > 0, `${deck.id} has no licence`);
       assert.ok(deck.attribution.source.startsWith('https://'), `${deck.id} has no source`);
-      assert.match(deck.attribution.upstreamCommit, /^[0-9a-f]{40}$/, `${deck.id} is not pinned`);
+      // Vendored decks are pinned to an upstream commit; decks authored here
+      // record why there is no commit to pin to instead.
+      assert.ok(deck.attribution.upstreamCommit.length > 0, `${deck.id} has no provenance note`);
     }
   });
 
@@ -905,6 +908,32 @@ describe('multiple decks', () => {
         assert.ok(!/&#\d+;/.test(card.text), `${card.id} still has an HTML entity`);
       }
     }
+  });
+});
+
+describe('shipped decks', () => {
+  test('all of them satisfy the same validator custom decks must pass', () => {
+    // Built-in decks skip validation at load for speed; this makes sure that
+    // shortcut stays safe by checking them here instead.
+    for (const deck of decks) {
+      const result = validateDeckJson(deck);
+      assert.ok(result.ok, `${deck.id}: ${JSON.stringify(result.errors)}`);
+    }
+  });
+
+  test('each one can be played on its own at a full table', () => {
+    // 12 players x 10 cards. A deck below this can still be combined with
+    // others, but would refuse to start alone.
+    for (const deck of decks) {
+      assert.ok(
+        deck.responses.length >= MAX_PLAYERS * 10,
+        `${deck.id} has only ${deck.responses.length} answers`,
+      );
+    }
+  });
+
+  test('only the containers deck is on by default', () => {
+    assert.deepEqual(decks.filter((d) => d.defaultEnabled).map((d) => d.id), ['containers']);
   });
 });
 

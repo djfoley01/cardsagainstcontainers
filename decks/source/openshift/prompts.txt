@@ -1,0 +1,52 @@
+The pod is stuck in CrashLoopBackOff because of ______.
+oc adm must-gather returned four gigabytes of ______.
+The node will not drain because of ______.
+What is blocking the cluster upgrade?
+Our SCC exception was granted for ______.
+The operator has been Progressing for ______.
+Why can the developers not deploy?
+The route returns 503 because of ______.
+I gave someone cluster-admin to fix ______.
+The air-gapped install failed on ______.
+What does the Cluster Version Operator actually do all day?
+The image will not pull because of ______.
+Our etcd backup strategy is ______.
+The Machine Config Operator rebooted every node for ______.
+What is in the openshift-* namespace that should not be?
+The build failed at the S2I step because of ______.
+Why is the console showing a yellow banner?
+We moved from DeploymentConfig to Deployment and lost ______.
+Our disconnected mirror is missing ______.
+The pod security admission warning was about ______.
+What did the CrashLoopBackOff logs actually say?
+I spent two days on ______ before reading the events.
+The quota was exceeded by ______.
+Our GitOps repo is the source of truth for everything except ______.
+The upgrade channel was set to ______.
+What runs as root that really should not?
+The PodDisruptionBudget is protecting ______.
+Prometheus is alerting about ______.
+We wrote a custom operator to manage ______.
+The certificate expired on ______.
+oc login says my token is invalid because of ______.
+What is the actual difference between a project and a namespace?
+The ImageStream is pointing at ______.
+Our multi-tenancy strategy is ______.
+The cluster autoscaler added forty nodes for ______.
+Why did the default route hostname change?
+The Tekton pipeline has been running for ______.
+What happens when you oc delete the wrong namespace?
+Our resource requests are based on ______.
+The operator subscription is stuck on ______.
+I opened a support case about ______.
+The arbitrary UID broke ______.
+What is the one thing the web console cannot do?
+Our production namespace is called ______.
+The ingress controller was replaced by ______ and ______.
+Why is the monitoring stack using more memory than the apps?
+The node went NotReady because of ______.
+We run ______ on the control plane nodes.
+The ClusterTask was deprecated in favour of ______.
+Our onboarding for new developers is ______.
+What did we learn from the last outage?
+Storage is provisioned by ______.

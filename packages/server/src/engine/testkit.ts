@@ -10,7 +10,7 @@ import { buildDeckIndex, createGame, reduce, type EngineContext } from './reduce
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..', '..');
 
 export function loadDecks(): Deck[] {
-  return ['containers', 'sales', 'reliability', 'developers'].map(
+  return ['containers', 'sales', 'reliability', 'developers', 'terraform-gitlab', 'openshift', 'nutanix'].map(
     (id) => JSON.parse(readFileSync(join(ROOT, 'decks', `${id}.json`), 'utf8')) as Deck,
   );
 }

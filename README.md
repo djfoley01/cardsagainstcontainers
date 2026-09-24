@@ -41,6 +41,9 @@ docs/             architecture decision records
 | Cards Against Sales | 79 | 172 | CC BY-NC-SA 2.0 | off |
 | Cards Against Reliability | 78 | 203 | CC BY-NC-SA 2.0 | off |
 | Cards Against Developers | 61 | 157 | CC BY-NC-SA 2.0 | off |
+| Cards Against Terraform | 50 | 125 | CC BY-NC-SA 4.0 | off |
+| Cards Against OpenShift | 52 | 126 | CC BY-NC-SA 4.0 | off |
+| Cards Against Nutanix | 50 | 128 | CC BY-NC-SA 4.0 | off |
 
 All four are togglable in the lobby, and the lobby list is built from whatever
 the server loaded rather than hardcoded — dropping a new JSON file into
@@ -58,7 +61,7 @@ npm run deck:import
 
 ```sh
 npm install
-npm test           # strip check + typecheck + 178 tests
+npm test           # strip check + typecheck + 181 tests
 
 # Two terminals for development:
 npm run dev        # game server on :3000
@@ -229,14 +232,17 @@ While paused:
 - disconnected players are not evicted — a long pause should not quietly remove
   someone who is sitting right there
 
-The importer handles two upstream formats, because the decks come from
-unrelated projects:
+The importer handles three source formats, because the decks come from
+unrelated places:
 
 - **quoted** — every line wrapped in double quotes, blanks as runs of
   underscores, some HTML entities including one double-encoded comma.
 - **latex** — plain lines with `\BLANK` markers and stray LaTeX escapes
   (`\texttt{...}`, `\%`, ` ``quoted'' `), because those decks are typeset to
   printable PDFs.
+- **plain** — one card per line, written the way it is played. Used by the
+  decks authored for this project, so adding a card means editing a text file
+  in `decks/source/<deck>/` and re-running `npm run deck:import`.
 
 It deliberately leaves upstream typos alone, and deliberately does not treat
 single underscores as blanks — card text contains identifiers like

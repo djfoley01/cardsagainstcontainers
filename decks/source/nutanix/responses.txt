@@ -1,0 +1,128 @@
+Thirty-two gigabytes of CVM, per host
+A Curator full scan at peak hours
+The oplog, entirely full
+Stargate, having a moment
+A Cassandra ring that lost quorum
+Metadata, all of it, twice
+A node that was never fully removed
+RF2 and a lot of optimism
+One-click upgrades, in seven steps
+An LCM inventory that never finishes
+Prism Element, which we were told to stop using
+Prism Central, at one frame per second
+A support tunnel that will not open
+Logbay, collecting everything
+NCC, reporting on NCC
+Two hundred INFO-level warnings
+A firmware version two years old
+The one host with a different BIOS
+Foundation, on the wrong VLAN
+IPMI, unreachable
+A CVM that will not come back up
+Rolling reboot, halfway through
+An upgrade that needed another upgrade first
+The compatibility matrix
+A hypervisor upgrade nobody scheduled
+AHV, which we still call KVM
+vSphere on top of it, for reasons
+A vCenter licence we cannot cancel
+Migrating away from VMware, slowly
+Nutanix Move, running for three days
+A VM with VMware Tools still installed
+Snapshots older than the VM
+A protection domain replicating to itself
+An async DR schedule of every minute
+Metro availability, untested
+The witness VM on the cluster it witnesses
+A DR site that is also production
+Restoring from a snapshot taken after the incident
+Failing over, then failing back
+The storage pool at ninety-eight percent
+Thin provisioning meeting reality
+A VM with a two terabyte disk and no data
+Deduplication savings of four percent
+Compression, on already-compressed data
+Erasure coding running during the backup window
+Data locality, defeated by vMotion
+A noisy neighbour VM
+One database consuming every IOP
+Latency, suddenly
+The performance graph with a suspicious gap
+A benchmark run on an empty cluster
+The vendor's reference architecture
+A proof of concept that became production
+Adding a node instead of investigating
+Three nodes, minimum, forever
+A four-node cluster doing nothing
+Buying more hardware
+The quote from the account team
+A licence tier we did not need
+Calm, licensed and never opened
+Flow, blocking DNS
+Nutanix Files, used as a dumping ground
+Nutanix Objects, for one bucket
+NDB cloning a database for the eleventh time
+Karbon, renamed again
+Kubernetes on hyperconverged infrastructure
+An air conditioning unit
+The fans spinning up at three in the morning
+A datacentre nobody has visited in two years
+The rack diagram that is out of date
+A cable labelled "do not remove"
+Someone unplugging the wrong node
+A power event at the co-lo
+The UPS that did not
+A cluster split into two halves
+Quorum, lost
+Read-only mode
+The health check email nobody reads
+An alert about an alert
+A ticket auto-closed after thirty days
+Support asking for logs we already sent
+Escalating to engineering
+A known issue documented after we hit it
+Release notes read afterwards
+A field advisory
+The KB article that exactly describes it
+Rebooting the CVM
+Restarting the service and moving on
+aCLI, because Prism will not
+nCLI, from muscle memory
+SSH to the CVM, which we are not supposed to do
+A cluster stop, on purpose
+An unplanned cluster stop
+Genesis, restarting everything
+The API returning a task UUID and nothing else
+Polling a task that never completes
+A v3 API call that needs a v2 call first
+Automating it with a shell script
+A Python script from a community blog post
+Prism, clicked manually instead
+An export to CSV
+A screenshot pasted into a document
+Capacity planning in a spreadsheet
+Ninety days of runway, allegedly
+A growth forecast from before the migration
+The VM sprawl audit
+Four hundred powered-off VMs
+An orphaned snapshot from 2021
+A test VM called temp
+A VM that nobody will claim
+Shutting it down and waiting for complaints
+The department that never responded
+A chargeback model nobody agreed to
+The one workload that must never move
+Affinity rules, layered
+A VM pinned to a failing host
+Live migration during the demo
+The hypervisor deciding for itself
+Twenty VMs migrating at once
+The ten gigabit link, saturated
+Jumbo frames, configured on one switch
+A network team that says it is not the network
+An MTU mismatch
+Spanning tree, reconverging
+The backup job overlapping the upgrade
+A backup window that no longer fits
+Restoring a single file from a full clone
+Testing the backup, eventually

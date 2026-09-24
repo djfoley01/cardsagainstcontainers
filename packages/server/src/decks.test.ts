@@ -29,7 +29,9 @@ const goodDeck = {
 describe('loading built-in decks', () => {
   test('loads the four shipped decks with no extra dirs', () => {
     const { decks, problems } = loadDecksDetailed({ extraDirs: [] });
-    assert.deepEqual(decks.map((d) => d.id).sort(), ['containers', 'developers', 'reliability', 'sales']);
+    assert.deepEqual(decks.map((d) => d.id).sort(), [
+      'containers', 'developers', 'nutanix', 'openshift', 'reliability', 'sales', 'terraform-gitlab',
+    ]);
     assert.deepEqual(problems, []);
   });
 
@@ -47,7 +49,7 @@ describe('loading custom decks', () => {
   test('a valid custom deck is added alongside the built-ins', () => {
     writeDeck('myteam.json', goodDeck);
     const { decks, problems } = loadDecksDetailed({ extraDirs: [extra] });
-    assert.equal(decks.length, 5);
+    assert.equal(decks.length, 8);
     const mine = decks.find((d) => d.id === 'myteam')!;
     assert.equal(mine.name, 'My Team');
     assert.equal(mine.prompts.length, 2);
@@ -151,7 +153,7 @@ describe('bad custom decks never take the server down', () => {
   test('a bad deck id is rejected', () => {
     writeDeck('shouty.json', { ...goodDeck, id: 'Not Valid!' });
     const { decks, problems } = loadDecksDetailed({ extraDirs: [extra] });
-    assert.equal(decks.length, 4);
+    assert.equal(decks.length, 7);
     assert.ok(problems.some((p) => p.includes('shouty.json')));
   });
 
@@ -167,7 +169,7 @@ describe('bad custom decks never take the server down', () => {
 
   test('a directory that does not exist is not an error', () => {
     const { decks, problems } = loadDecksDetailed({ extraDirs: [join(extra, 'not-created-yet')] });
-    assert.equal(decks.length, 4);
+    assert.equal(decks.length, 7);
     assert.deepEqual(problems, []);
   });
 });

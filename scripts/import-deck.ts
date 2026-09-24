@@ -26,7 +26,15 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'decks', 'source');
 const OUT = join(ROOT, 'decks');
 
-type Format = 'quoted' | 'latex';
+/**
+ * quoted — every line wrapped in double quotes, blanks as runs of
+ *          underscores. The Cards Against Containers repo.
+ * latex  — plain lines with `\BLANK` and stray LaTeX escapes, because those
+ *          decks are typeset to printable PDFs.
+ * plain  — one card per line, exactly as written. Used by the decks authored
+ *          for this project, so adding a card means editing a text file.
+ */
+type Format = 'quoted' | 'latex' | 'plain';
 
 interface DeckSource {
   id: string;
@@ -40,7 +48,8 @@ interface DeckSource {
   source: string;
   license: string;
   licenseUrl: string;
-  /** Short id prefix for card ids. Must be unique across decks. */
+  /** Prefix for card ids. Must be unique across decks, or one deck's cards
+   *  would overwrite another's in the engine's id map. */
   prefix: string;
 }
 
@@ -103,6 +112,39 @@ const SOURCES: DeckSource[] = [
     ...CC_BY_NC_SA_2,
   },
 ];
+
+/**
+ * Decks written for this project rather than vendored from another repository.
+ *
+ * Their card ids are prefixed with the deck id, so they can never collide with
+ * the shorter prefixes the vendored decks use.
+ */
+const ORIGINAL = {
+  source: 'https://github.com/cardsagainstcontainers/deck',
+  license: 'CC BY-NC-SA 4.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+};
+
+for (const [id, name, description] of [
+  ['terraform-gitlab', 'Cards Against Terraform', 'State files, pipelines, and the plan nobody read.'],
+  ['openshift', 'Cards Against OpenShift', 'CrashLoopBackOff, SCCs and the cluster upgrade.'],
+  ['nutanix', 'Cards Against Nutanix', 'CVMs, Curator scans and one-click upgrades.'],
+] as const) {
+  SOURCES.push({
+    id,
+    name,
+    description,
+    // Off by default: shipped for teams who want them, not imposed on
+    // everyone who starts a game.
+    defaultEnabled: false,
+    format: 'plain',
+    dir: id,
+    promptFile: 'prompts.txt',
+    responseFile: 'responses.txt',
+    prefix: id,
+    ...ORIGINAL,
+  });
+}
 
 const removed: { deck: string; kind: string; text: string; term: string }[] = [];
 
@@ -192,9 +234,10 @@ function normalize(line: string, format: Format): string {
     s = stripWrappingQuotes(s);
     s = fixDoubleEncoding(s);
     s = decodeEntities(s);
-  } else {
+  } else if (format === 'latex') {
     s = stripLatex(s);
   }
+  // 'plain' needs no unpicking: it is written the way it is played.
   s = normalizeBlanks(s);
   s = collapseWhitespace(s);
   return s;

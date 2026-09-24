@@ -1,0 +1,125 @@
+The entire production VPC
+A state file in someone's Downloads folder
+Six hundred lines of YAML nobody reads
+A runner with no tags
+docker:dind, for the fourth time
+A commit message that just says "fix"
+The intern's first merge request
+terraform state rm and a prayer
+A module pinned to a branch called wip
+The DynamoDB lock table
+Copying the state file to S3 by hand
+A pipeline that only runs on Tuesdays
+allow_failure: true
+An orphaned load balancer costing nine hundred dollars a month
+The one engineer who left in March
+A cron job on someone's laptop
+Manual approval at two in the morning
+A variable called temp_fix_do_not_remove
+Provider version 2.x, forever
+Rebasing onto main at five on a Friday
+A merge conflict in the lock file
+An untagged resource
+Clicking around in the console instead
+The staging environment, which is production
+A nine-stage pipeline that does one thing
+A retry loop hiding a real failure
+Hardcoded credentials in a tfvars file
+A data source that queries itself
+The Terraform registry being down
+Three hundred resources in one root module
+A pipeline schedule nobody remembers creating
+sleep 30
+An artifact that expired before anyone downloaded it
+The wrong AWS account
+A cycle error with no explanation
+Deleting the .terraform directory and starting again
+A provider that ignores ignore_changes
+Someone's personal access token
+A job that passes locally and only locally
+The CI variable that was masked but not protected
+Force-pushing to a protected branch
+A module with twelve layers of indirection
+An apply that ran for two hours and changed a tag
+The stale plan from last week
+Running it again and hoping
+A review app that never got torn down
+An IAM policy of pure asterisks
+A README written before the rewrite
+Importing four hundred resources one at a time
+The GitLab instance being upgraded mid-deploy
+A terraform version constraint of >= 0.12
+Using local state on a shared project
+Committing the state file to git
+A pre-commit hook that everybody skips
+Naming things
+Terragrunt wrapping Terraform wrapping a shell script
+A stage called misc
+An environment called new-prod-2-final
+Copy-pasted from another team's repo
+A plan that only runs when nobody is watching
+The ticket that was closed as "works as designed"
+Blaming the provider
+The CI lint job failing on indentation
+A pipeline badge that has been red since April
+Merging without a review because it was urgent
+Deploying on the last day before holiday
+A module version bump nobody tested
+An output marked sensitive containing nothing sensitive
+The one resource that always shows as changed
+A Slack alert everybody muted
+Adding lifecycle { ignore_changes = all }
+Two engineers applying at the same time
+A remote backend in a different region
+A job that takes eleven minutes to install dependencies
+The runner cache, which has never been hit
+Reading the documentation, eventually
+A workspace called test that holds customer data
+A count that quietly reindexed everything
+Renaming a resource and destroying it
+The pipeline that deploys the pipeline
+Letting it drift
+An emergency change with no ticket
+A provider upgrade guide forty pages long
+A shared module owned by nobody
+Tagging the release before the tests finish
+A stage that exists only to print "OK"
+Exporting the plan to a file and losing it
+Writing HCL that generates more HCL
+A rule with both only and rules
+One very long if statement in Bash
+A job artifact containing the whole node_modules
+Terraform Cloud, briefly
+The last engineer who touched it
+Running plan in a loop until it succeeds
+An approval from someone on holiday
+The compliance scan that runs after deploy
+A resource created in the console and never imported
+An unpinned action from a stranger's repository
+The word "temporary" in a filename
+Manually editing the state file
+An entire environment nobody can account for
+A pipeline stage called cleanup that cleans nothing
+Restarting the runner
+The apply that succeeded but changed nothing
+A merge request with four hundred files
+A dependency on a branch that was deleted
+The billing alert that arrived too late
+A variable with a default of null
+A module that only works in one region
+Deleting everything and rebuilding from scratch
+Pointing at main and hoping it is stable
+An override file nobody knew existed
+Two sources of truth
+The shell script that predates the company
+A comment saying "do not change this"
+Quoting a boolean
+The pipeline finishing after the meeting ended
+Adding another stage
+Infrastructure as suggestion
+Clicking retry until it turns green
+A YAML file that is technically valid
+Someone else's problem
+A change window that closed an hour ago
+The one test that is always skipped
+Applying from a laptop on hotel wifi

@@ -1,0 +1,50 @@
+The CVM is using ______ of the host's memory.
+NCC reported ______ warnings and one actual problem.
+Prism Central has been loading for ______.
+What is Curator scanning for at three in the morning?
+The LCM upgrade stalled on ______.
+Why did the cluster go into read-only mode?
+Our replication factor is ______.
+Stargate restarted because of ______.
+What did the one-click upgrade actually click?
+The support case was escalated over ______.
+We bought Nutanix to get away from ______.
+The protection domain was replicating ______.
+What is in the Zeus configuration that nobody should touch?
+Foundation failed to image the node because of ______.
+Our capacity planning is based on ______.
+The AHV host went into maintenance mode for ______.
+Why is data locality not helping?
+The witness VM is running on ______.
+What happens when you lose two nodes in an RF2 cluster?
+Nutanix Move migrated everything except ______.
+The dedupe savings report shows ______.
+We licensed ______ and used it once.
+The oplog filled up because of ______.
+What does aCLI do that Prism cannot?
+The Cassandra ring is missing ______.
+Our DR test consisted of ______.
+Medusa is holding metadata for ______.
+The cluster expansion added ______.
+Why is the storage pool at ninety-four percent?
+The snapshot schedule kept ______.
+We replaced ______ with ______ and the latency doubled.
+The Prism API returned ______.
+What is the real reason we still run vSphere on top?
+The node was removed from the cluster and ______ happened.
+Our runbook for a CVM failure is ______.
+What is the loudest thing in the datacentre?
+Flow microsegmentation is blocking ______.
+The NDB database clone took ______.
+Why did the VM migrate at the worst possible moment?
+Our hyperconverged strategy is ______.
+The erasure coding job is competing with ______.
+What did the health check email say this time?
+The cluster name is ______.
+We scaled out by adding ______ and ______.
+Why does the performance graph have a gap?
+The AOS upgrade required ______.
+What is running on the cluster that nobody can identify?
+Karbon was deprecated in favour of ______.
+Our backup window is ______.
+The vendor demo did not mention ______.
