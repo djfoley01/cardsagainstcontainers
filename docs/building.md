@@ -15,7 +15,7 @@ Step by step, from a clean checkout to a running game.
 From the repository root:
 
 ```sh
-podman build -t cards-against-containers:0.2.0 .
+podman build -t cards-against-containers:0.3.0 .
 ```
 
 That is the whole build. First run takes a couple of minutes because it pulls
@@ -27,7 +27,7 @@ Expect a ~210 MB image, most of which is the Node base.
 ## 2. Run it
 
 ```sh
-podman run -d --name cac -p 8080:3000 cards-against-containers:0.2.0
+podman run -d --name cac -p 8080:3000 cards-against-containers:0.3.0
 ```
 
 - `-d` runs it in the background
@@ -86,14 +86,14 @@ podman logs -f cac
 **Run in the foreground** (Ctrl-C to quit):
 
 ```sh
-podman run --rm -p 8080:3000 cards-against-containers:0.2.0
+podman run --rm -p 8080:3000 cards-against-containers:0.3.0
 ```
 
 **Change the published port** — the left-hand number is the host port and can
 be anything:
 
 ```sh
-podman run -d --name cac -p 9000:3000 cards-against-containers:0.2.0
+podman run -d --name cac -p 9000:3000 cards-against-containers:0.3.0
 ```
 
 **Change the port inside the container** with `PORT`. It must be **1024 or
@@ -102,14 +102,14 @@ above**: the container runs as a non-root user and a privileged port fails with
 
 ```sh
 podman run -d --name cac -p 8080:9999 -e PORT=9999 \
-  cards-against-containers:0.2.0
+  cards-against-containers:0.3.0
 ```
 
 **Change the log level:**
 
 ```sh
 podman run -d --name cac -p 8080:3000 -e LOG_LEVEL=warn \
-  cards-against-containers:0.2.0
+  cards-against-containers:0.3.0
 ```
 
 **Check it behaves like it will on OpenShift**, which runs containers as an
@@ -117,7 +117,7 @@ arbitrary high UID with no `/etc/passwd` entry:
 
 ```sh
 podman run --rm --user 60000:0 -e HOME=/ -p 8080:3000 \
-  cards-against-containers:0.2.0
+  cards-against-containers:0.3.0
 ```
 
 It should start normally. Rootless Podman cannot map a UID as high as the ones
@@ -130,7 +130,7 @@ Behind a TLS-inspecting corporate proxy, drop the CA into `certs/` and rebuild:
 
 ```sh
 cp /path/to/corp-root-ca.crt certs/
-podman build -t cards-against-containers:0.2.0 .
+podman build -t cards-against-containers:0.3.0 .
 ```
 
 That is all. The certificate is installed into the system trust store in both
@@ -192,7 +192,7 @@ To trust a CA at runtime only, mount it and point Node at it:
 podman run -d --name cac -p 8080:3000 \
   -v /path/to/corp-ca.crt:/certs/corp-ca.crt:ro \
   -e NODE_EXTRA_CA_CERTS=/certs/corp-ca.crt \
-  cards-against-containers:0.2.0
+  cards-against-containers:0.3.0
 ```
 
 On OpenShift, the cluster's trusted bundle can be injected by labelling a
@@ -224,28 +224,28 @@ Paste the token when prompted for a password.
 Docker Hub requires the repository name to start with your username:
 
 ```sh
-podman tag cards-against-containers:0.2.0   docker.io/YOURUSER/cards-against-containers:0.2.0
+podman tag cards-against-containers:0.3.0   docker.io/YOURUSER/cards-against-containers:0.3.0
 ```
 
 Tagging `latest` as well is convenient, but pin the version in deployments —
 `latest` makes it impossible to tell what is actually running.
 
 ```sh
-podman tag cards-against-containers:0.2.0   docker.io/YOURUSER/cards-against-containers:latest
+podman tag cards-against-containers:0.3.0   docker.io/YOURUSER/cards-against-containers:latest
 ```
 
 ### 4. Push
 
 ```sh
-podman push docker.io/YOURUSER/cards-against-containers:0.2.0
+podman push docker.io/YOURUSER/cards-against-containers:0.3.0
 podman push docker.io/YOURUSER/cards-against-containers:latest
 ```
 
 ### 5. Verify it pulls
 
 ```sh
-podman rmi docker.io/YOURUSER/cards-against-containers:0.2.0
-podman pull docker.io/YOURUSER/cards-against-containers:0.2.0
+podman rmi docker.io/YOURUSER/cards-against-containers:0.3.0
+podman pull docker.io/YOURUSER/cards-against-containers:0.3.0
 ```
 
 ### Public or private?
@@ -261,7 +261,7 @@ the first push.
 ## Deploying the pushed image on OpenShift
 
 ```sh
-helm install cac deploy/helm/cards-against-containers -n happyhour   --set image.repository=docker.io/YOURUSER/cards-against-containers   --set image.tag=0.2.0
+helm install cac deploy/helm/cards-against-containers -n happyhour   --set image.repository=docker.io/YOURUSER/cards-against-containers   --set image.tag=0.3.0
 ```
 
 ### You will probably need a pull secret
@@ -274,7 +274,7 @@ budget is usually already spent, and the symptom is a pod stuck in
 ```sh
 oc create secret docker-registry dockerhub   --docker-server=docker.io   --docker-username=YOURUSER   --docker-password=<your access token>   -n happyhour
 
-helm upgrade cac deploy/helm/cards-against-containers -n happyhour   --set image.repository=docker.io/YOURUSER/cards-against-containers   --set image.tag=0.2.0   --set 'imagePullSecrets[0].name=dockerhub'
+helm upgrade cac deploy/helm/cards-against-containers -n happyhour   --set image.repository=docker.io/YOURUSER/cards-against-containers   --set image.tag=0.3.0   --set 'imagePullSecrets[0].name=dockerhub'
 ```
 
 ### Check the cluster can reach Docker Hub at all
@@ -295,7 +295,7 @@ podman manifest create cac-multi
 
 podman build --platform linux/amd64,linux/arm64   --manifest cac-multi .
 
-podman manifest push --all cac-multi   docker.io/YOURUSER/cards-against-containers:0.2.0
+podman manifest push --all cac-multi   docker.io/YOURUSER/cards-against-containers:0.3.0
 ```
 
 Cross-architecture builds run under emulation and are markedly slower; on

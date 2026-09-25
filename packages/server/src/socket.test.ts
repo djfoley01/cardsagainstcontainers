@@ -437,6 +437,112 @@ describe('host overrides', () => {
   });
 });
 
+describe('lobby stats and leaderboard', () => {
+  test('a socket receives stats immediately, before joining anything', async () => {
+    const socket = connect();
+    const stats = await once<any>(socket, 'stats');
+    assert.equal(typeof stats.since, 'number');
+    assert.equal(typeof stats.activeGames, 'number');
+    assert.ok(Array.isArray(stats.leaders));
+  });
+
+  test('an open lobby is reported without leaking the room code', async () => {
+    const watcher = connect();
+    // Collect from the very first frame: makeRoom emits several while it
+    // joins three players, and attaching afterwards misses them.
+    const frames: any[] = [];
+    watcher.on('stats', (s: any) => frames.push(s));
+    await once(watcher, 'stats');
+
+    const { code } = await makeRoom();
+    const seen = await new Promise<any>((resolve, reject) => {
+      const deadline = setTimeout(() => reject(new Error('no stats frame showed the lobby')), 10000);
+      const check = () => {
+        const hit = frames.find((f) => f.openLobbies >= 1 && f.playersOnline >= 3);
+        if (hit) {
+          clearTimeout(deadline);
+          resolve(hit);
+        } else setTimeout(check, 50);
+      };
+      check();
+    });
+
+    assert.ok(seen.playersOnline >= 3);
+    // The whole point: a passer-by must not be handed a code to join.
+    for (const frame of frames) {
+      assert.ok(!JSON.stringify(frame).includes(code), 'the room code leaked into stats');
+    }
+  });
+
+  test('winning a round puts a name on the leaderboard', async () => {
+    const watcher = connect();
+    await once(watcher, 'stats');
+
+    const { sockets, ids } = await makeRoom();
+    const trackers = sockets.map(track);
+    sockets[0]!.emit('action', { type: 'startGame' });
+    const playing = await trackers[0]!.waitFor((s) => s.phase === 'submitting');
+
+    const czar = ids.indexOf(playing.czarId!);
+    for (const [i, socket] of sockets.entries()) {
+      if (i === czar) continue;
+      const v = await trackers[i]!.waitFor((s) => s.phase === 'submitting' && s.you.hand.length > 0);
+      socket.emit('action', { type: 'submit', cards: v.you.hand.slice(0, v.prompt!.pick).map((c) => c.id) });
+    }
+    await trackers[czar]!.waitFor((s) => s.phase === 'judging');
+    sockets[czar]!.emit('action', { type: 'selectWinner', index: 0 });
+    const result = await trackers[czar]!.waitFor((s) => s.phase === 'roundResult');
+
+    const withLeader = await new Promise<any>((resolve) => {
+      const handler = (s: any) => {
+        if (s.leaders.length > 0) {
+          watcher.off('stats', handler);
+          resolve(s);
+        }
+      };
+      watcher.on('stats', handler);
+    });
+
+    assert.ok(withLeader.roundsPlayed >= 1);
+    const leader = withLeader.leaders.find((l: any) => l.name === result.lastResult!.winnerName);
+    assert.ok(leader, `expected ${result.lastResult!.winnerName} on the board`);
+    assert.ok(leader.roundsWon >= 1);
+  });
+
+  test('stats are not re-broadcast when nothing about them changed', async () => {
+    // Room state changes on every card played; the landing page cares about
+    // almost none of it. Without suppression a busy game would spam every
+    // connected client.
+    const watcher = connect();
+    await once(watcher, 'stats');
+
+    const { sockets } = await makeRoom();
+    const trackers = sockets.map(track);
+
+    // Let anything triggered by joining settle before measuring.
+    await new Promise<void>((resolve) => {
+      let quiet: NodeJS.Timeout;
+      const bump = () => {
+        clearTimeout(quiet);
+        quiet = setTimeout(resolve, 400);
+      };
+      watcher.on('stats', bump);
+      bump();
+    });
+
+    let frames = 0;
+    watcher.on('stats', () => frames++);
+
+    // Real room churn that changes nothing the landing page reports.
+    for (const points of [3, 5, 7, 3, 5, 7]) {
+      sockets[0]!.emit('action', { type: 'updateSettings', settings: { pointsToWin: points } });
+      await trackers[0]!.waitFor((s) => s.settings.pointsToWin === points);
+    }
+
+    assert.equal(frames, 0, `settings churn produced ${frames} pointless stats frames`);
+  });
+});
+
 describe('presence', () => {
   test('a disconnect shows the player as offline to everyone else', async () => {
     const { sockets, ids } = await makeRoom();

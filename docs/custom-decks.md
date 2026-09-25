@@ -76,7 +76,7 @@ mkdir -p ~/cac-decks && cp myteam.json ~/cac-decks/
 podman run -d --name cac -p 8080:3000 \
   -v ~/cac-decks:/decks/custom:ro,Z \
   -e CAC_DECK_DIRS=/decks/custom \
-  docker.io/djfoley01/cards-against-containers:0.2.0
+  docker.io/djfoley01/cards-against-containers:0.3.0
 ```
 
 Drop another file into `~/cac-decks` and it appears in the lobby within a

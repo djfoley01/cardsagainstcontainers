@@ -10,6 +10,46 @@ helm upgrade cac deploy/helm/cards-against-containers --set image.tag=0.1.0
 Older tags are never overwritten. `latest` follows the newest release, which is
 why the Helm chart pins `appVersion` instead of tracking it.
 
+## 0.3.0
+
+A leaderboard on the landing page, and the three new decks reach a published
+image for the first time.
+
+### Added
+
+- **Live activity and a leaderboard on the landing page.** Shows how many games
+  are in progress, how many players are online, and who has won rounds and
+  games. Updates over the existing socket, so no polling.
+- **Three decks in a published image**: *Cards Against Terraform*,
+  *Cards Against OpenShift* and *Cards Against Nutanix*. These landed in the
+  repository during 0.2.0 but shipped in no image until now.
+- `SHOW_LEADERBOARD=false`, and `env.showLeaderboard` in the chart, for
+  deployments that would rather not surface player names on a page anyone can
+  reach.
+
+### Notes
+
+- **Room codes never appear in the activity panel.** Anyone can load the
+  landing page, so printing a code there would let a passer-by drop into a
+  colleague's game. Activity is reported as counts; names appear only in the
+  tally. A test asserts no room code reaches that payload.
+- **The tally is in memory and resets when the server restarts**, consistent
+  with rooms themselves. The page says so rather than implying an all-time
+  record.
+- Players are keyed by their stored id rather than by name, so renaming
+  mid-session keeps earlier wins, and the display name follows the latest one
+  used.
+- Ranking is games won first, then rounds won, so winning a game outranks
+  accumulating rounds.
+- Stats are broadcast only when the reported numbers change. Room state changes
+  on every card played and almost none of it affects the landing page, so a
+  busy game produces one broadcast per resolved round rather than one per
+  submission.
+- The landing page **measures** rather than using a height breakpoint to decide
+  whether to place the two panels side by side, because the leaderboard grows
+  as people win and any fixed threshold would be wrong at some sizes. Below
+  960px wide it always stacks: two columns on a phone would be unusable.
+
 ## 0.2.0
 
 Custom decks, a builder for writing them, and three new decks.

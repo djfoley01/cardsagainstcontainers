@@ -61,7 +61,7 @@ npm run deck:import
 
 ```sh
 npm install
-npm test           # strip check + typecheck + 181 tests
+npm test           # strip check + typecheck + 213 tests
 
 # Two terminals for development:
 npm run dev        # game server on :3000
@@ -126,6 +126,25 @@ Rules worth knowing:
   and judged while it runs.
 - Cards are conserved: a test asserts no response card is ever created or lost
   across rounds, reshuffles and players leaving.
+
+## Landing page
+
+Before joining anything, the landing page shows live activity — games in
+progress, players online — and a tally of who has won rounds and games.
+
+**Room codes are deliberately absent.** Anyone can load that page, and printing
+a code would let a passer-by drop into a colleague's game, so activity is
+reported as counts and names appear only in the tally. The tally is in memory
+like everything else, so it resets on restart, and the page says so rather than
+implying an all-time record.
+
+Set `SHOW_LEADERBOARD=false` (or `env.showLeaderboard=false` in the chart) to
+turn the panel off.
+
+The two panels stack unless stacking would need scrolling, at which point they
+move side by side. That is measured rather than driven by a height breakpoint,
+because the leaderboard grows as people win and any fixed threshold would be
+wrong at some sizes. Below 960px wide it always stacks.
 
 ## Custom decks
 
@@ -284,8 +303,8 @@ and that no text is ever dealt twice when several are enabled together.
 ## Running the container
 
 ```sh
-podman build -t cards-against-containers:0.2.0 .
-podman run -d --name cac -p 8080:3000 cards-against-containers:0.2.0
+podman build -t cards-against-containers:0.3.0 .
+podman run -d --name cac -p 8080:3000 cards-against-containers:0.3.0
 ```
 
 Then open http://localhost:8080. Docker works identically. Full walkthrough,

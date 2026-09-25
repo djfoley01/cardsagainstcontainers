@@ -4,10 +4,12 @@
  * A room code in the URL (/ABCD or ?room=ABCD) prefills the field, so the host
  * can paste one link into the team channel.
  */
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ROOM_CODE_LENGTH } from '@cac/shared/protocol';
-import type { JoinAck } from '@cac/shared/protocol';
+import type { JoinAck, LobbyStats } from '@cac/shared/protocol';
+import { Leaderboard } from './Leaderboard.tsx';
 import { rememberedName } from '../lib/identity.ts';
+import { useSideBySide } from '../lib/useSideBySide.ts';
 import type { ConnectionState } from '../lib/useGame.ts';
 
 /** Read a room code from the path or query string, if the link carried one. */
@@ -23,16 +25,25 @@ export function JoinScreen({
   onCreate,
   onJoin,
   onOpenBuilder,
+  stats,
 }: {
   connection: ConnectionState;
   onCreate: (name: string) => Promise<JoinAck>;
   onJoin: (code: string, name: string) => Promise<JoinAck>;
   onOpenBuilder: () => void;
+  stats: LobbyStats | null;
 }) {
   const [name, setName] = useState(rememberedName);
   const [code, setCode] = useState(codeFromUrl);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // The two panels sit stacked unless stacking would need scrolling, at which
+  // point they move alongside each other. Measured rather than guessed at with
+  // a breakpoint, because the leaderboard grows as people win rounds.
+  const formRef = useRef<HTMLFormElement>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const sideBySide = useSideBySide(formRef, boardRef);
 
   // Focus the field the player still needs to fill in.
   useEffect(() => {
@@ -62,7 +73,11 @@ export function JoinScreen({
   }
 
   return (
-    <main className="mx-auto flex min-h-full w-full max-w-md flex-col justify-center gap-8 px-4 py-12">
+    <main
+      className={`mx-auto flex min-h-full w-full flex-col justify-center gap-8 px-4 py-12 ${
+        sideBySide ? 'max-w-4xl' : 'max-w-md'
+      }`}
+    >
       <header className="text-center">
         <h1 className="text-3xl font-black tracking-tight text-white">
           Cards Against <span className="text-accent-400">Containers</span>
@@ -70,7 +85,18 @@ export function JoinScreen({
         <p className="mt-2 text-sm text-felt-500">For teams that deploy on Fridays.</p>
       </header>
 
-      <form onSubmit={handleJoin} className="flex flex-col gap-5 rounded-2xl bg-felt-900 p-6 ring-1 ring-white/10">
+      <div
+        className={`flex w-full gap-6 ${
+          sideBySide ? 'flex-row items-start justify-center' : 'mx-auto max-w-md flex-col'
+        }`}
+      >
+      <form
+        ref={formRef}
+        onSubmit={handleJoin}
+        className={`flex flex-col gap-5 rounded-2xl bg-felt-900 p-6 ring-1 ring-white/10 ${
+          sideBySide ? 'min-w-0 flex-1' : ''
+        }`}
+      >
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-xs font-bold tracking-wider text-felt-500 uppercase">
             Your name
@@ -137,6 +163,13 @@ export function JoinScreen({
           </p>
         )}
       </form>
+
+        {/* Always rendered so it can be measured; the hook reads its height to
+            decide the layout. */}
+        <div ref={boardRef} className={sideBySide ? 'min-w-0 flex-1' : ''}>
+          <Leaderboard stats={stats} />
+        </div>
+      </div>
 
       <button
         type="button"

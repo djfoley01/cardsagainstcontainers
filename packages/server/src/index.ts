@@ -14,6 +14,7 @@ import { watch, type FSWatcher } from 'node:fs';
 import { extraDeckDirsFromEnv, loadDecksDetailed } from './decks.ts';
 import { RoomRegistry } from './registry.ts';
 import { attachSocketHandlers, type GameServer } from './socket.ts';
+import { Leaderboard } from './leaderboard.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CLIENT_DIST = join(HERE, '..', '..', 'client', 'dist');
@@ -82,8 +83,13 @@ export async function build() {
     cors: { origin: process.env['CORS_ORIGIN'] ?? true },
   });
 
-  attachSocketHandlers(io, registry);
+  // Set SHOW_LEADERBOARD=false where surfacing player names on a page anyone
+  // can load is not wanted.
+  const showLeaderboard = (process.env['SHOW_LEADERBOARD'] ?? 'true') !== 'false';
+  const leaderboard = new Leaderboard(Date.now());
+  attachSocketHandlers(io, registry, { leaderboard, showLeaderboard });
   registry.startSweeping();
+  if (!showLeaderboard) app.log.info('leaderboard disabled by SHOW_LEADERBOARD=false');
 
   // Watch the custom deck directories so a deck dropped in during the evening
   // takes effect without a restart — a restart would end every game running.

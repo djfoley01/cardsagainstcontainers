@@ -7,7 +7,7 @@
  */
 import type { Deck } from '@cac/shared/deck';
 import { ROOM_CODE_ALPHABET, ROOM_CODE_LENGTH } from '@cac/shared/protocol';
-import type { GameSettings } from '@cac/shared/game';
+import type { GameSettings, GameState } from '@cac/shared/game';
 import { Room, realTimers, type Timers } from './room.ts';
 
 /** A room with nobody in it is swept up after this long. */
@@ -25,6 +25,7 @@ export function generateCode(rand: () => number = Math.random): string {
 export class RoomRegistry {
   private readonly rooms = new Map<string, Room>();
   private sweepHandle: unknown = null;
+  private readonly roomClosedListeners = new Set<(code: string) => void>();
 
   // Written longhand: Node's strip-only mode rejects parameter properties.
   private decks: readonly Deck[];
@@ -41,6 +42,21 @@ export class RoomRegistry {
 
   get deckList(): readonly Deck[] {
     return this.decks;
+  }
+
+  /** Current state of every live room, for aggregate reporting. */
+  states(): GameState[] {
+    return [...this.rooms.values()].map((r) => r.state);
+  }
+
+  /** Called with a room code whenever a room is dropped, so watchers can
+   *  release anything they were tracking for it. */
+  onRoomClosed(fn: (code: string) => void): void {
+    this.roomClosedListeners.add(fn);
+  }
+
+  private notifyClosed(code: string): void {
+    for (const fn of this.roomClosedListeners) fn(code);
   }
 
   /**
@@ -86,6 +102,7 @@ export class RoomRegistry {
     if (!room) return;
     room.close();
     this.rooms.delete(code);
+    this.notifyClosed(code);
   }
 
   /** Drop rooms nobody has touched in a while, so a long-running server
@@ -96,6 +113,7 @@ export class RoomRegistry {
       if (room.isAbandoned(idleMs)) {
         room.close();
         this.rooms.delete(code);
+        this.notifyClosed(code);
         removed++;
       }
     }

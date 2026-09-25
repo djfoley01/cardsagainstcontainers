@@ -6,7 +6,7 @@
  * reconnect needs no reconciliation — the next state frame is the truth.
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { ClientAction, JoinAck, PublicGameState } from '@cac/shared/protocol';
+import type { ClientAction, JoinAck, LobbyStats, PublicGameState } from '@cac/shared/protocol';
 import { connect, createRoom, joinRoom, send, type GameSocket } from './socket.ts';
 import { playerId, rememberName } from './identity.ts';
 
@@ -14,6 +14,8 @@ export type ConnectionState = 'connecting' | 'online' | 'offline';
 
 export interface GameApi {
   state: PublicGameState | null;
+  /** Live activity and the running tally. Null until the first frame lands. */
+  stats: LobbyStats | null;
   connection: ConnectionState;
   /** Transient message from a rejected action, shown then cleared. */
   error: string | null;
@@ -27,6 +29,7 @@ export interface GameApi {
 export function useGame(): GameApi {
   const socketRef = useRef<GameSocket | null>(null);
   const [state, setState] = useState<PublicGameState | null>(null);
+  const [stats, setStats] = useState<LobbyStats | null>(null);
   const [connection, setConnection] = useState<ConnectionState>('connecting');
   const [error, setError] = useState<string | null>(null);
 
@@ -62,6 +65,7 @@ export function useGame(): GameApi {
     socket.io.on('reconnect_attempt', () => setConnection('connecting'));
 
     socket.on('state', setState);
+    socket.on('stats', setStats);
     socket.on('actionError', (err) => setError(err.message));
     socket.on('removed', (reason) => {
       sessionRef.current = null;
@@ -113,6 +117,7 @@ export function useGame(): GameApi {
 
   return {
     state,
+    stats,
     connection,
     error,
     clearError: useCallback(() => setError(null), []),

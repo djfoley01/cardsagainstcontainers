@@ -21,6 +21,7 @@ import { ROOM_CODE_LENGTH } from '@cac/shared/protocol';
 import type { RoomRegistry } from './registry.ts';
 import type { Room } from './room.ts';
 import { toPublicState } from './redact.ts';
+import { Leaderboard } from './leaderboard.ts';
 
 export type GameSocket = Socket<ClientToServerEvents, ServerToClientEvents>;
 export type GameServer = Server<ClientToServerEvents, ServerToClientEvents>;
@@ -45,8 +46,41 @@ function sanitizePlayerId(raw: unknown): string | null {
   return /^[A-Za-z0-9_-]{8,64}$/.test(id) ? id : null;
 }
 
-export function attachSocketHandlers(io: GameServer, registry: RoomRegistry): void {
+export function attachSocketHandlers(
+  io: GameServer,
+  registry: RoomRegistry,
+  options: { leaderboard?: Leaderboard; showLeaderboard?: boolean } = {},
+): void {
   const sessions = new WeakMap<GameSocket, Session>();
+  const leaderboard = options.leaderboard ?? new Leaderboard(Date.now());
+  const showLeaderboard = options.showLeaderboard ?? true;
+
+  registry.onRoomClosed((code) => leaderboard.forget(code));
+
+  /**
+   * Last payload sent, so identical stats are not re-broadcast.
+   *
+   * Room state changes on every card played, and the landing page cares about
+   * almost none of that. Comparing the rendered payload means a busy game
+   * produces one broadcast when a round resolves rather than one per
+   * submission, with no timer to tune.
+   */
+  let lastStats = '';
+
+  function broadcastStats(force = false): void {
+    if (!showLeaderboard) return;
+    const stats = leaderboard.stats(registry.states());
+    const encoded = JSON.stringify(stats);
+    if (!force && encoded === lastStats) return;
+    lastStats = encoded;
+    io.emit('stats', stats);
+  }
+
+  /** Fold a room's state into the tally, then refresh the landing page. */
+  function observe(room: Room): void {
+    leaderboard.sync(room.state, Date.now());
+    broadcastStats();
+  }
 
   /** Send each member of the room the view built for them specifically. */
   function broadcast(room: Room): void {
@@ -98,19 +132,27 @@ export function attachSocketHandlers(io: GameServer, registry: RoomRegistry): vo
 
     bind(socket, room, playerId);
     ack({ ok: true, roomCode: room.code });
+    observe(room);
     // Explicit, unlike elsewhere: the join dispatch above fired the change
     // hook before this socket had a session, so it missed that broadcast.
     broadcast(room);
   }
 
   io.on('connection', (socket: GameSocket) => {
+    // A socket that has not joined anything still needs the landing page data,
+    // so send it straight away rather than waiting for something to change.
+    if (showLeaderboard) socket.emit('stats', leaderboard.stats(registry.states()));
+
     socket.on('createRoom', (req, ack) => {
       // Rooms are only ever created here, and the change hook is wired at the
       // same moment: without it, timer-driven transitions (a submission
       // deadline passing, a czar's grace expiring) would update state that no
       // client ever sees.
       const room = registry.create();
-      room.onChange(() => broadcast(room));
+      room.onChange(() => {
+        broadcast(room);
+        observe(room);
+      });
       enter(socket, room, { ...req, roomCode: room.code }, ack);
     });
 
@@ -184,6 +226,7 @@ export function attachSocketHandlers(io: GameServer, registry: RoomRegistry): vo
       } catch {
         // A disconnect from a room that already evicted the player is fine.
       }
+      broadcastStats();
     });
   });
 }

@@ -138,10 +138,43 @@ export type JoinAck = { ok: true; roomCode: string } | { ok: false; code: JoinEr
 
 export interface ServerToClientEvents {
   state: (state: PublicGameState) => void;
+  /** Sent to every connected socket, including those not in a room. */
+  stats: (stats: LobbyStats) => void;
   /** A rejected action. Sent only to the client that attempted it. */
   actionError: (err: { code: JoinErrorCode; message: string }) => void;
   /** The server removed this client from the room. */
   removed: (reason: 'kicked' | 'left') => void;
+}
+
+/** One player's running tally, aggregated across every room on the server. */
+export interface PlayerTally {
+  playerId: string;
+  name: string;
+  roundsWon: number;
+  gamesWon: number;
+}
+
+/**
+ * What the landing page shows before anyone has joined a room.
+ *
+ * Deliberately no room codes. Anyone can load the landing page, and printing
+ * a code there would let a passer-by drop into a colleague's game. Live
+ * activity is therefore reported as counts only; names appear solely in the
+ * tally, where the point is to credit people.
+ */
+export interface LobbyStats {
+  /** When counting started — the server's boot, since none of this persists. */
+  since: number;
+  /** Rooms with a game under way. */
+  activeGames: number;
+  /** Rooms sitting in a lobby, waiting to start. */
+  openLobbies: number;
+  /** Connected players across every room. */
+  playersOnline: number;
+  /** Rounds resolved with a winner since counting started. */
+  roundsPlayed: number;
+  /** Highest scorers first. Empty until somebody wins a round. */
+  leaders: PlayerTally[];
 }
 
 export const ROOM_CODE_LENGTH = 4;

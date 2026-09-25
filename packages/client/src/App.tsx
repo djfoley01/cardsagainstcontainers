@@ -89,6 +89,7 @@ export default function App() {
           onCreate={game.create}
           onJoin={game.join}
           onOpenBuilder={openBuilder}
+          stats={game.stats}
         />
       ) : state.phase === 'lobby' ? (
         <Lobby state={state} act={game.act} />

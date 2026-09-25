@@ -32,10 +32,10 @@ image:
   # On OpenShift the integrated registry avoids Docker Hub entirely:
   #   image-registry.openshift-image-registry.svc:5000/<namespace>/cards-against-containers
   #
-  # Published 2026-09-22, amd64 only. This is the digest the
+  # Published 2026-09-25, amd64 only. This is the digest the
   # registry serves, not podman's first RepoDigest, which can be a local-only
   # manifest that does not pull.
-  #   sha256:4ec26221f6d115f01ed84b87e8d174c42bbfc489e2f261b21737f9a316fdfb8b
+  #   sha256:9059003677756cad643a7e2ede2615b298689ea9848ad4d2597a2ab7f6ac18d6
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -146,6 +146,12 @@ containerSecurityContext:
 
 env:
   logLevel: info
+
+  # The landing page shows live activity and a tally of who has won rounds.
+  # Set false where surfacing player names on a page anyone can reach is not
+  # wanted. Room codes are never shown either way, so a passer-by cannot use
+  # the page to join a game in progress.
+  showLeaderboard: true
   # Comma-separated origins for the game socket, or empty to allow same-origin.
   corsOrigin: ""
 
